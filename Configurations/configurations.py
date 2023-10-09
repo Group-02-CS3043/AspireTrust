@@ -39,6 +39,5 @@ def valid_session(view_func):
         if 'user' not in session :
             print('user not in session')
             return redirect('/auth/login')
-        print('user in session')
         return view_func(*args, **kwargs)
     return wrapped_view
