@@ -1,11 +1,12 @@
 import MySQLdb
 from MySQLdb.cursors import Cursor
+from MySQLdb.connections import Connection
 from Configurations.configurations import get_database_configurations
 
 class Connector:
     configurations:dict
-    cursor = None
-    connection = None
+    cursor : Cursor
+    connection : Connection
 
     def __init__(self)->Cursor:
         try:
