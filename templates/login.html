@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login - Aspire Trust</title>
@@ -9,7 +10,11 @@
         body {
             background-color: #f2f2f2;
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
+
         .container {
             max-width: 400px;
             margin: 0 auto;
@@ -19,12 +24,15 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             font-size: 36px;
             margin-bottom: 20px;
             color: #333;
         }
-        input[type="text"], input[type="password"] {
+
+        input[type="text"],
+        input[type="password"] {
             display: block;
             width: 100%;
             padding: 10px;
@@ -33,6 +41,7 @@
             border: none;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
+
         input[type="submit"] {
             display: inline-block;
             padding: 10px 20px;
@@ -44,20 +53,24 @@
             border: none;
             cursor: pointer;
         }
+
         input[type="submit"]:hover {
             background-color: #666;
         }
+
         a {
             display: block;
             margin-top: 20px;
             color: #333;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Login - Aspire Trust</h1>
@@ -78,4 +91,5 @@
         <p>Don't have an account? <a href="/auth/register">Register here</a></p>
     </div>
 </body>
+
 </html>
