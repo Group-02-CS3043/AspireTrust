@@ -9,11 +9,17 @@ class User:
     username:str
     password:str
     connector:Connector
+    data:dict
 
-    def __init__(self,username:str,password:str,connector:Connector) -> None:
-        self.username = username
-        self.password = password
-        self.connector = connector
+    def __init__(self,data:dict,connector:Connector) -> None:
+        try:
+            self.data = data
+            self.username = data['username']
+            self.password = data['password']
+            self.connector = connector
+        except Exception as e:
+            print("Exception has happened in initializing User ! Error : ",e)
+            return None
 
     def username_exists(self):
         try:
@@ -36,8 +42,22 @@ class User:
         
     def add_to_database(self):
         try:
+            username = self.data['username']
+            first_name = self.data['first-name']
+            last_name = self.data['last-name']
+            date_of_birth = self.data['birthday']
+            email = self.data['email']
+            telephone = self.data['telephone']
+            home_town = self.data['home-town']
+            password = bcrypt.hashpw(self.data['password'].encode('utf-8'), bcrypt.gensalt())
+
+
+            print(username,first_name,last_name,email,telephone,home_town,password)
+
+
+
             with self.connector:
-                self.connector.cursor.execute(f"INSERT INTO Users(username,password) VALUES('{self.username}','{self.password}')")
+                self.connector.cursor.execute(INSERT_USERS, (username, password, first_name, last_name, date_of_birth, telephone, home_town))
                 self.connector.connection.commit()
                 return True
         except Exception as e:

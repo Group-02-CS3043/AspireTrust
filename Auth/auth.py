@@ -14,12 +14,10 @@ def login()->str:
         return redirect('/')
     
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
         with connector:
-            user = User(username,password,connector)
+            user = User(request.form,connector)
             if user.verify_user():
-                session['user'] = username
+                session['user'] = user.username
                 return redirect('/dashboard')
             else:
                 flash('Login Unsuccessful', 'error')
@@ -35,14 +33,12 @@ def sigup()->str:
         return redirect('/dashboard')
     
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        user = User(username,password,connector)
+        user = User(request.form,connector)
         if user.username_exists():
             flash('Username already exists', 'error')
             return render_template('register.html')
         elif user.add_to_database(): 
-            session['user'] = username
+            session['user'] = user.username
             return redirect('/')
         else:
             flash('Registration Unsuccessful', 'error')
