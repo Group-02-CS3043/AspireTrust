@@ -16,16 +16,17 @@ class User:
             self.connector.cursor.execute(f"SELECT username FROM Users WHERE username = '{self.username}'")
             return self.connector.cursor.fetchone() != None
         except Exception as e:
-            print("Exception : ",e)
+            print("Exception has happened in username exsit ! Error : ",e)
             return False
 
     def verify_user(self):
         try:
-            self.connector.cursor.execute(f"SELECT password FROM Users WHERE username = '{self.username}'")
-            password = self.connector.cursor.fetchone()[0]
+            print(self.username)
+            self.connector.cursor.execute(f"SELECT password FROM Users WHERE username = %s", (str(self.username),))
+            password = self.connector.cursor.fetchone()['password']
             return (self.password == password)
         except Exception as e:
-            print("Exception : ",e)
+            print("Exception has happened in verify_user ! Error : ",e)
             return False
         
     def add_to_database(self):
@@ -34,7 +35,7 @@ class User:
             self.connector.connection.commit()
             return True
         except Exception as e:
-            print("Exception : ",e)
+            print("Exception has happened in add_to_database ! Error : ",e)
             return False
     
 
