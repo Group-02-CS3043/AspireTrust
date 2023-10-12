@@ -14,7 +14,7 @@ database_configurations = {
     'host':'localhost',
     'user':'flask',
     'password':'',
-    'database':'flask',
+    'database':'aspiretrust',
 }
 
 

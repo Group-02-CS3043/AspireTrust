@@ -15,13 +15,19 @@ class Connector:
         except Exception as e:
             print("Exception has happened in initializing Connector ! Error : ",e)
             return None
-        
+    
+    def __enter__(self):
+        self.cursor = self.connect()
+        return self.cursor
+    
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.cursor.close()
+
     def connect(self):
         try:
             self.connection = MySQLdb.connect(*self.configurations.values(),cursorclass=Cursor)
             self.cursor = self.connection.cursor()
-            self.cursor.execute("SELECT VERSION()")
-            print("Database version : ",self.cursor.fetchone()['VERSION()'])
+            return self.cursor
         except Exception as e:
             print("Exception has happened in connect ! Error : ",e)
             return None
