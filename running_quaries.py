@@ -4,9 +4,9 @@ from MySQLdb import Connection
 import bcrypt
 
 
-SQL_FOR_INSERT_USERS = "INSERT INTO users (username, password, first_name, last_name, date_of_birth, telephone, home_town) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+SQL_FOR_INSERT_USERS = "INSERT INTO user (username, password, first_name, last_name, date_of_birth, telephone, home_town) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 SQL_FOR_CREATE_TABALE_USERS =         """
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE IF NOT EXISTS user (
             user_id INT AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(50) NOT NULL UNIQUE,
             password VARCHAR(60) NOT NULL,
@@ -18,7 +18,7 @@ SQL_FOR_CREATE_TABALE_USERS =         """
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )"""
 
-SQL_FOR_GETTING_PASSWORD = "SELECT password FROM users WHERE username = %s"
+SQL_FOR_GETTING_PASSWORD = "SELECT password FROM user WHERE username = %s"
 
 
 salt = bcrypt.gensalt()
