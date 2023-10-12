@@ -46,6 +46,7 @@ def sigup()->str:
         else:
             flash('Registration Unsuccessful', 'error')
             return render_template('register.html')
+    
     return render_template('register.html')
 
 @auth_app.route('/logout',methods = DEFAULT_METHODS)
