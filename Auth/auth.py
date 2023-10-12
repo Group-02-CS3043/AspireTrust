@@ -6,7 +6,7 @@ from Database.connection import Connector
 
 auth_app:Blueprint = Blueprint('auth', __name__,template_folder='./templates',static_folder='static')
 connector = Connector()
-connector.connect()
+
 
 @auth_app.route('/login',methods = DEFUALT_SUBMISSION_METHODS)
 def login()->str:
@@ -16,13 +16,14 @@ def login()->str:
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user = User(username,password,connector)
-        if user.verify_user():
-            session['user'] = username
-            return redirect('/dashboard')
-        else:
-            flash('Login Unsuccessful', 'error')
-            return render_template('login.html')
+        with connector:
+            user = User(username,password,connector)
+            if user.verify_user():
+                session['user'] = username
+                return redirect('/dashboard')
+            else:
+                flash('Login Unsuccessful', 'error')
+                return render_template('login.html')
 
     else:
         return render_template('login.html')
