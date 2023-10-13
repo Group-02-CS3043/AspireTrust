@@ -1,4 +1,5 @@
 body{
+    margin-top: 100px;
     font-family:Rubik;
     background: linear-gradient(113deg, #C7DADF -3.86%, #587B92 95.42%);
     background-repeat: no-repeat;
@@ -8,7 +9,7 @@ body{
 .wrapper{
     font-family: Rubik;
     max-width: 800px;
-    height: 1170px;
+    height: 480px;
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -45,25 +46,21 @@ h1{
     color: rgb(0, 0, 0);
     margin: 0;
     padding: 15px;
+    font-family:Rubik ;
+    font-weight: 500;
     text-transform: uppercase;
     font-size: 28px;
-    font-family: Rubik;
-    font-weight: 500;
 }
-h2{
-    color: rgb(0, 0, 0);
-    margin: 0;
-    padding: 15px;
-    padding-top: 0px;
-    font-family: Rubik;
-    font-weight: 500;
-}
-
 
 p{
     font-size: 14px;
     padding: 30px;
 
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
 }
 
 .sub-topic{
@@ -72,92 +69,44 @@ p{
     padding-left: 5px;
 }
 
+
 label{
     font-weight: 400;
 }
 
 input[type=text],input[type=number]{
     background-color: rgb(231, 228, 228);
-    width: 300px;
+    width: 400px;
     height: 25px;
     border-radius: 5px;
     border: 1px solid black;
     box-shadow: inset 0px 0px 5px #807f7f;
     margin-top: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding-left: 6px;
 }
 
-.account{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
-.line{
-    margin-bottom: 3px;
-    margin-top: 3px;
-    background-color: #000;
-    height: 1px;
-   
-}
-
-h6{
-    color: #1F1B57;
+div{
     margin-top: 5px;
 }
 
-.genderdiv{
-    margin-bottom: 20px;
-}
-
-.martialdiv{
-    margin-top: 15px;
-    margin-bottom: 20px;
-}
-
-.namediv{
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.contact,.placedivs{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.loandetails{
-    margin-top: 10px;
-}
-
-.addressdiv input{
-    width: 540px;
-}
-
-.occudiv{
+.fund{
     margin-bottom: 30px;
 }
-.occudiv input{
-    width: 540px;
-}
-
-
 
 .termsdiv{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border: 1px solid #000;
     border-radius: 8px;
-    height: 80px;
+    height: 50px;
     background: #82772b;
     background-blend-mode: darken;
+    padding-left: 50px;
+    margin: 100px;
     margin-bottom: 30px;
     margin-top: 20px;
-    padding-left: 10px;
 }
 
 
@@ -165,12 +114,12 @@ h6{
 .btn{
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
-
 button{
     border: solid rgb(9, 5, 86);
     border-radius: 50px;
-    width: 120px;
+    width: 170px;
     height: 50px;
     background-color: #1F1B57;
     color: white;

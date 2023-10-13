@@ -1,5 +1,4 @@
 body{
-    margin-top: 100px;
     font-family:Rubik;
     background: linear-gradient(113deg, #C7DADF -3.86%, #587B92 95.42%);
     background-repeat: no-repeat;
@@ -7,15 +6,16 @@ body{
 }
 
 .wrapper{
-    font-family: Rubik;
+    font-family:Rubik;
     max-width: 800px;
-    height: 480px;
+    height: 1230px;
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 30px;
     background-color: white;
     box-shadow: 1px 1px 5px #070606;
 }
+
 
 .logo{
     background-color: #161343;
@@ -36,6 +36,7 @@ body{
 section{
     border-radius: 40px 0px 0px 0px;
     background: #ffffff;
+    height: 800px;
     flex-shrink: 0;
     padding: 15px;
     padding-top: 0;
@@ -46,10 +47,18 @@ h1{
     color: rgb(0, 0, 0);
     margin: 0;
     padding: 15px;
-    font-family:Rubik ;
-    font-weight: 500;
     text-transform: uppercase;
     font-size: 28px;
+    font-family: Rubik;
+    font-weight: 500;
+}
+h2{
+    color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 15px;
+    padding-top: 0px;
+    font-family: Rubik;
+    font-weight: 500;
 }
 
 p{
@@ -58,40 +67,65 @@ p{
 
 }
 
-.container{
-    display: flex;
-    justify-content: space-between;
-}
-
 .sub-topic{
     background-color: #9e9fca;
     padding: 3px;
     padding-left: 5px;
 }
-
-
 label{
     font-weight: 400;
 }
 
 input[type=text],input[type=number]{
     background-color: rgb(231, 228, 228);
-    width: 400px;
+    width: 300px;
     height: 25px;
     border-radius: 5px;
     border: 1px solid black;
     box-shadow: inset 0px 0px 5px #807f7f;
     margin-top: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding-left: 6px;
 }
-
-div{
-    margin-top: 5px;
+input[type=radio],input[type=checkbox]{
+    cursor: pointer;
 }
 
-.fund{
-    margin-bottom: 30px;
+
+.account{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.genderdiv,.martialdiv{
+    margin-bottom: 20px;
+}
+
+.namediv{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+
+.contact,.placediv{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.addressdiv input{
+    width: 540px;
+}
+
+.occudiv{
+    margin-bottom: 40PX;
+}
+.occudiv input{
+    width: 540px;
 }
 
 .termsdiv{
@@ -100,26 +134,23 @@ div{
     align-items: center;
     border: 1px solid #000;
     border-radius: 8px;
-    height: 50px;
+    height: 80px;
     background: #82772b;
     background-blend-mode: darken;
-    padding-left: 50px;
-    margin: 100px;
     margin-bottom: 30px;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding-left: 10px;
 }
-
-
 
 .btn{
     display: flex;
     justify-content: center;
-    margin-top: 30px;
 }
+
 button{
     border: solid rgb(9, 5, 86);
     border-radius: 50px;
-    width: 170px;
+    width: 120px;
     height: 50px;
     background-color: #1F1B57;
     color: white;
