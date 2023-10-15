@@ -2,6 +2,7 @@ import bcrypt
 from Database.connection import Connector
 from Database.quaries import *
 
+
 salt = bcrypt.gensalt()
 
 
@@ -50,14 +51,9 @@ class User:
             telephone = self.data['telephone']
             home_town = self.data['home-town']
             password = bcrypt.hashpw(self.data['password'].encode('utf-8'), bcrypt.gensalt())
-
-
-            print(username,first_name,last_name,email,telephone,home_town,password)
-
-
-
             with self.connector:
                 self.connector.cursor.execute(INSERT_USERS, (username, password, first_name, last_name, date_of_birth, telephone, home_town))
+                self.connector.cursor.execute(CREATE_CUSTOMER_ACCOUNT, (self.connector.cursor.lastrowid,))
                 self.connector.connection.commit()
                 return True
         except Exception as e:

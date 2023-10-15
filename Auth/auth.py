@@ -39,7 +39,7 @@ def sigup()->str:
             return render_template('register.html')
         elif user.add_to_database(): 
             session['user'] = user.username
-            return redirect('/')
+            return redirect('/dashboard')
         else:
             flash('Registration Unsuccessful', 'error')
             return render_template('register.html')
