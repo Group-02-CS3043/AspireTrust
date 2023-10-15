@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200;300&family=Open+Sans&family=Righteous&family=Rubik&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <title>Bank</title>
+    </head>
+
+    <body>
+        <div class = 'logo-container'>            
+                <img class="logo_img" src="img/vector.svg">
+                <span class = 'logo'>ASPIRE Trust </span>    
+        </div>
+        <nav class="nav-bar">
+            <ul class="navlist">
+                <li><a href="#" class ='aa' >Home</a></li>
+                <li><a href="#" class ='aa'>Transaction</a></li>
+                <li>
+                    <button class="aa-but" onclick="location.href='#popup1'">Apply Now</button>
+
+                
+                </li>
+                <li><a href="#" class ='aa'>Contact Us</a></li>
+                <li><a href="#" class ='aa'>Settings</a></li>
+            </ul>
+        </nav>
+        <div class="banner">
+            <div class="tile"> 
+                <img class="banner-image" src="img/boadt.jpg" alt="">
+                <div class="banner-text">
+                    <div class="banner-text1">Banking Made Simple, Savings Made Easy</div>
+                    <div class="banner-text2">Yours Trusted, Aspire trust</div>
+                </div>
+                
+
+            
+            
+            
+            </div>
+        </div>
+
+        <div class = 'first'>
+            <div class = 'ab-info'>
+                <div style="display: flex; justify-content: space-around; margin-top: 40px;">
+                    <img class ='blocc' src="img/money.png" style=" height: 70px; margin-right: -20px;">
+                    <div class = 'blocc'>
+                        <div style="color: white;
+                        font-family: 'Manrope';
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        letter-spacing: 0.36px;" >
+                        Total Saving</div>
+                        <div class = 'total1'></div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 10px;">
+                    <img src="img/sample-graph.png" >
+                </div>
+            </div>
+            <div class = 'welcome'>Hey Siripala Welcome</div>
+            <div class = 'notice-tile'> 
+                <div style="color: white;
+                    text-align: center;
+                    font-family: Rubik;
+                    font-size: 26.4px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    margin-top: 20px;" >Notice</div>
+                
+                <ul class ='notice-list'>
+                    <li class ='notic'>
+                        Maintenance Alert: Website maintenance from 10:00 PM to 2:00 AM (UTC)
+                    </li>
+                    <li class ='notic'>
+                        Visit us Now! Free coffee and snacks at all branches.
+                    </li>
+                    <li class ='notic' >
+                        Holiday Closure: All our branches will be closed on Christmas Day.
+                    </li>
+                    <li class ='notic'>
+                        New Banking System Now Live! Visit us to know more.
+                    </li>
+
+                </ul>
+
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class ='dashboard'>
+            <div class = 'info'>
+                <div class="first-container">
+                    
+                        <div style="display: flex; align-items: center;" >
+                            <div class="blocc" style="color: #FFF;
+                            font-family: Manrope;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                            letter-spacing: 0.48px;
+                            margin-right: 20px;">
+                                The number of Accounts
+                            </div>
+                            <div class="numAccounts"></div>
+                        </div>
+
+                        <div class="button-con">
+                            
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Select Account</button>
+                                <div class="dropdown-content">
+                                <a href="#">Savings Account</a>
+                                <a href="#">Current Account</a>
+                                <a href="#">Fixed Deposit Account</a>
+                                </div>
+                              </div>
+                        </div>
+                    
+                </div>
+                <div class="allAccounts">
+                    <div class = "accountHead" >
+                        <div >
+                            Account
+                        </div>
+                        <div >
+                            Status
+                        </div>
+                        <div>
+                            Amount
+                        </div>
+                    </div>
+                    <div class ='accounts'>
+
+                    </div>
+
+                </div>        
+            </div>
+            <div class="CE-container">
+                <div style="color: white;
+                    text-align: center;
+                    font-family: Roboto;
+                    font-size: 26.4px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    margin-top: 20px;
+                    margin-bottom: 30px;
+                    " >Currency Exchange</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr ;  text-align: center; color: white; font-size: 20px;">
+                    <span class = 'notic'> USD </span> <span> LKR 320.1 </span>
+                    <span class = 'notic' > INR </span> <span> LKR 2.21 </span>
+                    <span class = 'notic'> RUB </span> <span> LKR 24.21 </span>
+                    <span class = 'notic'> GBP </span> <span> LKR 394.00 </span>
+                    <span class = 'notic'> EUR </span> <span> LKR 342.12 </span>
+                    <span class = 'notic'> JPY </span> <span> LKR 2.17 </span>
+                    <span class = 'notic'> CNY </span> <span> LKR 44.43 </span>
+                    <span class = 'notic'> AUD </span> <span> LKR 207.32 </span>
+                    
+                    
+                    
+                </div>
+            </div>
+
+        </div>
+        <div class = 'footer-container' style="margin-top: 20px; margin-bottom: 20px;">
+
+            <div class = 'footer'>
+                <img src="img/footer.svg">
+
+            </div>
+            
+        </div>
+
+
+          <div id="popup1" class="overlay">
+            <div class="popup">
+                      
+            <h2 style="color: black; display: flex; justify-content: center; font-family: roboto; ">Apply Now.</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="buttons">
+              
+              <a href="#" class="btn">Savings Account</a>
+              <a href="#" class="btn">Current Account</a>
+              <a href="#" class="btn">Fixed Deposit</a>
+              
+            </div>
+                
+            </div>
+        </div>
+
+
+
+    </body>
+</html>
