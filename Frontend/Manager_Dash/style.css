@@ -653,6 +653,8 @@ body {
   opacity: 60%;
 }
 .user-detail-head{
+  border-radius: 5px;
+  background-color: #0e5875;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -660,6 +662,7 @@ body {
   font-size: 24px;
   color: #ffffff;
   margin-bottom: 20px;
+  margin-bottom: 60px ;
 }
 enq:active{
   border: none;
@@ -694,4 +697,30 @@ enq:active{
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 2.08%, rgba(13, 16, 28, 0.15) 47.92%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(137deg, rgba(2, 48, 71, 0.38) 21.18%, rgba(2, 48, 71, 0.07) 57.4%, rgba(2, 48, 71, 0.00) 100%);
   box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
   backdrop-filter: blur(30px);
+}
+
+.branch-but{
+  color: #FFF;
+  text-align: center;
+  font-family: 'Rubik';
+  font-weight: 300;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-transform: uppercase;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 48px;
+  border: none;
+  background: #00507C;
+  margin-bottom: 13px;
+}
+.branch-but:hover{
+
+
+  background-color: #2579a2;
+  transition:0.3s;
 }
