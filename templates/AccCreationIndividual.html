@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout2.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            <div>ASPIRE Trust</div>
+        </div>
+
+        {% block title %}
+        <h1>BANK ACCOUNT REGISTRATION FORM</h1>
+        {% endblock %}
+
+        {% block type_of_account %}
+        <H2>For individuals</H2>
+        {% endblock %}
+
+        <section>
+            <form action="" method="post">
+
+                <p class="sub-topic">Account Details</p>
+
+                <div class="account">
+                    <div>
+                        <h4>Account Type - {{context.account_type}}</h3>
+                    </div>
+                    <div>
+                        <h4>Branch - {{context.branch}}</h4>
+                    </div>    
+                </div>
+
+                <p class="sub-topic">Personal Details</p>
+
+                <label for="name">Name</label>
+                <div class="namediv">
+                    
+                    <div>
+                        <input name="first_name" type="text" id="first_name" placeholder="First Name" required>
+                    </div>
+                    <div>
+                        <input name ="last_name"type="text" id="last_name" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <div>
+                        <label for="phone">Phone Number</label><br>
+                        <input name="phone_number" type="text" id="phone" placeholder="07X-XXXXXXX" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label><br>
+                        <input name ="email" type="email" id="email" required>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <div>
+                        <label for="birth">Date Of Birth</label><br>
+                        <input name="birth_date" type="date" id="birth" placeholder="MM/DD/YYYY" required>
+                    </div>
+                    <div>
+                        <label for="nic">NIC Number</label><br>
+                        <input name="NIC" type="text" id="nic" required>
+                    </div>
+                </div>
+
+                
+                <div class="placediv">
+                    <div>
+                        <label for="hometown">Hometown</label><br>
+                        <input type="text" id="hometown" name = "home_town">
+                    </div>
+                </div>
+
+
+
+                <p class="sub-topic">Terms & Conditions</p>
+
+                <div class="termsdiv">
+                    <div><input type="checkbox"  required></div>
+                    <div>
+                        <p class="conditions">
+                            I agree to comply with and to be bound by the rules of the bank governing the conduct of this Account and Other services including Debit card; Internet &
+                            Mobile banking; Mobile App; SMS alerts & E-statements which I / We have read and understood. I/ We acknowledge the receipt of a copy of the Terms and
+                            conditions governing the above facilitie
+                        </p>
+                    </div>
+                </div>
+
+                <div class="btn">
+                   
+                       
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>

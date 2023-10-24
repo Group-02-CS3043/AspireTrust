@@ -1,8 +1,8 @@
 import bcrypt
 from Database.connection import Connector
-from Database.quaries import *
+from Database.database_quaries import *
 
-
+INSERT_USERS = "INSERT INTO user (username, password, first_name, last_name, date_of_birth, telephone, home_town) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 salt = bcrypt.gensalt()
 
 
@@ -26,6 +26,7 @@ class User:
         try:
             with self.connector:
                 self.connector.cursor.execute(SELECT_USERNAME, (self.username,))
+                # print(self.connector.cursor.fetchone())
                 return self.connector.cursor.fetchone() != None
         except Exception as e:
             print("Exception has happened in username exsit ! Error : ",e)
@@ -34,9 +35,13 @@ class User:
     def verify_user(self):
         try:
             with self.connector:
-                self.connector.cursor.execute(SELECT_PASSWORD, (self.username,))
-                password = self.connector.cursor.fetchone()['password']
-                return bcrypt.checkpw(self.password.encode('utf-8'), password.encode('utf-8'))
+                self.connector.cursor.execute(GET_USER_DETAILS, (self.username,))
+                self.user_id,password, self.user_role = self.connector.cursor.fetchone().values()
+                if password == None:
+                    return False
+                else:
+                    return password == self.password
+                # return bcrypt.checkpw(self.password.encode('utf-8'), password.encode('utf-8'))
         except Exception as e:
             print("Exception has happened in verify_user ! Error : ",e)
             return False
@@ -60,4 +65,3 @@ class User:
             print("Exception has happened in add_to_database ! Error : ",e)
             return False
     
-

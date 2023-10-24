@@ -18,6 +18,8 @@ def login()->str:
             user = User(request.form,connector)
             if user.verify_user():
                 session['user'] = user.username
+                session['user_role'] = user.user_role
+                session['user_id'] = user.user_id
                 return redirect('/dashboard')
             else:
                 flash('Login Unsuccessful', 'error')
