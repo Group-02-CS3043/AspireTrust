@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}"> -->
+    <link rel="stylesheet" href="register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200&family=Open+Sans&family=Righteous&family=Rubik:wght@300&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap"
+        rel="stylesheet">
+    
+</head>
+
+<body>
+    <div class='container'>
+        <div class="loginTile">
+            <div class="con">
+                <div class="logo">
+                    <div style="display: flex; justify-content: center; align-items: center; ">
+                        <img src="{{ url_for('static', filename='img/logopng.png') }}" alt="" class="logoV">
+                        <div class="logoT">ASPIRE Trust</div>
+                    </div>
+                </div>
+
+                <form style="display: flex; flex-direction: column; justify-content: center; align-items: center;"
+                    method="post" action="">
+                    <div class="inputs">
+
+                        <div class="emailCon">
+                            <div class="ab">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+                                        stroke="#00507C" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                                        stroke="#00507C" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <input name="username" class="enq" type="text" placeholder="username" required></input>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="final">
+                        
+                        <button class="SubBut" type="submit"> Sign Up </button>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+        <div class="imgText">
+            <img class='imgTile' src="../static/img/tileImg.png" alt="welcome">
+            <div class="textIn">Dream your Future !</div>
+        </div>
+
+
+
+
+    </div>
+</body>
+
+</html>
