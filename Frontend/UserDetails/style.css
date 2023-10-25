@@ -31,8 +31,29 @@ body {
     /* background-image: linear-gradient(to top, #09203f 0%, #537895 100%);    background: linear-gradient(14deg, #205360 30.78%, #112731 65.44%, #13252E 95.83%, #13252E 98.9%); */
 }
 
+.first-row{
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+
+}
+.log-out{
+  width: 40px;
+  margin-top: 30px;
+  margin-right: 60px;
+}
+
+.log-out:hover{
+  cursor: pointer;
+}
+
+
 .logo-container{
+    margin-right: -60px;
     margin-top: 30px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -276,25 +297,29 @@ body {
     display: block;
 
   }
-  .accountHead{
-    /* display: flex;  */
 
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr;
-    margin-left: 100px; 
-    align-items: center; 
-    justify-content: space-between; 
-    margin-right: 100px;
-    color: #A1A1A1;
-    text-align: center;
-    font-family: Manrope;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.32px;
-    margin-bottom:30px ;
-  }
+.table-head{
+  color: #f1e7e7;
+  text-align: center;
+  font-family: Manrope;
+  font-size: 28px;
+}
+
+
+
+table{
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  text-align: center;
+  font-family: Rubik;
+  font-size: 22px;
+
+}
+
+
+
+
 .accounts{
     /* display: flex;  */
     display: grid;
