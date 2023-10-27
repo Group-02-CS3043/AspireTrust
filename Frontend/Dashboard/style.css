@@ -542,3 +542,47 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+@media (max-width: 1417px) {
+  .CE-container,
+  .notice-tile {
+    display: none;
+  }
+}
+@media (max-width: 1417px) {
+  .CE-container,
+  .notice-tile {
+    display: none;
+    transition: width 0.5s ease-in-out;
+  }
+  .info {
+    width: 100%;
+    transition: width 0.5s ease-in-out;
+    min-width: 546px;
+  }
+  .first{
+    justify-content: space-between;
+    transition: width 0.5s ease-in-out;
+  }
+  .welcome{
+
+    transition: width 0.5s ease-in-out;
+
+  }
+
+}
+@media (min-width: 1418px) {
+  .CE-container,
+  .notice-tile {
+    display: block;
+    transition: width 0.5s ease-in-out;
+  }
+  .info {
+    width: 65%;
+    transition: width 0.5s ease-in-out;
+  }
+  .first{
+    justify-content: space-between;
+    transition: width 0.5s ease-in-out;
+  }
+}
