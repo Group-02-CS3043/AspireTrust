@@ -35,6 +35,7 @@ def create_savigs_account():
 
 
 @bank_account_app.route('/transfer',methods = DEFUALT_SUBMISSION_METHODS,endpoint='transfer')
+@valid_session
 def transaction():
     if request.method == 'POST':
         print(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'])
