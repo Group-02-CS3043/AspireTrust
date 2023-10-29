@@ -78,7 +78,7 @@ body {
     font-weight: 400;
     line-height: normal;
 }
-.nav-bar{
+/* .nav-bar{
     margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 150px;
@@ -88,20 +88,75 @@ body {
 .navlist{
     display: flex;
     justify-content: space-around;
+} */
+
+.nav-bar {
+  
+  font-family: "Poppins";
+  margin-top: 40px;
+  /*margin-bottom: 40px;*/
+  margin-left: 0px;
+  margin-right: 0px;
+  /* border-bottom: 1px solid #0c0230; */
+  /* position: sticky; */
+  top: 0;
+  z-index: 999;
+  background-color: transparent;
+  /* From https://css.glass */
+  border-radius: 16px;
+  margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 150px;
+    margin-right: 150px;
+
+  /* background-color: #232e79; */
 }
 
-.aa{
-    display: block;
-    text-decoration: none;
-    color: #ffffff;
-    text-align: center;
-    font-family: Roboto;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.nav-bar.glass {
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.50);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(18.9px);
+  -webkit-backdrop-filter: blur(18.9px);
+}
+
+
+
+.navlist {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.aa {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-family: Rubik;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 
 }
+
+.aa:hover,
+.active {
+  color: #000000;
+  cursor: pointer;
+  background-color: #ffffffde;
+  border-radius: 6px;
+  font-weight: bold;
+  /* From https://css.glass */
+  background: #ffffff;
+  border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
 
 /* Remove underlines and style anchor elements */
 #nav-list1 .op1 {
