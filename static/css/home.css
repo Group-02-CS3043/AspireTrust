@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
   margin: 0;
@@ -388,12 +388,12 @@ ul li:hover ul.dropdown {
   font-family: "Poppins";
   font-weight: 600;
   margin-top: 70px;
-  margin-bottom: 100px;
+  
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: #ffffff;
-  font-size: 35px;
+  font-size: 50px;
   padding: 10px;
 }
 
@@ -416,8 +416,9 @@ ul li:hover ul.dropdown {
   padding: 10px;
   margin: 30px;
   /* border-radius: 20px; */
-  height: 500px;
-  width: 600px;
+  height: 60vh;
+  width: 40vw;
+  opacity: 90%;
   /* From https://css.glass */
   /* From https://css.glass */
   /* From https://css.glass */
@@ -446,8 +447,8 @@ ul li:hover ul.dropdown {
 
 p {
   font-size: 20px;
-  font-family: "Roboto";
-  font-weight: 400;
+  font-family: "Poppins";
+  font-weight: 200;
   line-height: 1.5;
   color: #ffffff;
   margin: 10px;
@@ -495,6 +496,7 @@ ul {
   display: flex;
   padding: 80px 0;
   margin-top: 50px;
+
   
 
 }
@@ -521,7 +523,7 @@ ul {
   margin-bottom: 30px;
 }
 
-.section-description {
+.contact-section  .section-description {
   font-size: 20px;
   color:#ffffff;
   margin-bottom: 30px;
@@ -584,6 +586,7 @@ ul {
 /* about us section*/
 
 .about-section {
+  font-family: "Poppins";
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -594,7 +597,7 @@ ul {
 .about-section .container {
   max-width: 1200px;
   margin: 0 auto;
-
+  font-family: "Poppins";
 }
 
 .row {
@@ -607,20 +610,26 @@ ul {
   align-items: center;
   max-width: 50%;
   padding-left: 30px;
+  font-family: "Poppins";
 }
 
 .section-title {
   font-size: 36px;
   margin-bottom: 30px;
+  font-family: "Poppins";
 }
 
-.section-description {
+.about-section .section-description {
   font-size: 18px;
   margin-bottom: 30px;
+  font-family: "Poppins";
 }
 
 .about-section p {
+  font-size: 18px;
+  font-weight: 200;
   margin-bottom: 20px;
+  font-family: "Poppins";
 }
 
 .img-fluid {
