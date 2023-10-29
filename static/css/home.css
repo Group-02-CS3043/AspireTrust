@@ -110,7 +110,7 @@ body {
   display: block;
   color: #ffffff;
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -179,7 +179,7 @@ ul li:hover ul.dropdown {
   color: #ffffff;
   text-align: center;
   /* font-family: Roboto; */
-  font-size: 25px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -253,7 +253,7 @@ ul li:hover ul.dropdown {
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  font-size: 50px;
+  font-size:30px;
   height: 100%;
 
 }
@@ -261,15 +261,15 @@ ul li:hover ul.dropdown {
 .text_bank {
   max-width: 35vw;
   font-family: "Poppins";
-  font-size: 20pxz;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 300;
 }
 
 /* css for slider */
 .slider {
 
   width: 800px;
-  height: 600px;
+  height: 500px;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -278,7 +278,7 @@ ul li:hover ul.dropdown {
 
 .slides {
   width: 500%;
-  height: 700px;
+  height: 800px;
   display: flex;
   opacity: 75%;
   background: rgba(255, 255, 255, 0.25);
@@ -299,7 +299,7 @@ ul li:hover ul.dropdown {
 
 .slide img {
   width: 800px;
-  height: 600px;
+  height: 500px;
 }
 
 /* css for manual navigation */
@@ -392,7 +392,7 @@ ul li:hover ul.dropdown {
   justify-content: space-around;
   align-items: center;
   color: #ffffff;
-  font-size: 50px;
+  font-size: 35px;
   padding: 10px;
 }
 
@@ -406,16 +406,17 @@ ul li:hover ul.dropdown {
 }
 
 .subcontent {
+  font-family: Poppins;
   display: flex;
   flex-direction: row;
   /* color: #ffffff; */
   /* background-color: #070c37; */
-  font-size: 40PX;
+  font-size: 35PX;
   padding: 10px;
-  margin: 20px;
+  margin: 30px;
   /* border-radius: 20px; */
   height: 500px;
-  width: 700px;
+  width: 600px;
   /* From https://css.glass */
   /* From https://css.glass */
   /* From https://css.glass */
@@ -429,6 +430,17 @@ ul li:hover ul.dropdown {
   backdrop-filter: blur(18.9px);
   -webkit-backdrop-filter: blur(18.9px);
   /* border: 1px solid rgba(255, 255, 255, 0.17); */
+}
+
+.subcontent P{
+  font-size: 18px;
+  font-family: poppins;
+  color: #ffffff;
+  margin: 10px;
+}
+
+.subcontent ul{
+  font-size: 16px;
 }
 
 p {
@@ -453,8 +465,8 @@ ul {
 }
 
 .subcontent img {
-  width: 300px;
-  height: 250px;
+  width: 250px;
+  height: 200px;
   margin: 5px;
   margin-left: 20px;
   margin-top: 20px;
@@ -509,7 +521,7 @@ ul {
 }
 
 .section-description {
-  font-size: 18px;
+  font-size: 20px;
   color:#ffffff;
   margin-bottom: 30px;
 }
