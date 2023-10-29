@@ -39,7 +39,7 @@ def create_savigs_account():
 def transaction():
     if request.method == 'POST':
         print(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'])
-        status = set_new_operation(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'],'transfered to '+request.form['to_account_number'])
+        status = set_new_operation(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'],request.form['remarks'])
         if status:
             flash("Transaction Successfull", 'Transaction')
             return redirect('/dashboard')
