@@ -10,6 +10,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+<style>
+    body{
+        background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
+        background-size: cover;
+    }
+
+    .wrapper{
+        height: 850px;
+    }
+</style>
 <body>
     <nav>
         <div class="navlogo">
@@ -22,14 +32,14 @@
         </ul>
         
     </nav>
-    <div class="wrapper" style="height: 1170px;">
+    <div class="wrapper">
         <div class="logo">
             <div>BANK Loan FORM</div>
         </div>
         <section>
             {% if context %}
             <form action="">
-                <p class="sub-topic">Account Details</p>
+                
 
                 <div class="account">
                     <div>
@@ -46,7 +56,7 @@
                     </div>  
                 </div>
                 
-                <p class="sub-topic">Personal Details</p>
+                
 
                 <!-- <div class="genderdiv">
                     <label for="gender">Gender</label>
@@ -66,11 +76,11 @@
                 </div>
 
                 <div class="loandetails">
-                    <div class="genderdiv">
+                    <!-- <div class="genderdiv">
                         <label >Loan Type</label><br>
                         <input type="radio" name="status" required>Personal
                         <input type="radio" name="status" required>Bussiness
-                </div>
+                    </div> -->
                     <div>
                         <label for="loan">Loan Amount</label><br>
                         <input type="number" id="loan" placeholder="Rs" required>
@@ -96,32 +106,30 @@
                     <input type="text" id="address" required placeholder="address" value="{{context.home_town}}" disabled><br>
                 </div>
 
-                <div class="martialdiv">
+                <!-- <div class="martialdiv">
                         <label >Marital Status</label>
                         <input type="radio" name="status" required>Single
                         <input type="radio" name="status" required>Married
-                </div>
+                </div> -->
 
                 <div class="occudiv">
                     <label for="occu">Occupation</label><br>
-                    <input type="text" id="occu" name="occname" required>
+                    <input type="text" id="occu" name="occname">
                 </div>
 
-                <p class="sub-topic">Terms & Conditions</p>
+                
 
                 <div class="termsdiv">
                     <div><input type="checkbox"  required></div>
                     <div>
                         <p class="conditions">
-                            I agree to comply with and to be bound by the rules of the bank governing the conduct of this Account and Other services including Debit card; Internet &
-                            Mobile banking; Mobile App; SMS alerts & E-statements which I / We have read and understood. I/ We acknowledge the receipt of a copy of the Terms and
-                            conditions governing the above facilitie
+                            I agree to comply with and to be bound by the rules of the bank . 
                         </p>
                     </div>
                 </div>
 
                 <div class="btn">
-                    <a href="another.html">
+                    <a href="#">
                         <button >Submit</button>
                     </a>
                 </div>

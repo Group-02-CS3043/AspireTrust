@@ -58,13 +58,10 @@ nav{
 }
 
 
-
 nav a{
     color: white;
     text-decoration: none;
     padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 nav a:hover{
