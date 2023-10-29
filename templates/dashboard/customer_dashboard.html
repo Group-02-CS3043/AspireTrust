@@ -55,10 +55,11 @@
 
         <nav class="nav-bar">
             <ul class="navlist">
-                <li><a href="#" class ='aa' >Home</a></li>
+                <li><a href="{{ url_for('home.home') }}" class ='aa' >Home</a></li>
                 <li><a href="{{ url_for('bank_account.transfer') }}" class ='aa'>Transaction</a></li>
+                <li><a href="{{ url_for('loan.online_loan') }}" class ='aa'>Apply Loan</a></li>
 
-                <li><a href="#" class ='aa'>Contact Us</a></li>
+                <li><a href="{{ url_for('home.home') }}" class ='aa'>Contact Us</a></li>
                 <li><a href="#" class ='aa'>Settings</a></li>
                 <!-- <li>    <a href="/auth/logout">Logout</a></li> -->
             </ul>
@@ -148,7 +149,7 @@
                             <thead>
                                 <tr class = "accountHead" >
                                     <th>Account</th>
-                                    <th>Status</th>
+                                    <th>Type</th>
                                     <th>Amount</th>
                                 </tr>
                             </thead>
