@@ -17,6 +17,61 @@ body{
     box-shadow: 1px 1px 5px #070606;
 }
 
+
+nav{
+    position: sticky;
+    top: 0;
+    opacity: .9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #161343;
+    height: 80px;
+    padding: 0 50px;
+    font-size: 20px;
+    color: white;
+    
+}
+
+.navlogo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.navlogo a:hover{
+    color: #f2db68;
+    background-color: #161343;
+    text-decoration: none;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav a:hover{
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+    
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}   
+
+nav ul li{
+    list-style: none;
+}
+
+
 .logo{
     background-color: #161343;
     margin-top: 0;
