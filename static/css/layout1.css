@@ -1,9 +1,11 @@
 body{
-    margin-top: 100px;
-    font-family:Rubik;
-    background: linear-gradient(113deg, #C7DADF -3.86%, #587B92 95.42%);
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background-color: #2b4162;
+    background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+
 }
 
 .wrapper{
@@ -13,9 +15,71 @@ body{
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: white;
-    box-shadow: 1px 1px 5px #070606;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(18.9px);
+    -webkit-backdrop-filter: blur(18.9px);
 }
+
+
+nav{
+    position: sticky;
+    top: 0;
+    opacity: .9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    height: 80px;
+    padding: 0 50px;
+    font-size: 20px;
+    color: white;
+    background: rgba(255, 255, 255, 0.50);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18.9px);
+    -webkit-backdrop-filter: blur(18.9px);
+}
+
+
+.navlogo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.navlogo a:hover{
+    color: #f2db68;
+    background-color: #161343;
+    text-decoration: none;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav a:hover{
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+    
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}   
+
+nav ul li{
+    list-style: none;
+}
+
 
 .logo{
     background-color: #161343;
@@ -34,12 +98,15 @@ body{
 }
 
 section{
-    border-radius: 40px 0px 0px 0px;
-    background: #ffffff;
     flex-shrink: 0;
     padding: 15px;
     padding-top: 0;
     font-size: 18px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(18.9px);
+    -webkit-backdrop-filter: blur(18.9px);
 }
 
 h1{
