@@ -1,10 +1,10 @@
 body{
-    background: linear-gradient(113deg, #C7DADF -3.86%, #587B92 95.42%);
+    /* background: linear-gradient(113deg, #C7DADF -3.86%, #587B92 95.42%); */
+    background: linear-gradient(113deg, #090A27 -3.86%, #20537B 95.42%);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1512px;
-    height: 982px;
+
     padding-top: 100px;
     /* flex-direction: column;
     justify-content: center;
@@ -17,26 +17,33 @@ body{
 }
 .container{
     display: flex;
+    margin-bottom: 150px;
 
-/* width: 1216px;
-height: 655px; */
+/* width: 1216px; */
+/* height: 1655px; */
 flex-shrink: 0;
 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
-margin-left: 140px;
+/* margin-left: 140px; */
 }
 .loginTile{
-    width: 768px;
-    height: 655px;
+    width: 868px;
+    /* height: 655px; */
     flex-shrink: 0;
     border-radius: 32px 0px 0px 32px;
     background: #CEDDE6;
+    padding-bottom: 50px;
+
+    border-radius: 32px 0px 0px 32px;
+    background: linear-gradient(129deg, rgba(192, 167, 167, 0.50) -36.83%, rgba(117, 138, 162, 0.32) 52.26%, rgba(26, 116, 169, 0.00) 148.37%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.60);
 }
 .imgTile{
     border-radius: 0px 32px 32px 0px;
     background: url(<path-to-image>), lightgray 50% / cover no-repeat, #C4C4C4;
     width: 448px;
-height: 655px;
+/* height: 655px; */
 flex-shrink: 0;
+    height: 100%;
 }
 .logo{
     display: flex;
@@ -56,7 +63,7 @@ flex-shrink: 0;
     height: 69px;
     flex-direction: column;
     justify-content: center;
-    color: #00507C;
+    color: #ffffff;
     text-align: center;
     font-family: Righteous;
     font-size: 40px;
@@ -65,7 +72,7 @@ flex-shrink: 0;
     line-height: normal;
 }
 .enq{
-    width: 380px;
+    width: 400px;
     height: 45px;
     font-size: 19px;
     background:transparent;
@@ -89,7 +96,7 @@ input:focus{
     padding-left: 20px;
     display: flex;
     align-items: center;
-    width: 450px;
+    width: 480px;
     height: 45px;
     flex-shrink: 0;
     border-radius: 48px;
@@ -141,7 +148,7 @@ button:focus{
     justify-content: center;
 }
 .newuser{
-    color: #00507C;
+    color: #ffffff;
     text-align: center;
     font-family: Rubik;
     font-size: 18px;

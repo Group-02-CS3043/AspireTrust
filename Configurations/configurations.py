@@ -29,6 +29,7 @@ def get_secret_key()->str:
 
 def get_database_configurations()->dict:
     database_configurations['password'] = os.environ.get("MYSQL_PASSWORD")
+    print(database_configurations)
     return database_configurations
 
 
@@ -36,7 +37,7 @@ def get_database_configurations()->dict:
 def valid_session(view_func):
     @wraps(view_func)
     def wrapped_view(*args, **kwargs):
-        if 'user' not in session :
+        if 'user_id' not in session :
             print('user not in session')
             return redirect('/auth/login')
         return view_func(*args, **kwargs)
