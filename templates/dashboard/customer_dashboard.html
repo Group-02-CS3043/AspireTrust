@@ -96,7 +96,7 @@
                     <img src="{{ url_for('static', filename='img/customer_dashboard/sample-graph.png') }}" >
                 </div>
             </div>
-            <div class = 'welcome'>Hey Siripala Welcome</div>
+            <div class = 'welcome'>Hey {{context.first_name}} Welcome</div>
             <div class = 'notice-tile'> 
                 <div style="color: white;
                     text-align: center;
@@ -154,7 +154,7 @@
                                 </tr>
                             </thead>
                             <tbody  >
-                                {% for account in context %}
+                                {% for account in context.accounts %}
                                 <tr class ='accounts'>
                                     <td>{{account.account_number}}</td>
                                     <td>{{account.account_type}}</td>
