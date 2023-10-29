@@ -11,7 +11,7 @@
     <style>
         body
         {
-            background-image: url("{{ url_for('static',filename='img/home/gradeint.jpg') }}");
+            background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
         }
     </style>
 </head>
@@ -239,7 +239,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-                <img src="img/aboutus.jpg" alt="About Us Image" class="img-fluid">
+                <img src="{{ url_for('static', filename='img/home/aboutus.jpg') }}" alt="About Us Image" class="img-fluid">
               </div>
             <div class="col-md-6">
               <h2 class="section-title">About Us</h2>
