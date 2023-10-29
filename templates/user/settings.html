@@ -14,6 +14,13 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <title>Bank</title>
+        <style>
+            body
+            {
+                background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
+                background-size: cover;
+            }
+        </style>
 
     </head>
 
@@ -44,7 +51,7 @@
         </nav>
 
         <div class="con">
-            <from class="contain" method="post" action="">
+            <form class="contain" method="post" action="">
 
                 
                 <div class="header">Configure Account</div>
@@ -54,7 +61,7 @@
                         <div class="field">
                             <span class="texts">  First Name </span>
                             <div class="ab">
-                                <input class="enq" type="text" placeholder="" required></input>
+                                <input class="enq" type="text" placeholder="" value="{{context.first_name}}" name="first_name" required></input>
                             </div>
 
                         </div>
@@ -62,28 +69,28 @@
                         <div class="field">
                             <span class="texts">  Last Name </span>
                             <div class="ab">
-                                <input class="enq" type="text" placeholder="" required></input>
+                                <input class="enq" type="text" placeholder="" value="{{context.last_name}}" name="last_name" required></input>
                             </div>
 
                         </div>
                         <div class="field"  >
                             <span class="texts">  HomeTown </span>
                             <div class="ab">
-                                <input class="enq" type="text" placeholder="" required></input>
+                                <input class="enq" type="text" placeholder="" value="{{context.home_town}}" name="home_town" required></input>
                             </div>
 
                         </div>
                         <div class="field">
                             <span class="texts">  Telephone </span>
                             <div class="ab">
-                                <input class="enq" type="text" placeholder="" required></input>
+                                <input class="enq" type="text" placeholder="" value = "{{context.telephone}}" name="telephone" required></input>
                             </div>
 
                         </div>
                         <div class="field">
                             <span class="texts">  Birthday </span>
                             <div class="ab">
-                                <input class="enq" type="datetime" placeholder="" required></input>
+                                <input class="enq" type="date" placeholder="" value="{{context.date_of_birth}}" name="date_of_birth" required></input>
                             </div>
 
                         </div>
@@ -92,18 +99,12 @@
 
                 <div class="final">
 
-                    <button type="submit" > Login </button>
-
                 </div>
+                <button type="submit" > Save </button>
             </form>
-            
 
         </div>
         
-
-
-
-
 
     </body>
 </html>
