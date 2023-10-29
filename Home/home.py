@@ -10,4 +10,4 @@ def home():
     if 'user' in session :
         return redirect('/dashboard')
     else:
-        return render_template('home.html')
+        return render_template('home/home.html')

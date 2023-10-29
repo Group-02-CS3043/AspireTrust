@@ -36,7 +36,7 @@ def get_database_configurations()->dict:
 def valid_session(view_func):
     @wraps(view_func)
     def wrapped_view(*args, **kwargs):
-        if 'user' not in session :
+        if 'user_id' not in session :
             print('user not in session')
             return redirect('/auth/login')
         return view_func(*args, **kwargs)

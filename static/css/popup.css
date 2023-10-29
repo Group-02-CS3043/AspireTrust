@@ -1,0 +1,52 @@
+.notification {
+    font-family: "Poppins";
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.55);
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideIn 5s, fadeOut 5s 10s forwards;
+}
+
+.notification-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.notification-content {
+    font-size: 15px;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}

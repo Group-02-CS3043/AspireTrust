@@ -1,5 +1,5 @@
 from Database.connection import Connector
-from Database.database_quaries import INSERT_USERS
+from Database.database_quaries import *
 
 class Account:
     connector:Connector
@@ -30,3 +30,27 @@ class Account:
             print("Exception has happened in create_new_user ! Error : ",e)
             return False
         
+
+
+def get_account_details(user_id):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(GET_USER_ACCOUNTS,(user_id,))
+            details = connector.cursor.fetchall()
+            return details
+    except Exception as e:
+        print("Exception has happened in get_account_details ! Error : ",e)
+        return False
+    
+
+def set_new_operation(from_account_number,to_account_number,amount,remark):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(CREATE_TRANSACTION,(from_account_number,to_account_number,amount,remark))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        print("Exception has happened in set_new_operation ! Error : ",e)
+        return False
