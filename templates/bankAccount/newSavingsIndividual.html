@@ -4,7 +4,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/newSavingsIndividual.css') }}" />
+        <link rel="stylesheet" href="new-savings.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
@@ -16,7 +16,6 @@
             body
             {
                 background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
-                background-size: cover;
             }
         </style>
         <title>Bank</title>
@@ -58,7 +57,7 @@
                     <img onclick="" class="back-arr" src="{ url_for('static', filename='css/img/back-arrow.png') }"  alt="">
                 </div>
 
-                <form style="display: flex; flex-direction: column; justify-content: center; align-items: center;" method="post" action="">
+                <form style="display: flex; flex-direction: column; justify-content: center; align-items: center; "  action="" method="post">
                     <div class="con-field">
                         <div class="x">
                             <div  class="field">
@@ -72,7 +71,7 @@
                             <div class="field">
                                 <span class="texts">  Last Name </span>
                                 <div class="ab">
-                                    <input class="enq" name="last_name" type="text" placeholder="" required></input>
+                                    <input class="enq name="last_name" " type="text" placeholder="" required></input>
                                 </div>
                                 
                             </div>
@@ -86,11 +85,7 @@
                             <div class="field">
                                 <span class="texts">  Branch ID </span>
                                 <div class="ab">
-                                    {% if context %}
-                                    <input class="enq" name="branch_id" type="number" placeholder="" required value="{{ context.branch_id }}"></input>
-                                    {% else %}
-                                    <input class="enq" name="branch_id" type="number" placeholder="" required></input>
-                                    {% endif %}
+                                    <input class="enq" name="branch_id" type="text" placeholder="" required></input>
                                 </div>
     
                             </div>
@@ -98,14 +93,14 @@
                             <div class="field"  >
                                 <span class="texts">  Telephone </span>
                                 <div class="ab">
-                                    <input class="enq" name = "telephone" type="text" placeholder="" ></input>
+                                    <input class="enq" name = "telNo" type="text" placeholder="" required></input>
                                 </div>
     
                             </div>
                             <div class="field">
                                 <span class="texts">  HomeTown </span>
                                 <div class="ab">
-                                    <input class="enq" name = "home_town" type="text" placeholder="" ></input>
+                                    <input class="enq" name = "hometown" type="text" placeholder="" required></input>
                                 </div>
     
                             </div>
@@ -113,7 +108,7 @@
                             <div class="field">
                                 <span class="texts">  Date of Birth </span>
                                 <div class="ab">
-                                    <input class="enq" name = "date_of_birth" type="date" placeholder="" required></input>
+                                    <input class="enq" name = "dateOfBirth" type="date" placeholder="" required></input>
                                 </div>
     
                             </div>

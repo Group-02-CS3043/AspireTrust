@@ -198,6 +198,44 @@
             </div>
 
         </div>
+        <div class="info1">
+            <div style="display: flex; align-items: center; justify-content: center;" >
+                <div class="blocc" style="color: #FFF;
+                font-family: Manrope;
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: 0.48px;
+                margin-right: 20px; margin-bottom: 40px;">
+                    Fixed Deposits
+                </div>
+            </div>
+            <div  >
+                <table>
+                    <thead>
+                        <tr class = "accountHead" >
+                            <th>Fixed Deposit ID</th>
+                            <th>Duration (Months) </th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody  >
+                        {% for account in context.accounts %}
+                        <tr class ='accounts'>
+                            <td>{{account.account_number}}</td>
+                            <td>{{account.account_type}}</td>
+                            <td>Rs {{account.balance}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
         <div class = 'footer-container' style="margin-top: 20px; margin-bottom: 20px;">
 
             <div class = 'footer'>
