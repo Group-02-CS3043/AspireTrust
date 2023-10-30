@@ -8,11 +8,12 @@ from Database.database_quaries import *
 loan_app = Blueprint('loan', __name__,template_folder='./templates',static_folder='static')
 
 
-def apply_for_online_loan(user_id,amount):
+def apply_for_online_loan(user_id,fixed_deposit_id,amount,duration,interest_rate):
     connector = Connector()
     try:
         with connector:
-            connector.cursor.execute(APPLY_FOR_ONLINE_LOAN,(user_id,amount))
+            connector.cursor.execute(APPLY_FOR_ONLINE_LOAN,(user_id,fixed_deposit_id,amount,duration,interest_rate,))
+            connector.connection.commit()
             return True
     except Exception as e:
         print("Error in apply_for_online_loan",e)
@@ -48,7 +49,7 @@ def get_maximum_loan_amount(user_id):
         print("Error in get_maximum_loan_amount",e)
         return False
 
-@loan_app.route('/online_loan',methods = DEFAULT_METHODS,endpoint='online_loan')
+@loan_app.route('/online_loan',methods = DEFUALT_SUBMISSION_METHODS,endpoint='online_loan')
 @valid_session
 def online_loan():
     if request.method == 'GET':
@@ -56,12 +57,14 @@ def online_loan():
         fd_accounts = get_fd_accounts(session['user_id'])
         context['fd_accounts'] = fd_accounts
         context['maximum_loan_amount'] = int(get_maximum_loan_amount(session['user_id'])['maximum_loan_amount'])
-        print(context)
         return render_template('loan/OnlineLoan.html',context=context)
     elif request.method == 'POST':
-        amount = request.form['amount']
-        if apply_for_online_loan(session['user_id'],amount):
-            flash("Your loan request has been sent to the manager")
+        print(request.form)
+        amount = request.form['loan_amount']
+        fixed_deposit_id = request.form['fixed_account_number']
+        duration = request.form['duration']
+        if apply_for_online_loan(session['user_id'],fixed_deposit_id,amount,duration,0.1):
+            flash("Your loan has been accepted and loan amount has been transfered to your account","success")
             return redirect('/dashboard')
         else:
             flash("Something went wrong")

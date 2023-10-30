@@ -14,6 +14,7 @@ GET_MAXIMUM_LOAN_AMOUNT = 'call maximum_loan_amount(%s);'
 GET_FD_ACCOUNTS = 'SELECT fixed_deposit_id FROM fixed_deposit WHERE user_id = %s'
 GET_USER_INFORMATIONS = 'SELECT first_name,last_name,date_of_birth,telephone,home_town FROM user WHERE user_id = %s'
 UPDATE_USER_DETAILS = 'call update_user_details(%s,%s,%s,%s,%s,%s)'
+APPLY_FOR_ONLINE_LOAN = 'call apply_for_online_loan(%s,%s,%s,%s,%s)'
 
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
