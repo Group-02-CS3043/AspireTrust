@@ -20,6 +20,7 @@ CREATE_BANK_ACCOUNT_FOR_EXISTING_USERS = 'call create_bank_account_for_existing_
 GET_CUSTOMER_FIRSTNAME_AND_NUMBER_OF_ACCOUNTS = 'call get_first_name_and_number_of_accounts(%s)'
 CHECK_FIRSTNAME_AND_LASTNAME_EXISTS = 'SELECT first_name,last_name FROM user WHERE first_name = %s AND last_name = %s'
 CREATE_BANK_ACCOUNT_FOR_NEW_USERS = 'call create_bank_account_for_new_user(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+GET_ALL_TRANSACIONS = 'call branch_wise_total_transactions(%s,%s);'
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
 SELECT_PASSWORD = 'SELECT password FROM user WHERE username = %s'

@@ -31,6 +31,25 @@ body {
     /* background-image: linear-gradient(to top, #09203f 0%, #537895 100%);    background: linear-gradient(14deg, #205360 30.78%, #112731 65.44%, #13252E 95.83%, #13252E 98.9%); */
 }
 
+
+.first-row{
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+  
+  }
+  .log-out{
+  width: 40px;
+  margin-top: 30px;
+  margin-right: 60px;
+  }
+  
+  .log-out:hover{
+  cursor: pointer;
+  }
+
 .logo-container{
     margin-top: 30px;
     display: flex;
@@ -54,31 +73,72 @@ body {
     font-weight: 400;
     line-height: normal;
 }
-.nav-bar{
-    margin-top: 40px;
+.nav-bar {
+  
+  font-family: "Poppins";
+  margin-top: 40px;
+  /*margin-bottom: 40px;*/
+  margin-left: 0px;
+  margin-right: 0px;
+  /* border-bottom: 1px solid #0c0230; */
+  /* position: sticky; */
+  top: 0;
+  z-index: 999;
+  background-color: transparent;
+  /* From https://css.glass */
+  border-radius: 16px;
+  margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 150px;
     margin-right: 150px;
+
+  /* background-color: #232e79; */
 }
 
-.navlist{
-    display: flex;
-    justify-content: space-around;
+.nav-bar.glass {
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.50);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(18.9px);
+  -webkit-backdrop-filter: blur(18.9px);
 }
 
-.aa{
-    display: block;
-    text-decoration: none;
-    color: #ffffff;
-    text-align: center;
-    font-family: Roboto;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+
+
+.navlist {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.aa {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-family: Rubik;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 
 }
 
+.aa:hover,
+.active {
+  color: #000000;
+  cursor: pointer;
+  background-color: #ffffffde;
+  border-radius: 6px;
+  font-weight: bold;
+  /* From https://css.glass */
+  background: #ffffff;
+  border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+}
 /* Remove underlines and style anchor elements */
 #nav-list1 .op1 {
 
@@ -582,11 +642,23 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-
-}
-.aa-but:hover{
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-family: Rubik;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+  }
+  .aa-but:hover{
   cursor: pointer;
-}
+  }
 .inputs{
   margin-top: 20px;
   margin-bottom: 15px;
@@ -667,6 +739,66 @@ body {
 enq:active{
   border: none;
 }
+.detail-con{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.report-con{
+  width: 100%;
+  display: flex;
+  padding: 30px;
+  padding-right: 30px;
+  justify-content: center;
+}
+.report{
+  border-radius: 20px;
+  border: 1px solid #8ECAE6;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 2.08%, rgba(0, 0, 0, 0.06) 47.92%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(137deg, rgba(2, 48, 71, 0.78) 21.18%, rgba(2, 48, 71, 0.00) 100%);
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(30px);
+  width: 95%;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  /* height: 809px; */
+  flex-shrink: 0;
+
+  border-radius: 20px;
+  border: 1px solid rgba(142, 202, 230, 0.17);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 2.08%, rgba(13, 16, 28, 0.15) 47.92%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(137deg, rgba(2, 48, 71, 0.38) 21.18%, rgba(2, 48, 71, 0.07) 57.4%, rgba(2, 48, 71, 0.00) 100%);
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(30px);
+}
+
+.branch-but{
+  color: #FFF;
+  text-align: center;
+  font-family: 'Rubik';
+  font-weight: 300;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-transform: uppercase;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 48px;
+  border: none;
+  background: #00507C;
+  margin-bottom: 13px;
+}
+.branch-but:hover{
+
+
+  background-color: #2579a2;
+  transition:0.3s;
+}
+
+
+
 .detail-con{
   display: flex;
   flex-direction: column;
