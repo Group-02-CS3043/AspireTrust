@@ -97,6 +97,15 @@ def is_account_exsists(account_number:str,connector:Connector)->bool:
         print("Exception has happened in verify_user ! Error : ",e)
         return False
 
+def valid_account_number(account_number:str,connector:Connector)->bool:
+    try:
+        with connector:
+            connector.cursor.execute(CHECK_ACCOUNT_IS_VALID, (account_number,))
+            return connector.cursor.fetchone() == None
+    except Exception as e:
+        print("Exception has happened in verify_user ! Error : ",e)
+        return False
+
 def have_a_user_account(user_id:int,connector:Connector)->bool:
     try:
         with connector:
