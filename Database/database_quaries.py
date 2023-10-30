@@ -21,6 +21,10 @@ GET_CUSTOMER_FIRSTNAME_AND_NUMBER_OF_ACCOUNTS = 'call get_first_name_and_number_
 CHECK_FIRSTNAME_AND_LASTNAME_EXISTS = 'SELECT first_name,last_name FROM user WHERE first_name = %s AND last_name = %s'
 CREATE_BANK_ACCOUNT_FOR_NEW_USERS = 'call create_bank_account_for_new_user(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 GET_ALL_TRANSACIONS = 'call branch_wise_total_transactions(%s,%s);'
+CREATE_FIXED_DEPOSIT = 'call create_fixed_deposit_for_existing_user(%s,%s,%s,%s)'
+GET_SAVINGS_ACCOUNT_ID = 'SELECT savings_account_id FROM savings_account WHERE account_id = (SELECT account_id FROM account WHERE account_number = %s)'
+CHECK_ACCOUNT_IS_VALID = 'SELECT account_id FROM account WHERE account_number = %s'
+
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
 SELECT_PASSWORD = 'SELECT password FROM user WHERE username = %s'

@@ -41,6 +41,15 @@ def get_customer_first_name_and_no_accounts(account_number):
         print("Error in get_customer_first_name",e)
         return None
 
+def get_savings_account_id(account_number):
+    connector = Connector()
+    try :
+        with connector:
+            connector.cursor.execute(GET_SAVINGS_ACCOUNT_ID,(account_number,))
+            return connector.cursor.fetchone()
+    except Exception as e:
+        print("Error in get_savings_account_id",e)
+        return None
 
 def create_savings_account_for_exsisting_user_individual(user_id,account_number_of_new_account,account_number_of_old_account,amount):
     connector = Connector()
@@ -66,6 +75,17 @@ def create_current_account_for_exsisting_user_individual(user_id,account_number_
         print("Error in create_current_account_for_exsisting_user",e)
         return False
 
+def creat_fixed_account_for_for_exsisting_user_individual(user_id,savings_account_id,amount,duration):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(CREATE_FIXED_DEPOSIT,(user_id,savings_account_id,amount,duration,))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        print("Error in create_fixed_account_for_for_exsisting_user",e)
+        return False
+
 def create_savings_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number):
     connector = Connector()
     try:
@@ -77,6 +97,17 @@ def create_savings_account_for_new_user_individual(first_name,last_name,branch_i
         print("Error in create_savings_account_for_exsisting_user",e)
         return False
 
+
+def create_current_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_NEW_USERS,(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,'CURRENT'))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        print("Error in create_current_account_for_exsisting_user",e)
+        return False
 
 
 @bank_account_app.route('/transfer',methods = DEFUALT_SUBMISSION_METHODS,endpoint='transfer')
@@ -153,6 +184,24 @@ def create_current_account_existing_individual():
     elif request.method == 'GET':
         return render_template('bankAccount/existingCurrentIndividual.html')
 
+@bank_account_app.route('/create-exsisting/fixed',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_fixed_account_exsisting')  
+@valid_employee
+@valid_session
+def create_fixed_account_existing_individual():
+    if request.method == 'POST':
+        savings_account_id = get_savings_account_id(request.form['account_number'])
+        if savings_account_id is None:
+            flash("Savings Account doesn't Exists", 'Error')
+            return redirect(url_for('bank_account.create_fixed_account_exsisting'))
+        if creat_fixed_account_for_for_exsisting_user_individual(session['user_id'],savings_account_id['savings_account_id'],request.form['first_deposit'],request.form['duration']):
+            flash("Fixed Deposit Created Successfully", 'Account')
+            return redirect('/dashboard')
+        else:
+            flash("Fixed Deposit Creation Failed", 'Error')
+            return redirect('/dashboard')
+    elif request.method == 'GET':
+        return render_template('bankAccount/existingFixedIndividual.html')
+
 @bank_account_app.route('/create-new/savings',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_savings_account_new')
 @valid_employee
 @valid_session
@@ -185,3 +234,33 @@ def create_savings_account_new_individual():
         return render_template('bankAccount/newSavingsIndividual.html',context=context)
 
 
+@bank_account_app.route('/create-new/current',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_current_account_new')
+@valid_employee
+@valid_session
+def create_current_account_new_individual():
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        branch_id = request.form['branch_id']
+        nic = request.form['nic']
+        telephone = request.form['telephone']
+        home_town = request.form['home_town']
+        date_of_birth = request.form['date_of_birth']
+        first_deposit = request.form['first_deposit']
+        ascii_values = [ord(char) for char in (first_name+last_name)]
+        new_account_number = f"{str(branch_id)}-{str(sum(ascii_values)%1000)}-{str(1)}"
+
+        if check_firstname_and_last_name_exsists(first_name,last_name):
+            flash("User Already Exists", 'Error')
+            return redirect(url_for('bank_account.create_current_account_new'))
+        if create_current_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number):
+            flash("Account Created Successfully","Account Creation")
+            return redirect('/dashboard')
+        else:
+            flash("Error Occured ", "Error")
+            return redirect('/dashboard')
+
+    elif request.method == 'GET':
+        context = get_branch_id(session['user_id'])
+        print("context",context)
+        return render_template('bankAccount/newSavingsIndividual.html',context=context)

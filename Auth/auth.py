@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template,request,session,redirect,flash,abort
+from flask import Blueprint,render_template,request,session,redirect,flash,abort,url_for
 from Settings.settings import *
 from .models import *
 from Database.connection import Connector
@@ -19,7 +19,7 @@ def login()->str:
     
     elif request.method == 'POST':
        if not is_user_exsists(request.form['username'],connector):
-           flash("User doesn't exists", 'error')
+           flash("User doesn't exists", 'Error')
            return render_template('auth/login.html')
        else:
            user_id = authenticate_user(request.form,connector)
@@ -42,11 +42,13 @@ def find_from_account_number():
         user_id = is_account_exsists(request.form['account_number'],connector)
         if user_id:
             if have_a_user_account(user_id,connector):
+                flash("User already have an account", 'Error')
                 return redirect('login')
             else:
                 return redirect('register')
         else:
-            abort(401)
+            flash("Please contact your neaerest branch for more details ", 'No Account Found')
+            return redirect('login')
 
     else:
         return render_template('auth/account.html')       
@@ -58,16 +60,22 @@ def sigup()->str:
         return redirect('/dashboard')
     
     if request.method == 'POST':
+        print(valid_account_number(request.form['account_number'],connector))
+        if valid_account_number(request.form['account_number'],connector):
+            flash('Account number is not correct', 'Error')
+            return redirect(url_for('auth.register'))
+
         if is_user_exsists(request.form['username'],connector):
-            flash('Username already exists', 'error')
-            redirect('register')
+            flash('Username already exists', 'Error')
+            return redirect(url_for('auth.register'))
         else:
             print("username",request.form['username'])
             print('password',request.form['password'])
             print('confirm password',request.form['confirm_password'])
             print('account number',request.form['account_number'])
             if request.form['confirm_password'] != request.form['password']:
-                flash('Passwords are mismatch','error')
+                flash('Passwords are mismatch','Error')
+                return redirect(url_for('auth.register'))
             user_id = create_user(request.form['username'],request.form['password'],request.form['account_number'],connector)
             session['user_id'] = int(user_id)
             print(user_id)
