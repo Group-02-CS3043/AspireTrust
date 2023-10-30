@@ -42,7 +42,7 @@ def get_customer_first_name_and_no_accounts(account_number):
         return None
 
 
-def create_savings_account_for_exsisting_user(user_id,account_number_of_new_account,account_number_of_old_account,amount):
+def create_savings_account_for_exsisting_user_individual(user_id,account_number_of_new_account,account_number_of_old_account,amount):
     connector = Connector()
     try:
         with connector:
@@ -54,7 +54,19 @@ def create_savings_account_for_exsisting_user(user_id,account_number_of_new_acco
         print("Error in create_savings_account_for_exsisting_user",e)
         return False
 
-def create_savings_account_for_new_user(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number):
+def create_current_account_for_exsisting_user_individual(user_id,account_number_of_new_account,account_number_of_old_account,amount):
+    connector = Connector()
+    try:
+        with connector:
+            print(user_id,account_number_of_new_account,account_number_of_old_account,'CURRENT',amount)
+            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_EXISTING_USERS,(user_id,account_number_of_new_account,account_number_of_old_account,"CURRENT",amount,))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        print("Error in create_current_account_for_exsisting_user",e)
+        return False
+
+def create_savings_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number):
     connector = Connector()
     try:
         with connector:
@@ -94,21 +106,22 @@ def create_account_for_exsisting_users():
 @bank_account_app.route('/create-new',methods = DEFAULT_METHODS,endpoint='create_new_account')
 @valid_employee
 @valid_session
-def create_account_for_new_users():
-
+def create_account_for_new_users_individual():
     return render_template('bankAccount/newUserCreationMain.html')
 
 @bank_account_app.route('/create-exsisting/savings',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_savings_account_existing')
 @valid_employee
 @valid_session 
-def create_saving_account_existing():
+def create_saving_account_existing_individual():
     if request.method == 'POST':
-        
         brach_id = get_branch_id(session['user_id'])
         first_name_and_no_of_accounts = get_customer_first_name_and_no_accounts(str(request.form['account_number']))
+        if first_name_and_no_of_accounts is None:
+            flash("User Doesn't Exists", 'Error')
+            return redirect(url_for('bank_account.create_savings_account_existing'))
         ascii_values = [ord(char) for char in first_name_and_no_of_accounts['first_name']]
         new_account_number = f"{str(brach_id['branch_id'])}-{str(sum(ascii_values)%1000)}-{str(first_name_and_no_of_accounts['number_of_accounts']+1)}"
-        if create_savings_account_for_exsisting_user(session['user_id'],new_account_number,request.form['account_number'],request.form['first_deposit']):
+        if create_savings_account_for_exsisting_user_individual(session['user_id'],new_account_number,request.form['account_number'],request.form['first_deposit']):
             flash("Account Created Successfully", 'Account')
             return redirect('/dashboard')
         else:
@@ -117,11 +130,33 @@ def create_saving_account_existing():
 
     elif request.method == 'GET':
         return render_template('bankAccount/existingSavingIndividual.html')
+    
+@bank_account_app.route('/create-exsisting/current',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_current_account_existing')
+@valid_employee
+@valid_session
+def create_current_account_existing_individual():
+    if request.method == 'POST':
+        brach_id = get_branch_id(session['user_id'])
+        first_name_and_no_of_accounts = get_customer_first_name_and_no_accounts(str(request.form['account_number']))
+        if first_name_and_no_of_accounts is None:
+            flash("User Doesn't Exists", 'Error')
+            return redirect(url_for('bank_account.create_current_account_existing'))
+        ascii_values = [ord(char) for char in first_name_and_no_of_accounts['first_name']]
+        new_account_number = f"{str(brach_id['branch_id'])}-{str(sum(ascii_values)%1000)}-{str(first_name_and_no_of_accounts['number_of_accounts']+1)}"
+        if create_current_account_for_exsisting_user_individual(session['user_id'],new_account_number,request.form['account_number'],request.form['first_deposit']):
+            flash("Account Created Successfully", 'Account')
+            return redirect('/dashboard')
+        else:
+            flash("Account Creation Failed", 'Error')
+            return redirect('/dashboard')
+
+    elif request.method == 'GET':
+        return render_template('bankAccount/existingCurrentIndividual.html')
 
 @bank_account_app.route('/create-new/savings',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_savings_account_new')
 @valid_employee
 @valid_session
-def create_savings_account_new():
+def create_savings_account_new_individual():
     if request.method == 'POST':
         first_name = request.form['first_name']
         last_name = request.form['last_name']
@@ -137,7 +172,7 @@ def create_savings_account_new():
         if check_firstname_and_last_name_exsists(first_name,last_name):
             flash("User Already Exists", 'Error')
             return redirect(url_for('bank_account.create_savings_account_new'))
-        if create_savings_account_for_new_user(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number):
+        if create_savings_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number):
             flash("Account Created Successfully","Account Creation")
             return redirect('/dashboard')
         else:
@@ -148,3 +183,5 @@ def create_savings_account_new():
         context = get_branch_id(session['user_id'])
         print("context",context)
         return render_template('bankAccount/newSavingsIndividual.html',context=context)
+
+
