@@ -13,6 +13,7 @@
     body
     {
         background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
+        background-size: cover;
     }
 </style>
 </head>
@@ -25,9 +26,9 @@
             <div>ASPIRE Trust</div>
         </div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Log Out</a></li>
+            <li><a href="{{ url_for('home.home') }}">Home</a></li>
+            <li><a href="{{ url_for('dashboard.dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
         </ul>
         
     </nav>

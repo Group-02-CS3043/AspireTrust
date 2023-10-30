@@ -25,7 +25,6 @@ class Connector:
 
     def connect(self):
         try:
-            print(*self.configurations.values())
             self.connection = MySQLdb.connect(*self.configurations.values(),cursorclass=Cursor)
             self.cursor = self.connection.cursor()
             return self.cursor

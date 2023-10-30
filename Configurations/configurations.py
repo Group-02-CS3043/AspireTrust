@@ -29,7 +29,6 @@ def get_secret_key()->str:
 
 def get_database_configurations()->dict:
     database_configurations['password'] = os.environ.get("MYSQL_PASSWORD")
-    print(database_configurations)
     return database_configurations
 
 
