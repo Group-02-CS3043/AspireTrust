@@ -9,26 +9,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+    body{
+        background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
+        background-size: cover;
+    }
+
+    .wrapper{
+        height: 700px;
+    }
+</style>
+
 </head>
 <body>
-    <div class="wrapper">
-        <div class="logo">
+
+    <nav>
+        <div class="navlogo">
             <div>ASPIRE Trust</div>
         </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+        
+    </nav>
 
-        {% block title %}
-        <h1>BANK ACCOUNT REGISTRATION FORM</h1>
-        {% endblock %}
 
-        {% block type_of_account %}
-        <H2>For individuals</H2>
-        {% endblock %}
+    <div class="wrapper">
+        <div class="logo">
+            <div>REGISTRATION </div>
+        </div>
 
-        <section>
+
+        
             <form action="" method="post">
 
-                <p class="sub-topic">Account Details</p>
-
+                
                 <div class="account">
                     <div>
                         <h4>Account Type - {{context.account_type}}</h3>
@@ -38,7 +55,7 @@
                     </div>    
                 </div>
 
-                <p class="sub-topic">Personal Details</p>
+                
 
                 <label for="name">Name</label>
                 <div class="namediv">
@@ -83,26 +100,22 @@
 
 
 
-                <p class="sub-topic">Terms & Conditions</p>
 
                 <div class="termsdiv">
                     <div><input type="checkbox"  required></div>
                     <div>
                         <p class="conditions">
-                            I agree to comply with and to be bound by the rules of the bank governing the conduct of this Account and Other services including Debit card; Internet &
-                            Mobile banking; Mobile App; SMS alerts & E-statements which I / We have read and understood. I/ We acknowledge the receipt of a copy of the Terms and
-                            conditions governing the above facilitie
-                        </p>
+                            I agree to the terms and conditions of the bank 
                     </div>
                 </div>
 
                 <div class="btn">
-                   
-                       
+                    <a href="#">
+                        <button >Submit</button>
+                    </a>
                 </div>
-                <button type="submit">Submit</button>
             </form>
-        </section>
+        
     </div>
     
     <script src="main.js"></script>

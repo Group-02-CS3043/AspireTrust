@@ -10,18 +10,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="wrapper" style="height: 1170px;">
-        <div class="logo">
-            <div>ASPIRE Trust</div>
-        </div>
-        <h1>BANK Loan FORM</h1>
-        <H2>Online</H2>
+<style>
+    body{
+        background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
+        background-size: cover;
+    }
 
+    .wrapper{
+        height: 850px;
+    }
+</style>
+<body>
+    <nav>
+        <div class="navlogo">
+            <div><a href="#">ASPIRE Trust</a></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+        
+    </nav>
+    <div class="wrapper">
+        <div class="logo">
+            <div>BANK LOAN FORM</div>
+        </div>
         <section>
             {% if context %}
-            <form action="">
-                <p class="sub-topic">Account Details</p>
+            <form action="" method="post">
+                
 
                 <div class="account">
                     <div>
@@ -34,11 +52,11 @@
                     </div>
                     <div>
                         <label for="branch">Maximum Loan Amount</label><br>
-                        <input type="number" id="branch" value="{{context.maximum_loan_amount}}" disabled>
+                        <input type="number" id="maximum_loan_amount" name="maximum_loan_amount" value="{{context.maximum_loan_amount}}" disabled>
                     </div>  
                 </div>
                 
-                <p class="sub-topic">Personal Details</p>
+                
 
                 <!-- <div class="genderdiv">
                     <label for="gender">Gender</label>
@@ -50,22 +68,22 @@
                 <div class="namediv">
                     
                     <div>
-                        <input type="text" id="myname" placeholder="First" value="{{context.first_name}}" disabled>
+                        <input type="text" id="first_name" placeholder="First" name="first_name" value="{{context.first_name}}" disabled>
                     </div>
                     <div>
-                        <input type="text" id="myname" placeholder="Second" value="{{context.last_name}}" disabled>
+                        <input type="text" id="last_name" placeholder="Second" name="last_name" value="{{context.last_name}}" disabled>
                     </div>
                 </div>
 
                 <div class="loandetails">
-                    <div class="genderdiv">
+                    <!-- <div class="genderdiv">
                         <label >Loan Type</label><br>
                         <input type="radio" name="status" required>Personal
                         <input type="radio" name="status" required>Bussiness
-                </div>
+                    </div> -->
                     <div>
                         <label for="loan">Loan Amount</label><br>
-                        <input type="number" id="loan" placeholder="Rs" required>
+                        <input type="number" id="loan" placeholder="Rs" name="loan_amount" required>
                     </div>
                 </div>
 
@@ -74,46 +92,48 @@
                 <div class="contact">
                     <div>
                         <label for="phone">Phone Number</label><br>
-                        <input type="text" id="phone" placeholder="07X-XXXXXXX" value="{{context.telephone}}" disabled>
+                        <input type="text" id="phone" placeholder="07X-XXXXXXX" name="telephone" value="{{context.telephone}}" disabled>
                     </div>
                     <div>
                         <label for="nic">NIC Number</label><br>
-                        <input type="text" id="nic" value="{{context.nic}}" disabled>
+                        <input type="text" id="nic" value="{{context.nic}}" name="nic" disabled>
                     </div>
                 </div>
 
 
                 <div class="addressdiv">
                     <label for="address">Residental Address</label><br>
-                    <input type="text" id="address" required placeholder="address" value="{{context.home_town}}" disabled><br>
+                    <input type="text" id="address" required placeholder="address" name="home_town" value="{{context.home_town}}" disabled><br>
                 </div>
 
-                <div class="martialdiv">
+                <!-- <div class="martialdiv">
                         <label >Marital Status</label>
                         <input type="radio" name="status" required>Single
                         <input type="radio" name="status" required>Married
-                </div>
+                </div> -->
 
                 <div class="occudiv">
-                    <label for="occu">Occupation</label><br>
-                    <input type="text" id="occu" name="occname" required>
+                    <label for="occu">Duration</label><br>
+                    <select name="duration" id="occu" required>
+                        <option value="6">6 month</option>
+                        <option value="12"> 1 year</option>
+                        <option value="36">3 year</option>
+                    </select>
                 </div>
 
-                <p class="sub-topic">Terms & Conditions</p>
+                
 
                 <div class="termsdiv">
-                    <div><input type="checkbox"  required></div>
+                    <div><input type="checkbox" required></div>
                     <div>
                         <p class="conditions">
-                            I agree to comply with and to be bound by the rules of the bank governing the conduct of this Account and Other services including Debit card; Internet &
-                            Mobile banking; Mobile App; SMS alerts & E-statements which I / We have read and understood. I/ We acknowledge the receipt of a copy of the Terms and
-                            conditions governing the above facilitie
+                            I agree to comply with and to be bound by the rules of the bank . 
                         </p>
                     </div>
                 </div>
 
                 <div class="btn">
-                    <a href="another.html">
+                    <a href="#">
                         <button >Submit</button>
                     </a>
                 </div>
@@ -121,7 +141,6 @@
             {% endif %}
         </section>
     </div>
-    
-    <script src="main.js"></script>
+
 </body>
 </html>

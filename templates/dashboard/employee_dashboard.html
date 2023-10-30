@@ -18,15 +18,13 @@
             body
             {
                 background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
+                background-size: cover;
             }
         </style>
     </head>
 
     <body>
-        <!-- <div class = 'logo-container'>            
-                <img class="logo_img" src="img/vector.svg">
-                <span class = 'logo'>ASPIRE Trust </span> <h4 style="font-family: Rubik; color: white; margin-left: 5px;"> Employee</h4>
-        </div> -->
+
         <div class="first-row">
             <div class = 'logo-container'>            
                 <svg class="logo_img" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -167,23 +165,22 @@
         <div class = 'footer-container' style="margin-top: 20px; margin-bottom: 20px;">
 
             <div class = 'footer'>
-                <img src="img/footer.svg">
+                <img src="{{ url_for('static', filename='img/customer_dashboard/footer.svg') }}">
 
             </div>
             
         </div>
 
 
-          <div id="popup1" class="overlay">
+        <div id="popup1" class="overlay">
             <div class="popup">
                       
             <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; ">Apply Now.</h2>
             <a class="close" href="#">&times;</a>
             <div class="buttons">
               
-              <a href="/account/savings_account" class="btn">Savings Account</a>
-              <a href="#" class="btn">Current Account</a>
-              <a href="#" class="btn">Fixed Deposit</a>
+              <a href="{{url_for('bank_account.create_exsisiting_account')}}" class="btn"> Existing Users </a>
+              <a href="{{url_for('bank_account.create_new_account')}}" class="btn"> New Users </a>
               
             </div>
                 

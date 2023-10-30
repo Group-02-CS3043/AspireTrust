@@ -37,16 +37,7 @@
                 <li><a href="#ourservisesid" class ='aa'>Our Services</a></li>
                 <li><a href="#aboutusid" class ='aa'>About Us</a></li>
                 <li><a href="#contactusid" class ='aa'>Contact Us</a></li>
-                <!-- <li>
-                    <a href="#" class ='aa'>Settings</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Security</a></li>
-                        <li><a href="#">Notifications</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Statements</a></li>
-                        <li><a href="#">Log in</a></li>
-                    </ul>
-                </li> -->
+
                 <li><a href="{{ url_for('auth.login') }}" class ='aa'>Log In</a></li>
             </ul>
         </nav>
@@ -118,21 +109,19 @@
             <div class="subcontent">
                 <div class="img">
                     <h4>Account types</h4>
-                    <img src="img/account creation.jpg" alt="">
+                    <img src="{{ url_for('static', filename='img/home/savings.jpg') }}" alt="">
                 </div>
                 <div class="text">
                     
                     <p>
-                        Our bank offers a seamless account creation process. With just a few simple steps, you can become a valued 
-                        customer and unlock a world of financial opportunities. Experience the convenience and security of banking 
-                        with us. Take advantage of our exceptional services, including:
+                         With just a few simple steps, you can become a valued 
+                        customer and unlock a world of financial opportunities. Take advantage of our exceptional services, including:
                             <ul>
                                 <li>● Account Creation for Individuals</li>
                                 <li>● Account Creation for Oraganizations</li>
                                 <li>● Creating Fixed Deposit Accounts</li>
                             </ul>
                     </p>
-                    <p>Join us today and start your journey towards financial success!</p>
                 </div>
             </div>
     
@@ -144,7 +133,7 @@
                 <div class="text">
                     
                     <p>
-                        Maximize your savings and secure your future with our Fixed Deposit accounts. With competitive interest rates
+                         With competitive interest rates
                          and flexible terms, our Fixed Deposit options are designed to help you grow your wealth steadily.<br>
                         <p>FD Plans</p>
                         <ul>
@@ -153,7 +142,7 @@
                             <li>● 3 years, 15% </li>
                         </ul>
                     </p>
-                    <p>Start investing in your financial future today and enjoy the stability and returns offered by our Fixed Deposit accounts.</p>
+                    
                 </div>
             </div>
         </div>
@@ -166,18 +155,17 @@
                 </div>
                 <div class="text">
                     
-                    <p>Manage your finances with ease and convenience through our comprehensive Savings and Checking accounts. 
+                    <p>
                         Whether you're looking to save for the future or handle day-to-day transactions, our accounts offer the 
                         flexibility and features you need.
-                        <p> Interest rates and minimum required balance</p>
+                
+                        <ul>
+                            <li>● Children - 12%, no minimum</li>
+                            <li>● Teen - 11%, 500 minimum </li>
+                            <li>● Adult (18+) - 10%, 1000 minimum</li>
+                            <li>● Senior (60+) - 13%, 1000 minimum</li></li>
+                        </ul>
                     </p>
-                    
-                    <ul>
-                        <li>● Children - 12%, no minimum</li>
-                        <li>● Teen - 11%, 500 minimum </li>
-                        <li>● Adult (18+) - 10%, 1000 minimum</li>
-                        <li>● Senior (60+) - 13%, 1000 minimum</li></li>
-                    </ul>
                 </div>
             </div>
     
@@ -205,7 +193,7 @@
                 </div>
                 <div class="text">
                     
-                    <p>Looking for financial assistance? Our bank offers flexible loan options to help you achieve your goals. 
+                    <p>Looking for financial assistance? 
                         Whether it's for a new home, business expansion, or personal needs, our loan solutions are tailored to meet 
                         your requirements.
                     </p>
@@ -214,7 +202,7 @@
                         <li>● Get Through from an employee</li>
                         <li>● Use Online Platform</li>
                     </ul>
-                    <p>Take the first step towards realizing your dreams and submit a loan request today.</p>
+                    
                 </div>
             </div>
     
@@ -228,7 +216,7 @@
                     <p>At our bank, we take your security seriously. We understand the importance of protecting your financial
                          information and assets. That's why we employ state-of-the-art security measures to ensure your safety.
                     </p><br>
-                    <p>Rest assured that your information and transactions are protected with our advanced security features.</p>
+                
                 </div>
             </div>
         </div>
@@ -236,15 +224,15 @@
     </section>
 
     
-
+    <p class="service">About Us</p>
     <section class="about-section" id="aboutusid">
+        
         <div class="container">
           <div class="row">
             <div class="col-md-6">
                 <img src="{{ url_for('static', filename='img/home/aboutus.jpg') }}" alt="About Us Image" class="img-fluid">
               </div>
             <div class="col-md-6">
-              <h2 class="section-title">About Us</h2>
               <p class="section-description">We are a leading financial institution committed to providing exceptional banking 
                 services to our customers.</p>
               <p>Our bank was founded in 1985 with the mission of helping individuals and businesses achieve their financial goals. 
@@ -261,6 +249,7 @@
  
 
       <section class="contact-section" id="contactusid">
+        
         <div class="container">
           <div class="row">
             <div class="col-md-6">

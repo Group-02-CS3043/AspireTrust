@@ -1,24 +1,91 @@
 body{
-    font-family:Rubik;
-    background: linear-gradient(113deg, #C7DADF -3.86%, #587B92 95.42%);
+    
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background-color: #2b4162;
+    background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+
 }
 
 .wrapper{
-    font-family:Rubik;
+
+    flex-shrink: 0;
+    padding: 15px;
+    padding-top: 0;
+    font-size: 18px;
+    font-family: Rubik;
     max-width: 800px;
     height: 1230px;
     margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: white;
-    box-shadow: 1px 1px 5px #070606;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(18.9px);
+    -webkit-backdrop-filter: blur(18.9px);
+}
+
+
+nav{
+    position: sticky;
+    top: 0;
+    opacity: .9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    height: 80px;
+    padding: 0 50px;
+    font-size: 20px;
+    color: white;
+    background: rgba(255, 255, 255, 0.50);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18.9px);
+    -webkit-backdrop-filter: blur(18.9px);
+    z-index: 999;
+}
+
+
+.navlogo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+
+nav a{
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav a:hover{
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+    
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}   
+
+nav ul li{
+    list-style: none;
 }
 
 
 .logo{
-    background-color: #161343;
+    
     margin-top: 0;
     font-size: 40px;
     color: white;
@@ -29,19 +96,9 @@ body{
     justify-content: center;
 }
 
-.logo:hover{
+/* .logo:hover{
     background-color: #0a063c;
-}
-
-section{
-    border-radius: 40px 0px 0px 0px;
-    background: #ffffff;
-    height: 800px;
-    flex-shrink: 0;
-    padding: 15px;
-    padding-top: 0;
-    font-size: 18px;
-}
+} */
 
 h1{
     color: rgb(0, 0, 0);
@@ -61,6 +118,11 @@ h2{
     font-weight: 500;
 }
 
+h4{
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+}
+
 p{
     font-size: 14px;
     padding: 30px;
@@ -68,23 +130,26 @@ p{
 }
 
 .sub-topic{
-    background-color: #9e9fca;
+    font-size: 20px;
     padding: 3px;
     padding-left: 5px;
+    color: #ffffff;
+    font-weight: 500;
 }
 label{
     font-weight: 400;
 }
 
-input[type=text],input[type=number]{
+input[type=text],input[type=number],input[type=email],select,input[type=date]{
     background-color: rgb(231, 228, 228);
     width: 300px;
     height: 25px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 0 solid black;
     box-shadow: inset 0px 0px 5px #807f7f;
+    opacity: 0.7;
     margin-top: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding-left: 6px;
 }
 input[type=radio],input[type=checkbox]{
@@ -97,6 +162,7 @@ input[type=radio],input[type=checkbox]{
     justify-content: space-between;
     margin-bottom: 20px;
 }
+
 
 .genderdiv,.martialdiv{
     margin-bottom: 20px;
@@ -127,38 +193,57 @@ input[type=radio],input[type=checkbox]{
 .occudiv input{
     width: 540px;
 }
-
 .termsdiv{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    border: 1px solid #000;
+    border: 0px solid #000;
     border-radius: 8px;
-    height: 80px;
-    background: #82772b;
+    height: 50px;
+    background:transparent;
     background-blend-mode: darken;
+    padding-left: 50px;
+    margin: 100px;
     margin-bottom: 30px;
-    margin-top: 40px;
-    padding-left: 10px;
+    margin-top: 20px;
+    color: white;
+    font-weight: 300;
 }
+
+.termsdiv p{
+    font-size: 20px;
+    
+}
+
 
 .btn{
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
-
 button{
-    border: solid rgb(9, 5, 86);
+    border: solid white 2px;
     border-radius: 50px;
-    width: 120px;
-    height: 50px;
-    background-color: #1F1B57;
+    width: 150px;
+    height: 40px;
+    background-color: transparent;
     color: white;
     font-size: 18px;
     cursor: pointer;
+    font-weight: 300;
 }
 
 button:hover{
-    background-color: #161343;
-    
+    background-color:rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+
 }
+
+label
+{
+    color: #ffffff;
+}
+
+
+    

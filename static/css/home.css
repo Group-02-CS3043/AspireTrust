@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
   margin: 0;
@@ -111,7 +111,7 @@ body {
   display: block;
   color: #ffffff;
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -180,7 +180,7 @@ ul li:hover ul.dropdown {
   color: #ffffff;
   text-align: center;
   /* font-family: Roboto; */
-  font-size: 25px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -254,7 +254,7 @@ ul li:hover ul.dropdown {
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  font-size: 50px;
+  font-size:30px;
   height: 100%;
 
 }
@@ -262,15 +262,15 @@ ul li:hover ul.dropdown {
 .text_bank {
   max-width: 35vw;
   font-family: "Poppins";
-  font-size: 20pxz;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 300;
 }
 
 /* css for slider */
 .slider {
 
   width: 800px;
-  height: 600px;
+  height: 500px;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -279,7 +279,7 @@ ul li:hover ul.dropdown {
 
 .slides {
   width: 500%;
-  height: 700px;
+  height: 800px;
   display: flex;
   opacity: 75%;
   background: rgba(255, 255, 255, 0.25);
@@ -300,7 +300,7 @@ ul li:hover ul.dropdown {
 
 .slide img {
   width: 800px;
-  height: 600px;
+  height: 500px;
 }
 
 /* css for manual navigation */
@@ -388,7 +388,7 @@ ul li:hover ul.dropdown {
   font-family: "Poppins";
   font-weight: 600;
   margin-top: 70px;
-  margin-bottom: 100px;
+  
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -407,16 +407,18 @@ ul li:hover ul.dropdown {
 }
 
 .subcontent {
+  font-family: Poppins;
   display: flex;
   flex-direction: row;
   /* color: #ffffff; */
   /* background-color: #070c37; */
-  font-size: 40PX;
+  font-size: 35PX;
   padding: 10px;
-  margin: 20px;
+  margin: 30px;
   /* border-radius: 20px; */
-  height: 500px;
-  width: 700px;
+  height: 60vh;
+  width: 40vw;
+  opacity: 90%;
   /* From https://css.glass */
   /* From https://css.glass */
   /* From https://css.glass */
@@ -432,10 +434,21 @@ ul li:hover ul.dropdown {
   /* border: 1px solid rgba(255, 255, 255, 0.17); */
 }
 
+.subcontent P{
+  font-size: 18px;
+  font-family: poppins;
+  color: #ffffff;
+  margin: 10px;
+}
+
+.subcontent ul{
+  font-size: 16px;
+}
+
 p {
   font-size: 20px;
-  font-family: "Roboto";
-  font-weight: 400;
+  font-family: "Poppins";
+  font-weight: 200;
   line-height: 1.5;
   color: #ffffff;
   margin: 10px;
@@ -454,8 +467,8 @@ ul {
 }
 
 .subcontent img {
-  width: 300px;
-  height: 250px;
+  width: 250px;
+  height: 200px;
   margin: 5px;
   margin-left: 20px;
   margin-top: 20px;
@@ -483,6 +496,7 @@ ul {
   display: flex;
   padding: 80px 0;
   margin-top: 50px;
+
   
 
 }
@@ -509,8 +523,8 @@ ul {
   margin-bottom: 30px;
 }
 
-.section-description {
-  font-size: 18px;
+.contact-section  .section-description {
+  font-size: 20px;
   color:#ffffff;
   margin-bottom: 30px;
 }
@@ -572,6 +586,7 @@ ul {
 /* about us section*/
 
 .about-section {
+  font-family: "Poppins";
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -582,7 +597,7 @@ ul {
 .about-section .container {
   max-width: 1200px;
   margin: 0 auto;
-
+  font-family: "Poppins";
 }
 
 .row {
@@ -595,20 +610,26 @@ ul {
   align-items: center;
   max-width: 50%;
   padding-left: 30px;
+  font-family: "Poppins";
 }
 
 .section-title {
   font-size: 36px;
   margin-bottom: 30px;
+  font-family: "Poppins";
 }
 
-.section-description {
+.about-section .section-description {
   font-size: 18px;
   margin-bottom: 30px;
+  font-family: "Poppins";
 }
 
 .about-section p {
+  font-size: 18px;
+  font-weight: 200;
   margin-bottom: 20px;
+  font-family: "Poppins";
 }
 
 .img-fluid {
