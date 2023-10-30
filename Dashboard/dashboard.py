@@ -17,6 +17,15 @@ def get_account_details(user_id):
         print("Error in get_account_details",e)
         return None
 
+def get_first_name(user_id):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(GET_FIRSTNAME_FROM_USER_ID,(user_id,))
+            return connector.cursor.fetchone()['first_name']
+    except Exception as e:
+        print("Error in get_first_name",e)
+        return None
 
 
 def get_positoin_of_employee(user_id):
@@ -37,8 +46,11 @@ def get_user_first_name(user_id):
 @valid_session
 def dashboard():
     if session['user_role'] == 'CUSTOMER':
-        context = get_account_details(session['user_id'])
+        context = {}
+        context['accounts'] = get_account_details(session['user_id'])
         print("context",context)
+        context['first_name'] = get_first_name(session['user_id'])
+        
         return render_template('dashboard/customer_dashboard.html',context = context)
     elif session['user_role'] == 'EMPLOYEE':
         position = get_positoin_of_employee(session['user_id'])
