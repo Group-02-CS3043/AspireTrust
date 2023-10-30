@@ -4,7 +4,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="new-savings.css" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/existingSavingIndividual.css') }}" />
+        <!-- <link rel="stylesheet" href="../../static/css/existingFixedIndividual.css" /> -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
@@ -16,6 +17,7 @@
             body
             {
                 background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
+                background-size: cover;
             }
         </style>
         <title>Bank</title>
@@ -49,7 +51,7 @@
             <div class = 'info'>
                 
                 
-                <div class="texti">Create Fixed Deposit Individuals </div>
+                <div class="texti">Create Savings Account </div>
             </div>
 
             <div class = 'info'>
@@ -57,69 +59,54 @@
                     <img onclick="" class="back-arr" src="{ url_for('static', filename='css/img/back-arrow.png') }"  alt="">
                 </div>
 
-                <form style="display: flex; flex-direction: column; justify-content: center; align-items: center; "  action="" method="post">
-                    <div class="con-field">
-                        <div class="x">
-                            <div  class="field">
-                                <span class="texts">  First Name </span>
-                                <div class="ab">
-                                    <input name="first_name" class="enq" type="text" placeholder="" required></input>
-                                </div>
-    
+                <form style="display: flex; flex-direction: column; justify-content: center; align-items: center; " action="" method="post" >
+                    <div class="inputs">
+
+                        <div class="emailCon">
+                            <div class="ab">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#00507C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#00507C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                                <input class="enq" type="text" placeholder="Account No." name="account_number" required></input>
                             </div>
-    
-                            <div class="field">
-                                <span class="texts">  Last Name </span>
-                                <div class="ab">
-                                    <input class="enq name="last_name" " type="text" placeholder="" required></input>
-                                </div>
+                            <div class="ab">
                                 
-                            </div>
-                            <div class="field">
-                                <span class="texts">  NIC No. </span>
-                                <div class="ab">
-                                    <input class="enq" name="nic" type="text" placeholder="" required></input>
-                                </div>
-    
-                            </div>
-                            <div class="field">
-                                <span class="texts">  Branch ID </span>
-                                <div class="ab">
-                                    <input class="enq" name="branch_id" type="text" placeholder="" required></input>
-                                </div>
-    
+                                <input class="enq" type="number" placeholder="First Deposit" name="first_deposit" required></input>
                             </div>
 
-                            <div class="field"  >
-                                <span class="texts">  Telephone </span>
-                                <div class="ab">
-                                    <input class="enq" name = "telNo" type="text" placeholder="" required></input>
-                                </div>
-    
-                            </div>
-                            <div class="field">
-                                <span class="texts">  HomeTown </span>
-                                <div class="ab">
-                                    <input class="enq" name = "hometown" type="text" placeholder="" required></input>
-                                </div>
-    
-                            </div>
+                            <details class="ab1">
+                                <summary class="radios">
+                                  <input type="radio" name="item" id="default" title="Select Plan" checked>
+                                  <input type="radio" name="item" id="item1" title="6 Months">
+                                  <input type="radio" name="item" id="item2" title="1 Year">
+                                  <input type="radio" name="item" id="item3" title="3 Years">
+
+                                </summary>
+                                <ul class="list">
+                                  <li>
+                                    <label for="item1">
+                                      6 Months
+                                      <span></span>
+                                    </label>
+                                  </li>
+                                  <li>
+                                    <label for="item2">1 Year</label>
+                                  </li>
+                                  <li>
+                                    <label for="item3">3 Years</label>
+                                  </li>
+
+                                </ul>
+                              </details>
+
                             
-                            <div class="field">
-                                <span class="texts">  Date of Birth </span>
-                                <div class="ab">
-                                    <input class="enq" name = "dateOfBirth" type="date" placeholder="" required></input>
-                                </div>
-    
-                            </div>
-                            <div class="field">
-                                <span class="texts">  First Deposit </span>
-                                <div class="ab">
-                                    <input class="enq" name ="first_deposit" type="text" placeholder="" required></input>
-                                </div>
-    
-                            </div>
-                      </div>
+
+                            
+                            
+                            
+                        </div>
+
                     </div>
 
                     <div class="final">
@@ -151,15 +138,7 @@
 
 
         </div>
-
-
-
-
-
-          
-            
-
-
+    
 
     </body>
 </html>
