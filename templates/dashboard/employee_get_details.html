@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+    
+
     <head>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/newUserCreationMain.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/employee_get_details.css') }}"  />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
@@ -12,17 +14,15 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200;300&family=Open+Sans&family=Righteous&family=Rubik&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <style>
             body
             {
                 background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
-                background-size: cover;
             }
         </style>
         <title>Bank</title>
     </head>
-
-    
 
     <body>
         <div class="first-row">
@@ -32,8 +32,6 @@
                     </svg>
                     
                     <span class = 'logo'>ASPIRE Trust </span>
-                    <h4 style="font-family: Rubik; color: white; margin-left: 5px;"> Employee</h4>                      
-
                                           
             </div>
             <div class="log-out">
@@ -43,64 +41,110 @@
             </div>
 
         </div>
-
+        <nav class="nav-bar">
+            <ul class="navlist">
+                <li><a href="#" class ='aa' >Home</a></li>
+                <li>
+                    <button class="aa-but" onclick="location.href='#popup1'">Create Account</button>
+                </li>
+            </ul>
+        </nav>
         
 
 
 
         <div class ='dashboard'>
-            <div class = 'info'>                
-                <div class="texti">Create Account for New users</div>
-            </div>
-
-            <div class="buttons">
+            <div class = 'info'>
+                
                 <div class="first-container">
-                    <img onclick="" class="back-arr" src="{ url_for('static', filename='css/img/back-arrow.png') }"  alt="">
+                    <img onclick="" class="back-arr"  src="{ url_for('static', filename='css/img/back-arrow.png') }"  alt="">
+                    <span style="color: #FFF;
+                    font-family: Manrope;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: 0.48px;
+                    margin-right: 20px; margin-left: 50px;">All Accounts </span>                       
                 </div>
-                <div class="savcur">
-                    <span class="tex">Choose the Account Type : </span>
-                    <button class = "btn" onclick="location.href='#popup1'" > Savings Account </button>
-                    <button class = "btn" onclick="location.href='#popup2'" > Current Account </button>
 
+                <div class="allAccounts">
+                    <table>
+                        <tr class = "table-head" >
+                            <td>Account No</td>
+                            <td>Type</td>
+                            <td>Amount</td>
+                            
+                            
+                        </tr>
+
+                        <tr style="height: 20px;"></tr>
+                        <tr>
+                            <td>2012-10-3 14:27:76</td>
+                            <td>Savings</td>
+                            <td>123</td>
+                            
+                        </tr>
+                    </table>
                 </div>
 
             </div>
+
+            <div class = 'info1'>
+                
+                <div class="first-container" style="justify-content: center;">
+                    <img onclick="" class="back-arr"  src="{ url_for('static', filename='css/img/back-arrow.png') }"  alt="">
+                    <span style="color: #FFF;
+                    font-family: Manrope;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: 0.48px;
+                    margin-right: 20px; margin-left: 50px;">Fixed Deposits </span>                       
+                </div>
+
+                <div class="allAccounts">
+                    <table>
+                        <tr class = "table-head" >
+                            <td>Fixed Deposit ID</td>
+                            <td>Duration (Months) </td>
+                            <td>Amount</td>
+                            
+                            
+                        </tr>
+
+                        <tr style="height: 20px;"></tr>
+                        <tr>
+                            <td>2012-10-3 14:27:76</td>
+                            <td>Withdrawal</td>
+                            <td>123</td>
+                            
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
 
 
         </div>
 
-
-        <!-- -------------------- -->
 
         <div id="popup1" class="overlay">
             <div class="popup">
                       
-            <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; "> Create Savings Account</h2>
+            <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; ">Apply Now.</h2>
             <a class="close" href="#">&times;</a>
-            <div class="buttons1">
-              <a href="{{url_for('bank_account.create_savings_account_new')}}" class="btn">Individual</a>
-              <a href="#" class="btn">Organization</a>
+            <div class="buttons">
+              
+              <a href="#" class="btn">Existing user </a>
+              <a href="#" class="btn">New User</a>
               
             </div>
                 
             </div>
         </div>
-
-        <div id="popup2" class="overlay">
-            <div class="popup">
-                      
-            <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; ">Create Current Account</h2>
-            <a class="close" href="#">&times;</a>
-            <div class="buttons1">
-              <a href="#" class="btn">Individual</a>
-              <a href="#" class="btn">Organization</a>
-              
-            </div>
-                
-            </div>
-        </div>
-
-
 
 
 
