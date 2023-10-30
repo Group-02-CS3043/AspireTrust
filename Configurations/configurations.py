@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-from flask import request, redirect, session
+from flask import request, redirect, session, abort
 from functools import wraps
 from flask import session,redirect
 
@@ -39,5 +39,13 @@ def valid_session(view_func):
         if 'user_id' not in session :
             print('user not in session')
             return redirect('/auth/login')
+        return view_func(*args, **kwargs)
+    return wrapped_view
+
+def valid_employee(view_func):
+    @wraps(view_func)
+    def wrapped_view(*args, **kwargs):
+        if session['user_role'] != 'EMPLOYEE':
+            abort(403)
         return view_func(*args, **kwargs)
     return wrapped_view

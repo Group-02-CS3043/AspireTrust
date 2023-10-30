@@ -15,7 +15,9 @@ GET_FD_ACCOUNTS = 'SELECT fixed_deposit_id FROM fixed_deposit WHERE user_id = %s
 GET_USER_INFORMATIONS = 'SELECT first_name,last_name,date_of_birth,telephone,home_town FROM user WHERE user_id = %s'
 UPDATE_USER_DETAILS = 'call update_user_details(%s,%s,%s,%s,%s,%s)'
 APPLY_FOR_ONLINE_LOAN = 'call apply_for_online_loan(%s,%s,%s,%s,%s)'
-
+GET_BRANCH_ID = 'SELECT branch_id FROM employee WHERE user_id = %s'
+CREATE_BANK_ACCOUNT_FOR_EXISTING_USERS = 'call create_bank_account_for_existing_user(%s,%s,%s,%s,%s)'
+GET_CUSTOMER_FIRSTNAME_AND_NUMBER_OF_ACCOUNTS = 'SELECT first_name ,COUNT(account.user_id) as number_of_accounts FROM user JOIN account USING (user_id) WHERE account_number = %s'
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
 SELECT_PASSWORD = 'SELECT password FROM user WHERE username = %s'
@@ -25,4 +27,3 @@ CREATE_CUSTOMER_ACCOUNT = "INSERT INTO customer (user_id) VALUES (%s)"
 # GET_USER_ACCOUNTS = 'SELECT account_number,account_type,balance FROM account WHERE user_id = %d'
 GET_EMPLOYEE_ROLE = 'SELECT position FROM employee WHERE user_id = %d'
 GET_USER_ACCOUNT_DETAILS = "SELECT user.first_name,user.last_name,account_number,balance FROM account JOIN user USING (user_id) WHERE account_number = '%s'"
-GET_BRANCH = "SELECT b.city FROM user JOIN employee USING(user_id) JOIN branch b USING (branch_id) WHERE user_id = %d "
