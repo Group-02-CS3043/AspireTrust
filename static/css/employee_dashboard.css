@@ -452,6 +452,7 @@ background: #06D85F;
 } */
 
 .overlay {
+  opacity: 70%;
 position: fixed;
 top: 0;
 bottom: 0;
@@ -468,6 +469,7 @@ opacity: 1;
 }
 
 .popup {
+  opacity: 80%;
 margin: 70px auto;
 padding: 20px;
 background: #fff;
@@ -477,9 +479,14 @@ position: relative;
 transition: all 3s ease-in-out;
 
 border-radius: 40px;
-background: linear-gradient(0deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 100%), rgba(18, 92, 129, 0.22);
+background: linear-gradient(0deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.13) 100%), rgba(98, 148, 173, 0.22);
 box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
-backdrop-filter: blur(30px);
+backdrop-filter: blur(50px);
+background: rgba(255, 255, 255, 0.29);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(60px);
+-webkit-backdrop-filter: blur(60px);
 }
 
 .popup h2 {
