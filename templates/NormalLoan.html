@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>loan </title>
-    <link rel="stylesheet" href="layout2.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout2.css') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
-        body
-        {
+        body{
             background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
             background-size: cover;
         }
+    
+    
     </style>
 </head>
 <body>
 
     <nav>
         <div class="navlogo">
-            <div><a href="#">ASPIRE Trust</a></div>
+            <div>ASPIRE Trust</div>
         </div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
@@ -30,15 +31,14 @@
         </ul>
         
     </nav>
-    <div class="wrapper" style="height: 1170px;">
+    <div class="wrapper" style="height: 900px;">
         <div class="logo">
-            <div>BANK Loan FORM</div>
+            <div>BANK LOAN FORM</div>
         </div>
     
 
         <section>
             <form action="">
-                <p class="sub-topic">Employee Details</p>
                 <div class="account">
                     <div>
                         <label for="ID">Employeer ID</label><br>
@@ -50,7 +50,7 @@
                     </div>  
                 </div>
                 
-                <p class="sub-topic">Customer Details</p>
+                
 
                 <div class="genderdiv">
                     <label for="gender">Gender</label>
@@ -100,32 +100,26 @@
                     <input type="text" id="address" required placeholder="address"><br>
                 </div>
 
-                <div class="martialdiv">
-                        <label >Marital Status</label>
-                        <input type="radio" name="status" required>Single
-                        <input type="radio" name="status" required>Married
-                </div>
+                
 
                 <div class="occudiv">
                     <label for="occu">Occupation</label><br>
-                    <input type="text" id="occu" name="occname" required>
+                    <input type="text" id="occu" name="occname" >
                 </div>
 
-                <p class="sub-topic">Terms & Conditions</p>
+                
 
                 <div class="termsdiv">
                     <div><input type="checkbox"  required></div>
                     <div>
                         <p class="conditions">
-                            I hereby declare that the above information is true and correct to the best of my knowledge and belief.
-                             I undertake to inform you of any changes therein, immediately. In case any of the above information is 
-                             found to be false or untrue or misleading or misrepresenting, I am aware that I may be held liable for it.
+                            I hereby declare that the above information is true and correct to the best of my knowledge 
                         </p>
                     </div>
                 </div>
 
                 <div class="btn">
-                    <a href="another.html">
+                    <a href="#">
                         <button >Submit</button>
                     </a>
                 </div>
