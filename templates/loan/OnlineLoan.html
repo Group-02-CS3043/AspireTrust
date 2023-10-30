@@ -38,7 +38,7 @@
         </div>
         <section>
             {% if context %}
-            <form action="">
+            <form action="" method="post">
                 
 
                 <div class="account">
@@ -52,7 +52,7 @@
                     </div>
                     <div>
                         <label for="branch">Maximum Loan Amount</label><br>
-                        <input type="number" id="branch" value="{{context.maximum_loan_amount}}" disabled>
+                        <input type="number" id="maximum_loan_amount" name="maximum_loan_amount" value="{{context.maximum_loan_amount}}" disabled>
                     </div>  
                 </div>
                 
@@ -68,10 +68,10 @@
                 <div class="namediv">
                     
                     <div>
-                        <input type="text" id="myname" placeholder="First" value="{{context.first_name}}" disabled>
+                        <input type="text" id="first_name" placeholder="First" name="first_name" value="{{context.first_name}}" disabled>
                     </div>
                     <div>
-                        <input type="text" id="myname" placeholder="Second" value="{{context.last_name}}" disabled>
+                        <input type="text" id="last_name" placeholder="Second" name="last_name" value="{{context.last_name}}" disabled>
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@
                     </div> -->
                     <div>
                         <label for="loan">Loan Amount</label><br>
-                        <input type="number" id="loan" placeholder="Rs" required>
+                        <input type="number" id="loan" placeholder="Rs" name="loan_amount" required>
                     </div>
                 </div>
 
@@ -92,18 +92,18 @@
                 <div class="contact">
                     <div>
                         <label for="phone">Phone Number</label><br>
-                        <input type="text" id="phone" placeholder="07X-XXXXXXX" value="{{context.telephone}}" disabled>
+                        <input type="text" id="phone" placeholder="07X-XXXXXXX" name="telephone" value="{{context.telephone}}" disabled>
                     </div>
                     <div>
                         <label for="nic">NIC Number</label><br>
-                        <input type="text" id="nic" value="{{context.nic}}" disabled>
+                        <input type="text" id="nic" value="{{context.nic}}" name="nic" disabled>
                     </div>
                 </div>
 
 
                 <div class="addressdiv">
                     <label for="address">Residental Address</label><br>
-                    <input type="text" id="address" required placeholder="address" value="{{context.home_town}}" disabled><br>
+                    <input type="text" id="address" required placeholder="address" name="home_town" value="{{context.home_town}}" disabled><br>
                 </div>
 
                 <!-- <div class="martialdiv">
@@ -113,14 +113,18 @@
                 </div> -->
 
                 <div class="occudiv">
-                    <label for="occu">Occupation</label><br>
-                    <input type="text" id="occu" name="occname">
+                    <label for="occu">Duration</label><br>
+                    <select name="duration" id="occu" required>
+                        <option value="6">6 month</option>
+                        <option value="12"> 1 year</option>
+                        <option value="36">3 year</option>
+                    </select>
                 </div>
 
                 
 
                 <div class="termsdiv">
-                    <div><input type="checkbox"  required></div>
+                    <div><input type="checkbox" required></div>
                     <div>
                         <p class="conditions">
                             I agree to comply with and to be bound by the rules of the bank . 
@@ -137,7 +141,6 @@
             {% endif %}
         </section>
     </div>
-    
-    <script src="main.js"></script>
+
 </body>
 </html>
