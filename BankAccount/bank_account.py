@@ -118,7 +118,7 @@ def create_saving_account_existing_individual():
         first_name_and_no_of_accounts = get_customer_first_name_and_no_accounts(str(request.form['account_number']))
         if first_name_and_no_of_accounts is None:
             flash("User Doesn't Exists", 'Error')
-            return redirect(url_for('bank_account.create_saving_account_existing'))
+            return redirect(url_for('bank_account.create_savings_account_existing'))
         ascii_values = [ord(char) for char in first_name_and_no_of_accounts['first_name']]
         new_account_number = f"{str(brach_id['branch_id'])}-{str(sum(ascii_values)%1000)}-{str(first_name_and_no_of_accounts['number_of_accounts']+1)}"
         if create_savings_account_for_exsisting_user_individual(session['user_id'],new_account_number,request.form['account_number'],request.form['first_deposit']):
@@ -151,7 +151,7 @@ def create_current_account_existing_individual():
             return redirect('/dashboard')
 
     elif request.method == 'GET':
-        return render_template('bankAccount/existingSavingIndividual.html')
+        return render_template('bankAccount/existingCurrentIndividual.html')
 
 @bank_account_app.route('/create-new/savings',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_savings_account_new')
 @valid_employee
