@@ -55,6 +55,9 @@ def online_loan():
     if request.method == 'GET':
         context = get_user_details(session['user_id'])
         fd_accounts = get_fd_accounts(session['user_id'])
+        if len(fd_accounts) == 0:
+            flash("You don't have fixed deposits for this functionality","Error")
+            return redirect('/dashboard')
         context['fd_accounts'] = fd_accounts
         context['maximum_loan_amount'] = int(get_maximum_loan_amount(session['user_id'])['maximum_loan_amount'])
         return render_template('loan/OnlineLoan.html',context=context)

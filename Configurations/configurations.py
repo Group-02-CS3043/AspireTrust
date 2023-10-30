@@ -45,7 +45,8 @@ def valid_session(view_func):
 def valid_employee(view_func):
     @wraps(view_func)
     def wrapped_view(*args, **kwargs):
-        if session['user_role'] != 'EMPLOYEE':
+        
+        if session.get('user_role') != 'EMPLOYEE':
             abort(403)
         return view_func(*args, **kwargs)
     return wrapped_view

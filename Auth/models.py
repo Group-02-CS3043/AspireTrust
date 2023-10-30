@@ -144,8 +144,10 @@ def get_user_role(user_id:int,connector:Connector):
 def create_user(username:str,password:str,account_number:str,connector:Connector):
     try:
         with connector:
+            print("goes well")
             connector.cursor.execute(CREATE_USER_ACCOUNT_FROM_ACCOUNT_NUMBER,(username,password,account_number,))
             connector.connection.commit()
+            print("goes well")
             connector.cursor.execute(CHECK_FROM_ACCOUNT_NUMBER,(account_number,))
             user_id = connector.cursor.fetchone()
             print(user_id)
