@@ -4,8 +4,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/newSavingsIndividual.css') }}" />
-        <!-- <link rel="stylesheet" href="../../static/css/newSavingsIndividual.css" /> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/employeeAdding.css') }}" />
+        <link rel="stylesheet" href="../../static/css/employeeAdding.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
                     </svg>
                     
                     <span class = 'logo'>ASPIRE Trust </span>
-                    <h4 style="font-family: Rubik; color: white; margin-left: 5px;"> Employee</h4>    
+                    <h4 style="font-family: Rubik; color: white; margin-left: 5px;"> Manager</h4>    
                                           
             </div>
             <div class="log-out">
@@ -46,7 +46,7 @@
             <div class = 'info'>
                 
                 
-                <div class="texti">Create Fixed Deposit Individuals </div>
+                <div class="texti">Create Employee Account</div>
             </div>
 
             <div class = 'info'>
@@ -68,7 +68,7 @@
                             <div class="field">
                                 <span class="texts">  Last Name </span>
                                 <div class="ab">
-                                    <input class="enq name="last_name" " type="text" placeholder="" required></input>
+                                    <input class="enq" name="last_name"  type="text" placeholder="" required></input>
                                 </div>
                                 
                             </div>
@@ -106,13 +106,6 @@
                                 <span class="texts">  Date of Birth </span>
                                 <div class="ab">
                                     <input class="enq" name = "dateOfBirth" type="date" placeholder="" required></input>
-                                </div>
-    
-                            </div>
-                            <div class="field">
-                                <span class="texts">  First Deposit </span>
-                                <div class="ab">
-                                    <input class="enq" name ="first_deposit" type="text" placeholder="" required></input>
                                 </div>
     
                             </div>
