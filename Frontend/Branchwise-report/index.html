@@ -34,22 +34,11 @@
             <ul class="navlist">
                 <li><a href="#" class ='aa' >Home</a></li>
                 <li>
-                    <button class="aa-but" onclick="location.href='#popup1'">Apply Now</button>
+                    <button class="aa-but" onclick="location.href='#popup1'">Create Account</button>
                 </li>
-
             </ul>
         </nav>
-        <div class="banner">
-            <div class="tile"> 
-                <img class="banner-image" src="img/boadt.jpg" alt="">
-                <div class="banner-text">
-                    <div class="banner-text1">Banking Made Simple, Savings Made Easy</div>
-                    <div class="banner-text2">Yours Trusted, Aspire trust</div>
-                </div>
-                       
-                        
-            </div>
-        </div>
+        
 
 
 
@@ -65,18 +54,18 @@
                 <div class="allAccounts">
                     <table>
                         <tr class = "table-head" >
+                            <td>Date Time</td>
                             <td>Account</td>
-                            <td>Status</td>
-                            <td>Balance</td>
-                            <td>Interest</td>
+                            <td>Type</td>
+                            <td>Amount</td>
                         </tr>
 
                         <tr style="height: 20px;"></tr>
                         <tr>
-                            <td>8u3832</td>
-                            <td>active</td>
-                            <td>123</td>
-                            <td>89</td>
+                            <td>2012/2/2 12:20:01</td>
+                            <td>21231</td>
+                            <td>Transaction</td>
+                            <td>890</td>
                         </tr>
                     </table>
                 </div>    
@@ -94,16 +83,15 @@
         </div>
 
 
-          <div id="popup1" class="overlay">
+        <div id="popup1" class="overlay">
             <div class="popup">
                       
             <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; ">Apply Now.</h2>
             <a class="close" href="#">&times;</a>
             <div class="buttons">
               
-              <a href="#" class="btn">Savings Account</a>
-              <a href="#" class="btn">Current Account</a>
-              <a href="#" class="btn">Fixed Deposit</a>
+              <a href="{{url_for('bank_account.create_exsisiting_account')}}" class="btn"> Existing Users </a>
+              <a href="{{url_for('bank_account.create_new_account')}}" class="btn"> New Users </a>
               
             </div>
                 

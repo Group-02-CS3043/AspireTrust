@@ -76,30 +76,45 @@ body {
     line-height: normal;
 }
 .nav-bar{
-    margin-top: 40px;
-    margin-bottom: 40px;
-    margin-left: 150px;
-    margin-right: 150px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 .navlist{
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
-.aa{
-    display: block;
-    text-decoration: none;
-    color: #ffffff;
-    text-align: center;
-    font-family: Roboto;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.aa {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-family: Rubik;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 
 }
 
+.aa:hover,
+.active {
+  color: #000000;
+  cursor: pointer;
+  background-color: #ffffffde;
+  border-radius: 6px;
+  font-weight: bold;
+  /* From https://css.glass */
+  background: #ffffff;
+  border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+}
 /* Remove underlines and style anchor elements */
 #nav-list1 .op1 {
 
@@ -109,8 +124,37 @@ body {
 }
 
 /* Style links on hover */
+.aa-but{
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-family: Rubik;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+  }
+  .aa-but:hover{
+  cursor: pointer;
+  }
 
-
+  .aa-but:hover,
+.active {
+  color: #000000;
+  cursor: pointer;
+  background-color: #ffffffde;
+  border-radius: 6px;
+  font-weight: bold;
+  /* From https://css.glass */
+  background: #ffffff;
+  border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+}
 .li{
     display: block;
 }
