@@ -1,0 +1,176 @@
+*{  
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+
+html{
+    height: 100%;
+}
+body {
+    width: auto;
+    margin: 0;
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    /* background-image: linear-gradient(to bottom right, #000428 , #243b55); */
+    background-color: #030620;
+  margin: 0;
+  padding: 0;
+  background-image: url('../img/group-131.png'); /* Replace 'your-image.jpg' with the path to your image */
+  background-size: cover;
+  
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+    /* background-image: linear-gradient(to top, #09203f 0%, #537895 100%);    background: linear-gradient(14deg, #205360 30.78%, #112731 65.44%, #13252E 95.83%, #13252E 98.9%); */
+}
+.first-row{
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+  
+  }
+  .log-out{
+    width: 40px;
+    margin-top: 30px;
+    margin-right: 60px;
+  }
+  
+  .log-out:hover{
+    cursor: pointer;
+  }
+  
+  
+  .logo-container{
+      margin-right: -60px;
+      margin-top: 30px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  
+  
+  
+  .logo_img{
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      margin-right: 20px;
+  }
+  .logo{
+      font-family: "Righteous";
+      display: block;
+      color: #ffffff;
+      text-align: center;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+  }
+  /* .nav-bar{
+      margin-top: 40px;
+      margin-bottom: 40px;
+      margin-left: 150px;
+      margin-right: 150px;
+  }
+  
+  .navlist{
+      display: flex;
+      justify-content: space-around;
+  } */
+  
+  .nav-bar {
+    
+    font-family: "Poppins";
+    margin-top: 40px;
+    /*margin-bottom: 40px;*/
+    margin-left: 0px;
+    margin-right: 0px;
+    /* border-bottom: 1px solid #0c0230; */
+    /* position: sticky; */
+    top: 0;
+    z-index: 999;
+    background-color: transparent;
+    /* From https://css.glass */
+    border-radius: 16px;
+    margin-top: 40px;
+      margin-bottom: 40px;
+      margin-left: 150px;
+      margin-right: 150px;
+  
+    /* background-color: #232e79; */
+  }
+  
+  .nav-bar.glass {
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.50);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18.9px);
+    -webkit-backdrop-filter: blur(18.9px);
+  }
+  
+  
+  
+  .navlist {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  
+  .aa {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    font-family: Rubik;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  
+  }
+  
+  .aa:hover,
+  .active {
+    color: #000000;
+    cursor: pointer;
+    background-color: #ffffffde;
+    border-radius: 6px;
+    font-weight: bold;
+    /* From https://css.glass */
+    background: #ffffff;
+    border-radius: 16px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  
+  /* Remove underlines and style anchor elements */
+  #nav-list1 .op1 {
+  
+      text-decoration: none; /* Remove underlines */
+  /* Adjust font size if desired */
+      margin: 0 10px; /* Add some spacing between links */
+  }
+  
+  /* Style links on hover */
+  
+  
+  .li{
+      display: block;
+  }
+  .error-pic{
+    width: 100%;
+  }
