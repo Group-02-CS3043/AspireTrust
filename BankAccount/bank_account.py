@@ -75,7 +75,40 @@ def create_current_account_for_exsisting_user_individual(user_id,account_number_
         print("Error in create_current_account_for_exsisting_user",e)
         return False
 
-def creat_fixed_account_for_for_exsisting_user_individual(user_id,savings_account_id,amount,duration):
+def creat_fixed_account_for_for_exsisting_user_individual(user_id,savings_account_id,amount,duration,organization_name,organization_role):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(CREATE_FIXED_DEPOSIT_FOR_ORGANIZATION,(user_id,savings_account_id,amount,duration,organization_name,organization_role,))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        print("Error in create_fixed_account_for_for_exsisting_user_organization",e)
+        return False
+    
+def creat_savings_account_for_for_exsisting_user_organization(user_id,account_number_of_new_account,account_number_of_old_account,amount,organization_name,organization_role):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_EXSISTING_ORGANIZATION,(user_id,account_number_of_old_account,account_number_of_new_account,amount,organization_name,organization_role,'SAVINGS',))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        print("Error in create_sacings_account_for_for_exsisting_user_organization",e)
+        return False
+    
+def creat_current_account_for_for_exsisting_user_organization(user_id,account_number_of_new_account,account_number_of_old_account,amount,organization_name,organization_role):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_EXSISTING_ORGANIZATION,(user_id,account_number_of_old_account,account_number_of_new_account,amount,organization_name,organization_role,'CURRENT',))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        print("Error in create_sacings_account_for_for_exsisting_user_organization",e)
+        return False
+
+def creat_fixed_account_for_for_exsisting_user_organization(user_id,savings_account_id,amount,duration):
     connector = Connector()
     try:
         with connector:
@@ -86,17 +119,6 @@ def creat_fixed_account_for_for_exsisting_user_individual(user_id,savings_accoun
         print("Error in create_fixed_account_for_for_exsisting_user",e)
         return False
     
-def creat_savings_account_for_for_exsisting_user_organization(user_id,account_number_of_new_account,account_number_of_old_account,amount,organization_name,organization_role):
-    connector = Connector()
-    try:
-        with connector:
-            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_EXSISTING_ORGANIZATION,(user_id,account_number_of_new_account,account_number_of_old_account,amount,"SAVINGS",organization_name,organization_role,))
-            connector.connection.commit()
-            return True
-    except Exception as e:
-        print("Error in create_sacings_account_for_for_exsisting_user_organization",e)
-        return False
-
 
 def create_savings_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number):
     connector = Connector()
@@ -261,6 +283,53 @@ def create_savings_account_existing_organization():
             return redirect('/dashboard')
     elif request.method == 'GET':
         return render_template('bankAccount/existingSavingOrganization.html')
+
+@bank_account_app.route('/organization/current/exsisting',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_current_account_exsisting_org')  
+@valid_employee
+@valid_session
+def create_current_account_existing_organization():
+    if request.method == 'POST':
+        brach_id = get_branch_id(session['user_id'])
+        savings_account_id = get_savings_account_id(request.form['account_number'])
+        organization_name = request.form['organization_name']
+        organization_role = request.form['organization_role']
+        first_name_and_no_of_accounts = get_customer_first_name_and_no_accounts(str(request.form['account_number']))
+        if first_name_and_no_of_accounts is None:
+            flash("User Doesn't Exists", 'Error')
+            return redirect(url_for('bank_account.create_current_account_exsisting_org'))
+        ascii_values = [ord(char) for char in first_name_and_no_of_accounts['first_name']]
+        new_account_number = f"{str(brach_id['branch_id'])}-{str(sum(ascii_values)%1000)}-{str(first_name_and_no_of_accounts['number_of_accounts']+1)}"
+        if savings_account_id is None:
+            flash("Current Account doesn't Exists", 'Error')
+            return redirect(url_for('bank_account.create_current_account_organization_new'))
+        if creat_current_account_for_for_exsisting_user_organization(session['user_id'],new_account_number,request.form['account_number'],request.form['first_deposit'],organization_name,organization_role):
+            flash("Current Account Created Successfully", 'Account')
+            return redirect('/dashboard')
+        else:
+            flash("Current Account Creation Failed", 'Error')
+            return redirect('/dashboard')
+    elif request.method == 'GET':
+        return render_template('bankAccount/existingCurrentOrganization.html')
+    
+@bank_account_app.route('/organization/fixed/exsisting',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_fixed_account_exsisting_org')  
+@valid_employee
+@valid_session
+def create_fixed_account_existing_organization():
+    if request.method == 'POST':
+        savings_account_id = get_savings_account_id(request.form['account_number'])
+        organization_name = request.form['organization_name']
+        organization_role = request.form['organization_role']
+        if savings_account_id is None:
+            flash("Savings Account doesn't Exists", 'Error')
+            return redirect(url_for('bank_account.create_fixed_account_exsisting'))
+        if creat_fixed_account_for_for_exsisting_user_individual(session['user_id'],savings_account_id['savings_account_id'],request.form['first_deposit'],request.form['duration'],organization_name,organization_role):
+            flash("Fixed Deposit Created Successfully", 'Account')
+            return redirect('/dashboard')
+        else:
+            flash("Fixed Deposit Creation Failed", 'Error')
+            return redirect('/dashboard')
+    elif request.method == 'GET':
+        return render_template('bankAccount/existingFixedOrganization.html')
 
 @bank_account_app.route('/create-new/savings',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_savings_account_new')
 @valid_employee
