@@ -296,9 +296,10 @@ body {
 }
 .dashboard{
     display: flex;
+    flex-direction: column;
     margin-left: 100px;
     margin-right: 100px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-bottom: 100px;
     
     
@@ -803,4 +804,39 @@ enq:active{
 }
 .back-arr:focus{
   opacity: 80%;
+}
+.button1{
+  color: #FFF;
+  text-align: center;
+  font-family: 'Rubik';
+  font-weight: 300;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  text-transform: uppercase;
+  width: 140px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 48px;
+  border: none;
+  background: #00507C;
+  margin-bottom: 13px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.button1:hover{
+  opacity: 80%;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.button1:focus{
+  opacity: 60%;
+}
+.exit-button{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
