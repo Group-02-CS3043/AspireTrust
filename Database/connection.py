@@ -29,7 +29,7 @@ class Connector:
             self.cursor = self.connection.cursor()
             return self.cursor
         except Exception as e:
-            print("Exception has happened in connect ! Error : ",e)
+            print("Exception has happened in connect ! Error : ",e.message)
             return None
 
 

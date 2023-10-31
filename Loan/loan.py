@@ -16,7 +16,9 @@ def apply_for_online_loan(user_id,fixed_deposit_id,amount,duration,interest_rate
             connector.connection.commit()
             return True
     except Exception as e:
-        print("Error in apply_for_online_loan",e)
+        error_code, error_message = e.args
+        print(error_code, error_message)
+        flash(error_message,"Error")
         return False
     
 def get_user_details(user_id):
@@ -70,5 +72,4 @@ def online_loan():
             flash("Your loan has been accepted and loan amount has been transfered to your account","success")
             return redirect('/dashboard')
         else:
-            flash("Something went wrong")
             return redirect('/loan/online_loan')
