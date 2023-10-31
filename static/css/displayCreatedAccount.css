@@ -383,6 +383,15 @@ body {
   text-align: center;
   font-family: Manrope;
   font-size: 28px;
+  display: flex;
+  justify-content: center;
+}
+.ull{
+  display: block;
+  width: 100%;
+}
+.data{
+  margin-left: 10px;
 }
 
 
