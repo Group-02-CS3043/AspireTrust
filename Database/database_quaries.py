@@ -24,7 +24,9 @@ GET_ALL_TRANSACIONS = 'call branch_wise_total_transactions(%s,%s);'
 CREATE_FIXED_DEPOSIT = 'call create_fixed_deposit_for_existing_user(%s,%s,%s,%s)'
 GET_SAVINGS_ACCOUNT_ID = 'SELECT savings_account_id FROM savings_account WHERE account_id = (SELECT account_id FROM account WHERE account_number = %s)'
 CHECK_ACCOUNT_IS_VALID = 'SELECT account_id FROM account WHERE account_number = %s'
-
+CREATE_BANK_ACCOUNT_FOR_ORGANIZATION = 'call create_bank_account_for_organization(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+CHECK_IF_ORGANIZATION_EXISTS = 'SELECT name FROM organization WHERE name = %s'
+CREATE_BANK_ACCOUNT_FOR_EXSISTING_ORGANIZATION = 'create_organization_account_for_existing_user(%s,%s,%s,%s,%s,%s,%s)'
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
 SELECT_PASSWORD = 'SELECT password FROM user WHERE username = %s'
