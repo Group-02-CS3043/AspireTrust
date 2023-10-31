@@ -42,10 +42,11 @@
         </div>
         <nav class="nav-bar">
             <ul class="navlist">
-                <li><a href="#" class ='aa' >Home</a></li>
+                <li><a href="{{ url_for('home.home') }}" class ='aa' >Home</a></li>
                 <li>
                     <button class="aa-but" onclick="location.href='#popup1'">Create Account</button>
                 </li>
+                <li><a href="{{ url_for('user.user_informations') }}" class ='aa'>Settings</a></li>
             </ul>
         </nav>
         <div class="banner">
@@ -91,11 +92,6 @@
                     </li>
 
                 </ul>
-
-
-
-
-
 
             </div>
         </div>
