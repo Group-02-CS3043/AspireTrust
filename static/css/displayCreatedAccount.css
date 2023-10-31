@@ -825,7 +825,9 @@ enq:active{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   padding-left: 10px;
   padding-right: 10px;
+  margin-bottom: 80px;
 }
+
 .button1:hover{
   opacity: 80%;
   transition: 0.2s;
@@ -833,7 +835,7 @@ enq:active{
 }
 .button1:focus{
   opacity: 60%;
-}
+} 
 .exit-button{
   display: flex;
   justify-content: center;
