@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
     <!-- <link rel="stylesheet" href="../static/css/register.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +15,16 @@
         rel="stylesheet">
     
 </head>
-
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+<div class="notification" id="myNotification">
+    {% for category, message in messages %}
+    <div class="notification-header">{{category}}</div>
+    <div class="notification-content">{{message}}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
 <body>
     <div class='container'>
         <div class="loginTile">
