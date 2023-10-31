@@ -4,7 +4,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/manager_dasdhbaord.css') }}" />
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/manager_dasdhbaord.css') }}" /> -->
+        <link rel="stylesheet" href="../../static/css/manager_dasdhbaord.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
@@ -43,7 +44,7 @@
             <ul class="navlist">
                 <li><a href="#" class ='aa' >Home</a></li>
                 <li>
-                    <button class="aa-but" onclick="location.href='#popup1'">Apply Now</button>
+                    <button class="aa-but" onclick="location.href='#popup1'">Create Account</button>
                 </li>
             </ul>
         </nav>
@@ -178,9 +179,9 @@
 
                     <div class="final">
                             
-                        <button class="branch-but" type="submit" style="margin-bottom: 20px;"> Generate Branch-wise Report </button>
+                        <button class="branch-but" onclick="location.href='#popup2'" type="submit" style="margin-bottom: 20px;"> Generate Branch-wise Report </button>
 
-                        <button class="branch-but" type="submit"> Generate Branch wise late loan installment report </button>
+                        <button class="branch-but" onclick="location.href='#popup3'" type="submit"> Generate Branch wise late loan installment report </button>
 
                     </div>
                 </div>
@@ -204,7 +205,7 @@
             <div class="popup">
                       
             <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; ">Apply Now.</h2>
-            <a class="close" href="#">&times;</a>
+            <a class="close" href="#" style="color: aliceblue;" >&times;</a>
             <div class="buttons">
               
               <a href="{{url_for('bank_account.create_exsisiting_account')}}" class="btn"> Existing Users </a>
@@ -216,6 +217,25 @@
                 
             </div>
         </div>
+
+        <div id="popup2" class="overlay">
+            <div class="popup">
+                      
+            <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; "> BranchWise Report Generate </h2>
+            <a class="close" href="#">&times;</a>
+            <div class="buttons">
+              
+              <a href="" class="btn2"> Intrabank Transactions </a>
+              <a href="" class="btn2"> Interbank Transactions </a>
+              <a href="" class="btn2"> Withdrawals </a>
+              <a href="" class="btn2"> Deposit </a>
+             
+            </div>
+                
+            </div>
+        </div>
+
+
 
 
 

@@ -586,6 +586,44 @@ body {
   transform: scale(0.98);
 }
 
+
+.btn2{
+  border-radius: 12px;
+  border: 2px solid #a9e1f5;
+  font-family: Manrope;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: var(--gap);
+  padding: 0.6rem;
+  cursor: pointer;
+  /* border-radius: var(--radius); */
+  
+  box-shadow: var(--shadow);
+  position: relative;
+  margin-bottom: 20px;
+  color: #7bbfcb ;
+  width: 80%;
+  text-decoration: none;
+}
+
+.btn2:hover {
+  /* background-color: var(--color); */
+  background-color: #10252c;
+  color: #034b6f;
+  transition: 0.2s;
+}
+.btn2:active {
+  transform: scale(0.98);
+}
+
+
+
+
+
 .buttons {
   display: flex;
   flex-direction: column;
