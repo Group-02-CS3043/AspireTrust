@@ -173,4 +173,60 @@ body {
   }
   .error-pic{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
   }
+  .pic{
+    width: 800px;
+  }
+
+  
+.info{
+  border-radius: 20px;
+  border: 1px solid #8ECAE6;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 2.08%, rgba(0, 0, 0, 0.06) 47.92%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(137deg, rgba(2, 48, 71, 0.78) 21.18%, rgba(2, 48, 71, 0.00) 100%);
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(30px);
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  flex-shrink: 0;
+  margin-bottom: 30px;
+
+  border-radius: 20px;
+  border: 1px solid rgba(142, 202, 230, 0.17);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 2.08%, rgba(13, 16, 28, 0.15) 47.92%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(137deg, rgba(2, 48, 71, 0.38) 21.18%, rgba(2, 48, 71, 0.07) 57.4%, rgba(2, 48, 71, 0.00) 100%);
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(30px);
+}
+
+.button1{
+  color: #FFF;
+  text-align: center;
+  font-family: 'Rubik';
+  font-weight: 300;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  text-transform: uppercase;
+  width: 140px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 48px;
+  border: none;
+  background: #00507C;
+  margin-bottom: 13px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.button1:hover{
+  opacity: 80%;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.button1:focus{
+  opacity: 60%;
+}
