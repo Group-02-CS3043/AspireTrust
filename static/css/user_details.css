@@ -642,6 +642,7 @@ body {
   border-radius: 48px;
   border: none;
   background: #00507C;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   margin-bottom: 13px;
 
 }
