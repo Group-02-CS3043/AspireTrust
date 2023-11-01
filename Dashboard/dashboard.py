@@ -40,6 +40,16 @@ def get_user_first_name(user_id):
     with connector:
         connector.cursor.execute(GET_FIRSTNAME_FROM_USER_ID,(user_id,))
         return connector.cursor.fetchone()
+    
+def get_fd_accounts(user_id):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(GET_FIXED_DEPOSIT_DETAILS,(user_id,))
+            return connector.cursor.fetchall()
+    except Exception as e:
+        print("Error in get_fd_accounts",e)
+        return False
 
 
 @dashboard_app.route('/',methods = DEFAULT_METHODS,endpoint='dashboard')
@@ -48,8 +58,9 @@ def dashboard():
     if session['user_role'] == 'CUSTOMER':
         context = {}
         context['accounts'] = get_account_details(session['user_id'])
-        print("context",context)
+        context['fixed_deposits'] = get_fd_accounts(session['user_id'])
         context['first_name'] = get_first_name(session['user_id'])
+        print("context",context)
         
         return render_template('dashboard/customer_dashboard.html',context = context)
     elif session['user_role'] == 'EMPLOYEE':

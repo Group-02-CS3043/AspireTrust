@@ -267,6 +267,10 @@ body {
     
     
 }
+input{
+  outline: none;
+}
+
 .info{
     border-radius: 20px;
     border: 1px solid #8ECAE6;
@@ -284,6 +288,43 @@ body {
     box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
     backdrop-filter: blur(30px);
 }
+
+.info2{
+  border-radius: 20px;
+  border: 1px solid #8ECAE6;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 2.08%, rgba(0, 0, 0, 0.06) 47.92%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(137deg, rgba(2, 48, 71, 0.78) 21.18%, rgba(2, 48, 71, 0.00) 100%);
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(30px);
+  margin-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  flex-shrink: 0;
+
+  border-radius: 20px;
+  border: 1px solid rgba(142, 202, 230, 0.17);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.20) 2.08%, rgba(13, 16, 28, 0.15) 47.92%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(137deg, rgba(2, 48, 71, 0.38) 21.18%, rgba(2, 48, 71, 0.07) 57.4%, rgba(2, 48, 71, 0.00) 100%);
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(30px);
+  margin-left: 100px;
+  margin-right: 100px;
+  padding-left: 120px;
+  display: flex;
+  justify-content: center;
+
+}
+.t{
+  font-family: Rubik;
+  font-size: 16px;
+  color: white;
+}
+.tts{
+  width: 700px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 6px;
+
+}
+
 .CE-container{
     width: 420px;
     padding-top: 10px;
@@ -328,6 +369,34 @@ body {
 /* -------------------------------------------------------- */
 
   /* ------------------------------------------------- */
+
+  .button99{
+    color: #FFF;
+    text-align: center;
+    font-family: 'Rubik';
+    font-weight: 300;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 140px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 48px;
+    border: none;
+    background: #00507C;
+    margin-bottom: 13px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.button99:hover{
+    opacity: 80%;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.button99:focus{
+    opacity: 60%;
+}
 
   .account-s{
 
@@ -603,16 +672,16 @@ body {
   padding-left: 20px;
   display: flex;
   align-items: center;
-  width: 480px;
-  height: 45px;
+  width: 300px;
+  height: 25px;
   flex-shrink: 0;
   border-radius: 48px;
   background: #FFF;
   margin-bottom: 20px;
 }
 .enq{
-  width: 400px;
-  height: 45px;
+  width: 250px;
+  height: 25px;
   font-size: 19px;
   background:transparent;
   border: none;
@@ -708,4 +777,19 @@ table{
   font-family: Rubik;
   font-size: 20px;
 
+}
+.timeline {
+  display: flex;
+  justify-content: space-between;
+}
+.amount_range {
+  display: flex;
+  justify-content: space-between;
+
+}
+.contentt{
+  width: 700px;
+  margin-left: 30px;
+
+  
 }

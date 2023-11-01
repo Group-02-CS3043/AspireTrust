@@ -4,7 +4,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/manager_dasdhbaord.css') }}" />
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/manager_dasdhbaord.css') }}" /> -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/manager_dasdhbaord.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Manrope:wght@200&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
@@ -24,6 +26,16 @@
     </head>
 
     <body>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <div class="notification" id="myNotification">
+            {% for category, message in messages %}
+            <div class="notification-header">{{category}}</div>
+            <div class="notification-content">{{message}}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
         <div class="first-row">
             <div class = 'logo-container'>            
                 <svg class="logo_img" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,13 +53,14 @@
         </div>
         <nav class="nav-bar">
             <ul class="navlist">
-                <li><a href="#" class ='aa' >Home</a></li>
-                <li>
-                    <button class="aa-but" onclick="location.href='#popup1'">Apply Now</button>
+                <li><a href="{{ url_for('home.home') }}" class ='aa' >Home</a></li>
+                <li  >
+                    <button class="aa-but" onclick="location.href='#popup1'">Create Account</button>
                 </li>
+                <li><a href="{{ url_for('user.user_informations') }}" class ='aa'>Settings</a></li>
             </ul>
         </nav>
-        <div class="banner">
+        <!-- <div class="banner">
             <div class="tile"> 
                 <img class="banner-image" src="{{ url_for('static', filename='img/customer_dashboard/boadt.jpg') }}" alt="">
                 <div class="banner-text">
@@ -60,7 +73,7 @@
             
             
             </div>
-        </div>
+        </div> -->
 
         <div class = 'first'>
             
@@ -90,11 +103,6 @@
                     </li>
 
                 </ul>
-
-
-
-
-
 
             </div>
         </div>
@@ -178,9 +186,9 @@
 
                     <div class="final">
                             
-                        <button class="branch-but" type="submit" style="margin-bottom: 20px;"> Generate Branch-wise Report </button>
+                        <button class="branch-but" onclick="location.href='#popup2'" type="submit" style="margin-bottom: 20px;"> Generate Branch-wise Report </button>
 
-                        <button class="branch-but" type="submit"> Generate Branch wise late loan installment report </button>
+                        <button class="branch-but" onclick="location.href='#popup3'" type="submit"> Generate Branch wise late loan installment report </button>
 
                     </div>
                 </div>
@@ -204,18 +212,37 @@
             <div class="popup">
                       
             <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; ">Apply Now.</h2>
-            <a class="close" href="#">&times;</a>
+            <a class="close" href="#" style="color: aliceblue;" >&times;</a>
             <div class="buttons">
               
               <a href="{{url_for('bank_account.create_exsisiting_account')}}" class="btn"> Existing Users </a>
               <a href="{{url_for('bank_account.create_new_account')}}" class="btn"> New Users </a>
-              <a href="{{url_for('bank_account.create_new_account')}}" class="btn"> Add Employees </a>
+              <a href="{{url_for('user.add_employee')}}" class="btn"> Add Employees </a>
 
               
             </div>
                 
             </div>
         </div>
+
+        <div id="popup2" class="overlay">
+            <div class="popup">
+                      
+            <h2 style="color: rgb(255, 255, 255); display: flex; justify-content: center; font-family: roboto; "> BranchWise Report Generate </h2>
+            <a class="close" href="#">&times;</a>
+            <div class="buttons">
+              
+              <a href= "{{url_for('report.interbank_transactions')}}"   class="btn2"> Interbank Transactions </a>
+              <a href= "{{url_for('report.intrabank_transactions')}}" class="btn2"> Intrabank Transactions </a>
+              <a href="" class="btn2"> Withdrawals </a>
+              <a href="" class="btn2"> Deposit </a>
+             
+            </div>
+                
+            </div>
+        </div>
+
+
 
 
 

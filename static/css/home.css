@@ -416,7 +416,7 @@ ul li:hover ul.dropdown {
   padding: 10px;
   margin: 30px;
   /* border-radius: 20px; */
-  height: 60vh;
+  height: 55vh;
   width: 40vw;
   opacity: 90%;
   /* From https://css.glass */
@@ -529,6 +529,9 @@ ul {
   margin-bottom: 30px;
 }
 
+.contact-section input::placeholder,textarea::placeholder {
+  color: rgb(255, 255, 255);
+}
 .contact-info {
   list-style: none;
   padding: 0;
@@ -554,7 +557,9 @@ ul {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
+  color: #ffffff;
 }
+
 
 .contact-form textarea {
   height: 150px;
@@ -563,21 +568,27 @@ ul {
 .btn {
   padding: 12px 30px;
   font-size: 16px;
+  border: none;
+  color: #ffffff;
 }
+
+
 
 .btn-primary {
   /* From https://css.glass */
 
   background: rgba(255, 255, 255, 0.25);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(18.9px);
-  -webkit-backdrop-filter: blur(18.9px);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35); */
+  /* backdrop-filter: blur(18.9px);
+  -webkit-backdrop-filter: blur(18.9px); */
 }
 
 .btn-primary:hover {
-  background-color: #0069d9;
-  border-color: #0069d9;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 400;
+  
 }
 
 /*end of contact us section*/
@@ -646,7 +657,7 @@ ul {
 /*footer*/
 
 footer {
-  background-color: #080431;
+  background: rgba(255, 255, 255, 0.50);
   padding: 20px;
   text-align: center;
 }
@@ -662,17 +673,20 @@ footer {
 
 .footer-links a {
   margin: 0 10px;
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
 }
 
 .footer-links a:hover {
   text-decoration: underline;
+  color: #ffffff;
 }
 
 .footer-text {
-  color: #ffffff;
+  color: #000000;
   font-size: 14px;
 }
+
+
 
 /* end of footer */
