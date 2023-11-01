@@ -239,7 +239,7 @@
         </div>
         {% endif %}
 
-        {% if context.fixed_deposits %}
+        {% if context.loans %}
         <div class="info1">
             <div style="display: flex; align-items: center; justify-content: center;" >
                 <div class="blocc" style="color: #FFF;
@@ -257,18 +257,19 @@
                 <table>
                     <thead>
                         <tr class = "accountHead" >
-                            <th>Loan ID</th>
                             <th>Duration (Months) </th>
                             <th>Amount</th>
+                            <th>Approved</th>
                         </tr>
                     </thead>
                     <tbody  >
                         
-                        {% for account in context.fixed_deposits %}
+                        {% for account in context.loans %}
                         <tr class ='accounts'>
-                            <td>{{account.fixed_deposit_id}}</td>
+ 
                             <td>{{account.duration}}</td>
                             <td>Rs {{account.amount}}</td>
+                            <td>{{ "Yes" if(account.approved == 1) else "No" }}</td>
                         </tr>
                         {% endfor %}
                         

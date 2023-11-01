@@ -197,6 +197,56 @@
         </div>
         {% endif %}
 
+{% if context.loans %}
+        <div class='info'>
+
+            <div class="first-container">
+                
+
+                <div class="conn">
+                    <div style="display: flex; align-items: center;">
+                        <div class="blocc" style="color: #FFF;
+                            font-family: Manrope;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                            letter-spacing: 0.48px;
+                            margin-right: 20px; justify-content: center;">
+                            Loan Accounts
+                        </div>
+                        <div class="numAccounts"></div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="allAccounts">
+                <table>
+                    <tr class="table-head">
+                        <td>Amount</td>
+                        <td>Approved</td>
+                        <td>Duration</td>
+                    </tr>
+
+                    <tr style="height: 20px;"></tr>
+                    
+                    {% for account in context.loans %}
+                    <tr>
+                        <td>{{account.amount}}</td>
+                        <td>{{ "Yes" if(account.approved == 1) else "No" }}</td>
+                        <td>{{account.duration}}</td>
+                        <tr style="height: 20px;"></tr>
+                    </tr>
+                    {% endfor %}
+                   
+
+                </table>
+            </div>
+
+        </div>
+        {% endif %}
+
     </div>
     <div class='footer-container' style="margin-top: 20px; margin-bottom: 20px;">
 

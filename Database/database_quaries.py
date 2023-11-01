@@ -33,6 +33,10 @@ GET_FIXED_DEPOSIT_DETAILS = 'call get_fixed_accounts(%s)'
 ADD_NEW_EMPLOYEE = 'call add_employee(%s,%s,%s,%s,%s,%s,%s,%s)'
 GET_EMPLOYEE_DETAILS = 'SELECT employee_id,position,city FROM employee JOIN branch USING (branch_id) WHERE user_id = %s'
 
+GET_LOAN_DETAILS = 'SELECT amount,interest_rate,duration,approved FROM loan WHERE user_id = %s'
+WITHDRAW_MONEY = 'call withdraw_money(%s,%s,%s)'
+DEPOSIT_MONEY = 'call deposit_money(%s,%s,%s)'
+
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
 SELECT_PASSWORD = 'SELECT password FROM user WHERE username = %s'
