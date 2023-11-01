@@ -11,8 +11,8 @@ connector = Connector()
 @auth_app.route('/login',methods = DEFUALT_SUBMISSION_METHODS,endpoint='login')
 def login()->str:
     if 'user_id' in session :
+        flash("You are already logged in", 'Login')
         return redirect('/dashboard')
-
 
     if request.method == 'GET':
         return render_template('auth/login.html')
@@ -25,26 +25,29 @@ def login()->str:
            user_id = authenticate_user(request.form,connector)
            if user_id:
                session['user_id'] = int(user_id)
-               print(user_id)
                session['user_role'] = get_user_role(int(user_id),connector)
+               flash("Login Successful", 'Success')
                return redirect('/dashboard')
            else:
-                flash("Incorrect Credentials", 'error')
+                flash("Incorrect Credentials", 'Error')
                 return render_template('auth/login.html')
     
 
 
 @auth_app.route('/find',methods = DEFUALT_SUBMISSION_METHODS,endpoint='find')
 def find_from_account_number():
+    if 'user_id' in session :
+        flash("You are already logged in", 'Login')
+        return redirect('/dashboard')
+    
     if request.method == 'POST':
-        print("account number",request.form['account_number'])
-        
         user_id = is_account_exsists(request.form['account_number'],connector)
         if user_id:
             if have_a_user_account(user_id,connector):
                 flash("User already have an account", 'Error')
                 return redirect('login')
             else:
+                flash("User found ! Please create account for Web Portal", 'Success')
                 return redirect('register')
         else:
             flash("Please contact your neaerest branch for more details ", 'No Account Found')
@@ -57,6 +60,7 @@ def find_from_account_number():
 @auth_app.route('/register',methods = DEFUALT_SUBMISSION_METHODS,endpoint='register')
 def sigup()->str:
     if 'user_id' in session :
+        flash("You are already logged in", 'Login')
         return redirect('/dashboard')
     
     if request.method == 'POST':
@@ -69,16 +73,11 @@ def sigup()->str:
             flash('Username already exists', 'Error')
             return redirect(url_for('auth.register'))
         else:
-            print("username",request.form['username'])
-            print('password',request.form['password'])
-            print('confirm password',request.form['confirm_password'])
-            print('account number',request.form['account_number'])
             if request.form['confirm_password'] != request.form['password']:
                 flash('Passwords are mismatch','Error')
                 return redirect(url_for('auth.register'))
             user_id = create_user(request.form['username'],request.form['password'],request.form['account_number'],connector)
             session['user_id'] = int(user_id)
-            print(user_id)
             session['user_role'] = get_user_role(int(user_id),connector)
             return redirect('/dashboard')
 
@@ -129,5 +128,6 @@ def sigup()->str:
 @auth_app.route('/logout',methods = DEFAULT_METHODS)
 def logout():
     session.pop('user_id',None)
+    flash('You have been logged out', 'Success')
     return redirect('/')
 

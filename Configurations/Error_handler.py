@@ -13,4 +13,8 @@ def handle_error(app:Flask):
     @app.errorhandler(401)
     def contact_branch(error):
         return render_template('contactBranch.html') , 401
+    
+    @app.errorhandler(500)
+    def internal_server_error(error):
+        return render_template('serverError.html'), 500
     return app

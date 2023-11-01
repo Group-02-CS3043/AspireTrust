@@ -32,8 +32,7 @@ GET_USER_ID_FROM_ACCOUNT_NUMBER = 'call get_user_id_from_account_number(%s)'
 GET_FIXED_DEPOSIT_DETAILS = 'call get_fixed_accounts(%s)'
 ADD_NEW_EMPLOYEE = 'call add_employee(%s,%s,%s,%s,%s,%s,%s,%s)'
 GET_EMPLOYEE_DETAILS = 'SELECT employee_id,position,city FROM employee JOIN branch USING (branch_id) WHERE user_id = %s'
-GET_REPORT_INTER_BRANCH = " call inter_bank_report(%s , %s , %s,%s,%s,%s); "
-GET_REPORT_INTRA_BRANCH = "call intra_bank_report(%s,%s, %s,%s,%s,%s);"
+
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
 SELECT_PASSWORD = 'SELECT password FROM user WHERE username = %s'
@@ -56,4 +55,12 @@ CREATE_CURRENT_ACCOUNT_FOR_NEW_ORGANIZATION = 'call create_current_account_for_n
 CREATE_SAVINGS_ACCOUNT_FOR_EXISTSING_INDIVIDUAL_USER = 'call create_savings_account_for_existing_individual_user(%s,%s,%s,%s)'
 CREATE_CURRENT_ACCOUNT_FOR_EXISTSING_INDIVIDUAL_USER = 'call create_current_account_for_existing_individual_user(%s,%s,%s,%s)'
 CREATE_FIXED_ACCOUNT_FOR_EXISTSING_INDIVIDUAL_USER = 'call create_fixed_account_for_existing_account_individual_user(%s,%s,%s,%s)'
-CREATE_SAVINGS_ACCOUNT_FOR_EXISTSING_ORAGANIZATION_USER = 'call create_savings_account_for_existing_organization_user(%s,%s,%s,%s,%s)'
+CREATE_SAVINGS_ACCOUNT_FOR_EXISTSING_ORAGANIZATION_USER = 'call create_savings_account_for_existing_organization_user(%s,%s,%s,%s,%s,%s)'
+CREATE_CURRENT_ACCOUNT_FOR_EXISTSING_ORAGANIZATION_USER = 'call create_current_account_for_existing_organization_user(%s,%s,%s,%s,%s,%s)'
+CREATE_FIXED_ACCOUNT_FOR_EXISTING_ORGANIZATION_USER = 'call create_fixed_account_for_existing_organization_user(%s,%s,%s,%s,%s,%s)'
+
+
+########################################### Quaries for reports ###########################################
+GET_REPORT_INTER_BRANCH = " call inter_bank_report(%s , %s , %s,%s,%s,%s); "
+GET_REPORT_INTRA_BRANCH = "call intra_bank_report(%s,%s, %s,%s,%s,%s);"
+GET_WITHDRAWS = 'call withdraw_report_branchwise(%s,%s,%s,%s,%s);'

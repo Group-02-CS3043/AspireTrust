@@ -57,6 +57,9 @@
                 <li  >
                     <button class="aa-but" onclick="location.href='#popup1'">Create Account</button>
                 </li>
+                <li>
+                    <a href="{{ url_for('loan.loan_requests') }}" class ='aa' >Loan Requests</a>
+                </li>
                 <li><a href="{{ url_for('user.user_informations') }}" class ='aa'>Settings</a></li>
             </ul>
         </nav>
@@ -234,7 +237,7 @@
               
               <a href= "{{url_for('report.interbank_transactions')}}"   class="btn2"> Interbank Transactions </a>
               <a href= "{{url_for('report.intrabank_transactions')}}" class="btn2"> Intrabank Transactions </a>
-              <a href="" class="btn2"> Withdrawals </a>
+              <a href="{{url_for('report.all_withdraws')}}" class="btn2"> Withdrawals </a>
               <a href="" class="btn2"> Deposit </a>
              
             </div>

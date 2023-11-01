@@ -147,7 +147,7 @@
         </div>
 
 
-
+{% if context.fd_accounts %}
         <div class='info'>
 
             <div class="first-container">
@@ -174,28 +174,28 @@
             <div class="allAccounts">
                 <table>
                     <tr class="table-head">
-                        <td>Account Number</td>
-                        <td>Account Type</td>
-                        <td>Balance</td>
+                        <td>Fixed Deposit ID</td>
+                        <td>Amount</td>
+                        <td>Duration</td>
                     </tr>
 
                     <tr style="height: 20px;"></tr>
-                    {% if context.accounts %}
-                    {% for account in context.accounts %}
+                    
+                    {% for account in context.fd_accounts %}
                     <tr>
-                        <td>{{account.account_number}}</td>
-                        <td>{{account.account_type}}</td>
-                        <td>{{account.balance}}</td>
+                        <td>{{account.fixed_deposit_id}}</td>
+                        <td>{{account.amount}}</td>
+                        <td>{{account.duration}}</td>
                         <tr style="height: 20px;"></tr>
                     </tr>
                     {% endfor %}
-                    {% endif %}
+                   
 
                 </table>
             </div>
 
         </div>
-
+        {% endif %}
 
     </div>
     <div class='footer-container' style="margin-top: 20px; margin-bottom: 20px;">
