@@ -79,7 +79,6 @@ END;
 -- It runs every day
 CREATE EVENT IF NOT EXISTS check_expired_loan
 ON SCHEDULE EVERY 1 DAY
-    -- this event works
 DO
 BEGIN
     UPDATE loan
@@ -91,6 +90,8 @@ BEGIN
     SET loan.amount = 0
     WHERE loan.loan_id = subquery.loan_id;
     DELETE FROM online_loan WHERE online_loan.loan_id IN (SELECT loan_id FROM loan
+        WHERE DATE_ADD(created_at, INTERVAL duration MONTH) < NOW());
+    DELETE FROM loan_installment WHERE loan_installment.loan_id IN (SELECT loan_id FROM loan
         WHERE DATE_ADD(created_at, INTERVAL duration MONTH) < NOW());
     DELETE FROM loan WHERE loan.amount = 0;
 END;
