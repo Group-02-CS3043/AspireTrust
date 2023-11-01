@@ -4,8 +4,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/displayCreatedAccount.css') }}">
-        <!-- <link rel="stylesheet" href="../../static/css/displayCreatedAccount.css"> -->
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/displayCreatedAccount.css') }}"> -->
+        <link rel="stylesheet" href="../../static/css/displayCreatedAccount.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
@@ -76,11 +76,31 @@
                     </div>          
                 </div>
                 
-                
-
-
-
                 <div class="allAccounts">
+                    {% if context %}
+                    <div style="display: flex; justify-content: center;" >
+                        <div class="a">
+                            <div class="a1">Created At :</div>
+                            <div class="a1">Account No :</div>
+                            <div class="a1">Name :</div>
+                            <div class="a1">Type :</div>
+
+                        </div>
+                        <div class="b">
+                            <div class="b1">{{context.created_at}} </div>
+                            <div class="b1">{{context.account_number}}</div>
+                            <div class="b1">{{context.full_name}}</div>
+                            <div class="b1">{{context.account_type}}</div>
+
+                        </div>
+                    </div>
+
+                    {% endif %}
+                </div>
+
+
+
+                <!-- <div class="allAccounts">
                     {% if context %}
                     <ul  class="ull">
                         <li class = "table-head">
@@ -102,7 +122,7 @@
                     </ul>
                     {% endif %}
 
-                </div>
+                </div> -->
 
                 
 
