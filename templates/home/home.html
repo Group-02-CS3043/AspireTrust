@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,7 +19,16 @@
     </style>
 </head>
 <body>
-
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    <div class="notification" id="myNotification">
+        {% for category, message in messages %}
+        <div class="notification-header">{{category}}</div>
+        <div class="notification-content">{{message}}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
         <div class="first-row">
             <div class = 'logo-container'>            
                     <img class="logo_img" src="{{ url_for('static', filename='img/home/vector.svg') }}">

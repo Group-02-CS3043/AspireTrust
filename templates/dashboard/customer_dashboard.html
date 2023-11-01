@@ -224,11 +224,11 @@
                     </thead>
                     <tbody  >
                         
-                        {% for account in context.fixed_deposits %}
+                        {% for fd in context.fixed_deposits %}
                         <tr class ='accounts'>
-                            <td>{{account.fixed_deposit_id}}</td>
-                            <td>{{account.duration}}</td>
-                            <td>Rs {{account.amount}}</td>
+                            <td>{{fd.fixed_deposit_id}}</td>
+                            <td>{{fd.duration}}</td>
+                            <td>Rs {{fd.amount}}</td>
                         </tr>
                         {% endfor %}
                         

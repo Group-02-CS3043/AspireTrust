@@ -82,6 +82,16 @@ def update_user_details(user_id,first_name,last_name,date_of_birth,telephone,hom
         connector.cursor.execute(UPDATE_USER_DETAILS ,(user_id,first_name,last_name,date_of_birth,telephone,home_town))
         connector.connection.commit()
 
+def get_fd_accounts(user_id):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(GET_FIXED_DEPOSIT_DETAILS,(user_id,))
+            return connector.cursor.fetchall()
+    except Exception as e:
+        print("Error in get_fd_accounts",e)
+        return False
+
 
 @user_app.route('/account_details',methods = DEFUALT_SUBMISSION_METHODS,endpoint='user_account_details')
 @valid_session
@@ -94,6 +104,7 @@ def user_account_details():
             return redirect('/dashboard')
         context = get_user__account_details(account_number)
         context['accounts'] = get_accounts_details(user_id['user_id'])
+        context['fd_accounts'] = get_fd_accounts(user_id['user_id'])
         print(context)
         return render_template('user_details.html',context = context)
     

@@ -1,7 +1,7 @@
-from flask import Blueprint,render_template,session,redirect,flash,request
+from flask import Blueprint,render_template,session,redirect,flash,request,url_for
 
 from Settings.settings import *
-from Configurations.configurations import valid_session
+from Configurations.configurations import valid_session,valid_manager
 from Database.connection import Connector
 from Database.database_quaries import *
 
@@ -73,3 +73,27 @@ def online_loan():
             return redirect('/dashboard')
         else:
             return redirect('/loan/online_loan')
+        
+    
+@loan_app.route('/loan_requests',methods = DEFUALT_SUBMISSION_METHODS,endpoint='loan_requests')
+@valid_manager
+def loan_requests():
+    if request.method == 'GET':
+        context = {}
+        context['loan_requests'] = 0
+        return render_template('loan/loanRequest.html',context=context)
+
+    
+@loan_app.route('/approve',methods = DEFUALT_SUBMISSION_METHODS,endpoint='approve')
+@valid_manager
+def approve():
+    if request.method == 'POST':
+        print(request.form)
+        return redirect(url_for('loan.loan_requests'))
+
+@loan_app.route('/disapprove',methods = DEFUALT_SUBMISSION_METHODS,endpoint='disapprove')   
+@valid_manager
+def disapprove():
+    if request.method == 'POST':
+        print(request.form)
+        return redirect(url_for('loan.loan_requests'))
