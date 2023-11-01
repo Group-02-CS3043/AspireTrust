@@ -60,7 +60,7 @@
                 <li><a href="{{ url_for('user.user_informations') }}" class ='aa'>Settings</a></li>
             </ul>
         </nav>
-        <div class="banner">
+        <!-- <div class="banner">
             <div class="tile"> 
                 <img class="banner-image" src="{{ url_for('static', filename='img/customer_dashboard/boadt.jpg') }}" alt="">
                 <div class="banner-text">
@@ -73,7 +73,7 @@
             
             
             </div>
-        </div>
+        </div> -->
 
         <div class = 'first'>
             
@@ -232,7 +232,7 @@
             <a class="close" href="#">&times;</a>
             <div class="buttons">
               
-              <a href="" class="btn2"> Intrabank Transactions </a>
+              <a href= "{{url_for('report.interbank_transactions')}}"   class="btn2"> Intrabank Transactions </a>
               <a href="" class="btn2"> Interbank Transactions </a>
               <a href="" class="btn2"> Withdrawals </a>
               <a href="" class="btn2"> Deposit </a>
