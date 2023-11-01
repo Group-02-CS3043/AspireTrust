@@ -53,7 +53,9 @@
 
 
         <div class="info2">
+            <form action="" method="post">
             <div class="contentt">
+               
 
                 <div class="tts">  
                     <div class="t" style="margin-left: -25px;">Starting Date</div>
@@ -62,11 +64,11 @@
                 <div class="timeline">
                    
                     <div class="ab">                       
-                        <input class="enq" type="Date" placeholder="Starting Date" name="Starting_Date" required></input>
+                        <input class="enq" type="Date" placeholder="Starting Date" name="starting_date" value="{{context.start_date}}" required></input>
                     </div>
                     
                     <div class="ab">                       
-                        <input class="enq" type="Date" placeholder="End Date" name="end_Date" required></input>
+                        <input class="enq" type="Date" placeholder="End Date" name="end_date" value="{{context.end_date}}" required></input>
                     </div>
 
                 </div>
@@ -74,20 +76,23 @@
 
                     
                     <div class="ab">                       
-                        <input class="enq" type="number" placeholder="Min Value" name="min_value" required></input>
+                        <input class="enq" type="number" placeholder="Min Value" name="min_value" value="{{context.min_value}}" required></input>
                     </div>
                     <div class="ab">
                                              
-                        <input class="enq" type="number" placeholder="Max Value" name="max_value" required></input>
+                        <input class="enq" type="number" placeholder="Max Value" name="max_value" value="{{context.max_value}}" required></input>
                     </div>
 
                 </div>
+
+           
             </div>
             <div style="width: 100%;display: flex; justify-content: center; align-items: center;">
                 <div style="display: flex; justify-content: center; margin-top: 5px;">
-                    <button class="button99" type="" > Filter </button>
+                    <button class="button99" type="submit" > Filter </button>
                 </div>
             </div>
+        </form>
             
             
 
@@ -122,7 +127,7 @@
                         <tr style="height: 20px;"></tr>
                         <tr>
                             <td>{{transaction.date_time}}</td>
-                            <td>{{transaction.to_account}}</td>
+                            <td>{{transaction.from_account}}</td>
                             <td>{{transaction.to_account}}</td>
                             <td>{{transaction.amount}}</td>
                             <td>{{transaction.remark}}</td>

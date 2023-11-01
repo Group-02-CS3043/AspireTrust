@@ -819,6 +819,11 @@ body {
   outline: none;
   opacity: 60%;
 }
+
+input{
+  outline: none;
+}
+
 .user-detail-head{
   border-radius: 5px;
   background-color: #0e5875;
