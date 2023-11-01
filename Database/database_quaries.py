@@ -32,6 +32,8 @@ GET_USER_ID_FROM_ACCOUNT_NUMBER = 'call get_user_id_from_account_number(%s)'
 GET_FIXED_DEPOSIT_DETAILS = 'call get_fixed_accounts(%s)'
 ADD_NEW_EMPLOYEE = 'call add_employee(%s,%s,%s,%s,%s,%s,%s,%s)'
 GET_EMPLOYEE_DETAILS = 'SELECT employee_id,position,city FROM employee JOIN branch USING (branch_id) WHERE user_id = %s'
+GET_REPORT_INTER_BRANCH = " call inter_bank_report(%s , %s , %s,%s,%s,%s); "
+GET_REPORT_INTRA_BRANCH = "call intra_bank_report(%s,%s, %s,%s,%s,%s);"
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
 SELECT_PASSWORD = 'SELECT password FROM user WHERE username = %s'

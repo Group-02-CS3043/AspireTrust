@@ -673,8 +673,12 @@ cursor: pointer;
 margin-top: 20px;
 margin-bottom: 15px;
 
-
 }
+
+input{
+  outline: none;
+}
+
 .aa-but:hover,
 .active {
   color: #000000;
