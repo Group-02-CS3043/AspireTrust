@@ -267,6 +267,10 @@ body {
     
     
 }
+input{
+  outline: none;
+}
+
 .info{
     border-radius: 20px;
     border: 1px solid #8ECAE6;
