@@ -78,12 +78,65 @@ def get_savings_account_id(account_number):
 
 
     
+def transfer_money(from_account,to_account,amount,remarks):
+    connector = Connector()
+    with connector:
+        connector.cursor.execute(CREATE_TRANSACTION,(from_account,to_account,amount,remarks,))
+        connector.connection.commit()
+            
+ 
+def withdraw_money(account_number,amount,remarks):
+    connector = Connector()
+    with connector:
+        connector.cursor.execute(WITHDRAW_MONEY,(account_number,amount,remarks,))
+        connector.connection.commit()
 
-    
+@bank_account_app.route('/withdraw',methods = DEFUALT_SUBMISSION_METHODS,endpoint='withdraw')
+@valid_employee      
+def withdraw_user_money():
+    if request.method == 'POST':
+        try :
+            withdraw_money(request.form['account_number'],request.form['amount'],request.form['remarks'])
+            flash("Withdrawal Completed Successfully","Withdrawal")
+            return redirect(url_for('dashboard.dashboard'))
+        except MySQLError as e:
+            error_code, error_message = e.args
+            flash(error_message,"Error")
+            return redirect(url_for('bank_account.withdraw'))
+        except Exception as e:
+            flash("Unkown Error occured","Error")
+            print(e)
+            return redirect(url_for('dashboard.dashboard'))
+    elif request.method == 'GET':
+
+        return render_template('bankAccount/withdraw.html')
 
 
+def deposit_money(account_number,amount,remarks):
+    connector = Connector()
+    with connector:
+        connector.cursor.execute(DEPOSIT_MONEY,(account_number,amount,remarks,))
+        connector.connection.commit()
 
 
+@bank_account_app.route('/deposit',methods = DEFUALT_SUBMISSION_METHODS,endpoint='deposit')
+@valid_employee
+def deposit_user_money():
+    if request.method == 'POST':
+        try :
+            deposit_money(request.form['account_number'],request.form['amount'],request.form['remarks'])
+            flash("Deposit Completed Successfully","Deposit")
+            return redirect(url_for('dashboard.dashboard'))
+        except MySQLError as e:
+            error_code, error_message = e.args
+            flash(error_message,"Error")
+            return redirect(url_for('bank_account.deposit'))
+        except Exception as e:
+            flash("Unkown Error occured","Error")
+            print(e)
+            return redirect(url_for('dashboard.dashboard'))
+    elif request.method == 'GET':
+        return render_template('bankAccount/deposit.html')
 
 
 
@@ -93,18 +146,18 @@ def get_savings_account_id(account_number):
 @valid_session
 def transaction():
     if request.method == 'POST':
-        print(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'])
-        user_id = get_user_id_from_account_number(request.form['to_account_number'])
-        if user_id is None:
-            flash("Given Account Number doesn't exists", 'Error')
+        try :
+            transfer_money(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'],request.form['remarks'])
+            flash("Transaction Completed Successfully","Transaction")
+            return redirect(url_for('dashboard.dashboard'))
+        except MySQLError as e:
+            error_code, error_message = e.args
+            flash(error_message,"Error")
             return redirect(url_for('bank_account.transfer'))
-        status = set_new_operation(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'],request.form['remarks'])
-        if status:
-            flash("Transaction Successfull", 'Transaction')
-            return redirect('/dashboard')
-        else:
-            flash("Transaction Failed", 'error')
-            return redirect('/dashboard')
+        except Exception as e:
+            flash("Unkown Error occured","Error")
+            print(e)
+            return redirect(url_for('dashboard.dashboard'))
     if request.method == 'GET':
         context = get_account_details(session['user_id'])
         return render_template('bankAccount/transaction.html',context=context)
@@ -113,63 +166,16 @@ def transaction():
 
 @bank_account_app.route('/create-exsisting',methods = DEFAULT_METHODS,endpoint='create_exsisiting_account')
 @valid_employee
-@valid_session
 def create_account_for_exsisting_users():
     return render_template('bankAccount/existingUserCreateMain.html')
 
 @bank_account_app.route('/create-new',methods = DEFAULT_METHODS,endpoint='create_new_account')
 @valid_employee
-@valid_session
 def create_account_for_new_users_individual():
     return render_template('bankAccount/newUserCreationMain.html')
 
 
-    
 
-
-
-    
-
-
-# @bank_account_app.route('/organization/current/exsisting',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_current_account_exsisting_org')  
-# @valid_employee
-# @valid_session
-# def create_current_account_existing_organization():
-#     if request.method == 'POST':
-#         brach_id = get_branch_id(session['user_id'])
-#         savings_account_id = get_savings_account_id(request.form['account_number'])
-#         organization_name = request.form['organization_name']
-#         organization_role = request.form['organization_role']
-#         first_name_and_no_of_accounts = get_customer_first_name_and_no_accounts(str(request.form['account_number']))
-#         if first_name_and_no_of_accounts is None:
-#             flash("User Doesn't Exists", 'Error')
-#             return redirect(url_for('bank_account.create_current_account_exsisting_org'))
-#         ascii_values = [ord(char) for char in first_name_and_no_of_accounts['first_name']]
-#         new_account_number = f"{str(brach_id['branch_id'])}-{str(sum(ascii_values)%1000)}-{str(first_name_and_no_of_accounts['number_of_accounts']+1)}"
-#         if savings_account_id is None:
-#             flash("Current Account doesn't Exists", 'Error')
-#             return redirect(url_for('bank_account.create_current_account_organization_new'))
-#         if creat_current_account_for_for_exsisting_user_organization(session['user_id'],new_account_number,request.form['account_number'],request.form['first_deposit'],organization_name,organization_role):
-#             flash("Account Created Successfully","Account Creation")
-#             context = {'account_number':new_account_number,'account_type':'SAVINGS','created_at':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'full_name':f'{first_name} {last_name}'}
-#             return render_template('bankAccount/displayCreatedAccount.html',context=context)
-#         else:
-#             flash("Current Account Creation Failed", 'Error')
-#             return redirect('/dashboard')
-#     elif request.method == 'GET':
-#         return render_template('bankAccount/existingCurrentOrganization.html')
-    
-
-
-
-
-
-    
-
-
-
-
- 
 
 def get_account_number(first_name,last_name,branch_id,number_of_accounts = 1):
         ascii_values = [ord(char) for char in (first_name+last_name)]

@@ -50,6 +50,16 @@ def get_fd_accounts(user_id):
     except Exception as e:
         print("Error in get_fd_accounts",e)
         return False
+    
+def get_loan_details(user_id):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(GET_LOAN_DETAILS,(user_id,))
+            return connector.cursor.fetchall()
+    except Exception as e:
+        print("Error in get_loan_details",e)
+        return False
 
 
 @dashboard_app.route('/',methods = DEFAULT_METHODS,endpoint='dashboard')
@@ -59,6 +69,7 @@ def dashboard():
         context = {}
         context['accounts'] = get_account_details(session['user_id'])
         context['fixed_deposits'] = get_fd_accounts(session['user_id'])
+        context['loans'] = get_loan_details(session['user_id'])
         context['first_name'] = get_first_name(session['user_id'])
         print("context",context)
         

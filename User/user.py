@@ -3,6 +3,7 @@ from Settings.settings import *
 from Configurations.configurations import valid_session,valid_manager
 from Database.connection import Connector
 from Database.database_quaries import *
+from Dashboard.dashboard import get_loan_details
 
 
 user_app = Blueprint('user', __name__,template_folder='./templates',static_folder='static')
@@ -105,6 +106,7 @@ def user_account_details():
         context = get_user__account_details(account_number)
         context['accounts'] = get_accounts_details(user_id['user_id'])
         context['fd_accounts'] = get_fd_accounts(user_id['user_id'])
+        context['loans'] = get_loan_details(user_id['user_id'])
         print(context)
         return render_template('user_details.html',context = context)
     
