@@ -221,6 +221,7 @@
                         </tr>
                     </thead>
                     <tbody  >
+                        {% if context.fixed_deposits %}
                         {% for account in context.fixed_deposits %}
                         <tr class ='accounts'>
                             <td>{{account.fixed_deposit_id}}</td>
@@ -228,6 +229,7 @@
                             <td>Rs {{account.amount}}</td>
                         </tr>
                         {% endfor %}
+                        {% endif %}
                     </tbody>
                 </table>
             </div>
