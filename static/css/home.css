@@ -416,7 +416,7 @@ ul li:hover ul.dropdown {
   padding: 10px;
   margin: 30px;
   /* border-radius: 20px; */
-  height: 60vh;
+  height: 55vh;
   width: 40vw;
   opacity: 90%;
   /* From https://css.glass */
@@ -557,6 +557,7 @@ ul {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .contact-form textarea {
