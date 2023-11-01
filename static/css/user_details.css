@@ -350,6 +350,7 @@ flex-direction: column;
   padding-top: 50px;
   padding-bottom: 100px;
   flex-shrink: 0;
+  margin-bottom: 30px;
 
   border-radius: 20px;
   border: 1px solid rgba(142, 202, 230, 0.17);
@@ -835,4 +836,11 @@ cursor: pointer;
 .back-arr:focus{
 opacity: 80%;
 }
+.back-arr{
+  width: 50px;
+  margin-left: 15px;
+  margin-top: -10px;
+}
+
+
 
