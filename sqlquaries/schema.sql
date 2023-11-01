@@ -1,4 +1,4 @@
-u-- GROUP - 02 | Bank Transaction And Loan Processing System
+-- GROUP - 02 | Bank Transaction And Loan Processing System
 -- Our database is named as aspiretrust
 
 
