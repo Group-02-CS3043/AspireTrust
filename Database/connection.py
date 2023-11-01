@@ -25,7 +25,7 @@ class Connector:
 
     def connect(self):
         try:
-            self.connection = MySQLdb.connect(*self.configurations.values(),cursorclass=Cursor)
+            self.connection = MySQLdb.connect(*self.configurations.values(),cursorclass=Cursor,autocommit=True)
             self.cursor = self.connection.cursor()
             return self.cursor
         except Exception as e:

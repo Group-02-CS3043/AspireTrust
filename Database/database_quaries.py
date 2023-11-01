@@ -48,3 +48,4 @@ GET_USER_ACCOUNT_DETAILS = "SELECT user.first_name,user.last_name, user.home_tow
 CREATE_SAVINGS_ACCOUNT_FOR_NEW_INDIVIDUAL_USER = 'call create_savings_account_for_new_individual_user(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 CREATE_CURRENT_ACCOUNT_FOR_NEW_INDIVIDUAL_USER = 'call create_current_account_for_new_individual_user(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 CREATE_SAVINGS_ACCOUNT_FOR_NEW_ORGANIZATION = 'call create_savings_account_for_new_organization_user(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+CREATE_CURRENT_ACCOUNT_FOR_NEW_ORGANIZATION = 'call create_current_account_for_new_organization_user(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'

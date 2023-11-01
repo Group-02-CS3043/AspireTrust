@@ -175,12 +175,14 @@ def create_current_account_for_new_organization(first_name,last_name,branch_id,n
     connector = Connector()
     try:
         with connector:
-            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_ORGANIZATION,(organization_name,organization_role,first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,'CURRENT',))
-            connector.connection.commit()
-            return True
+            connector.cursor.execute(CREATE_CURRENT_ACCOUNT_FOR_NEW_ORGANIZATION,(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,organization_name,organization_role,))
+            context = connector.cursor.fetchone()
+            flash("Account Created Successfully", 'Account')
+            return render_template('bankAccount/displayCreatedAccount.html',context=context)
     except Exception as e:
-        print("Error in create_current_account_for_new_organization",e)
-        return False
+        error_code, error_message = e.args
+        flash(error_message,"Error")
+        return redirect(url_for('bank_account.create_current_account_organization_new'))
 
 @bank_account_app.route('/transfer',methods = DEFUALT_SUBMISSION_METHODS,endpoint='transfer')
 @valid_session
@@ -359,6 +361,7 @@ def create_savings_account_new_individual():
     if request.method == 'POST':
         first_name, last_name, branch_id, nic, telephone, home_town, date_of_birth, first_deposit = (request.form[key] for key in ['first_name', 'last_name', 'branch_id', 'nic', 'telephone', 'home_town', 'date_of_birth', 'first_deposit'])
         account_number = get_account_number(first_name,last_name,branch_id)
+        print(account_number)
         return create_savings_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number)
     
     elif request.method == 'GET':
@@ -401,30 +404,10 @@ def create_savings_account_new_organization():
 @valid_session
 def create_current_account_new_organization():
     if request.method == 'POST':
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        branch_id = request.form['branch_id']
-        nic = request.form['nic']
-        telephone = request.form['telephone']
-        home_town = request.form['home_town']
-        date_of_birth = request.form['date_of_birth']
-        first_deposit = request.form['first_deposit']
-        organization_name = request.form['organization_name']
-        organization_role = request.form['organization_role']
-        ascii_values = [ord(char) for char in (first_name+last_name)]
-        new_account_number = f"{str(branch_id)}-{str(sum(ascii_values)%1000)}-{str(1)}"
-        print(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number,organization_name,organization_role)
-
-        if check_firstname_and_last_name_exsists(first_name,last_name):
-            flash("User Already Exists", 'Error')
-            return redirect(url_for('bank_account.create_savings_account_organization_new'))
-        if create_current_account_for_new_organization(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number,organization_name,organization_role):
-            flash("Account Created Successfully","Account Creation")
-            context = {'account_number':new_account_number,'account_type':'SAVINGS','created_at':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'full_name':f'{first_name} {last_name}'}
-            return render_template('bankAccount/displayCreatedAccount.html',context=context)
-        else:
-            flash("Error Occured ", "Error")
-            return redirect('/dashboard')
+        first_name, last_name, branch_id, nic, telephone, home_town, date_of_birth, first_deposit, organization_name, organization_role = (request.form[key] for key in ['first_name', 'last_name', 'branch_id', 'nic', 'telephone', 'home_town', 'date_of_birth', 'first_deposit', 'organization_name', 'organization_role'])
+        account_number = get_account_number(first_name,last_name,branch_id)
+        return create_current_account_for_new_organization(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,organization_name,organization_role)
+ 
 
     elif request.method == 'GET':
         context = get_branch_id(session['user_id'])
