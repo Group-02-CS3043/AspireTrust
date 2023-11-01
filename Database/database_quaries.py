@@ -28,6 +28,10 @@ CREATE_BANK_ACCOUNT_FOR_ORGANIZATION = 'call create_bank_account_for_organizatio
 CHECK_IF_ORGANIZATION_EXISTS = 'SELECT name FROM organization WHERE name = %s'
 CREATE_BANK_ACCOUNT_FOR_EXSISTING_ORGANIZATION = 'call create_account_for_existing_organization(%s,%s,%s,%s,%s,%s,%s)'
 CREATE_FIXED_DEPOSIT_FOR_ORGANIZATION = 'call create_fixed_deposit_for_existing_user_organization(%s,%s,%s,%s,%s,%s)'
+GET_USER_ID_FROM_ACCOUNT_NUMBER = 'call get_user_id_from_account_number(%s)'
+GET_FIXED_DEPOSIT_DETAILS = 'call get_fixed_accounts(%s)'
+ADD_NEW_EMPLOYEE = 'call add_employee(%s,%s,%s,%s,%s,%s,%s,%s)'
+GET_EMPLOYEE_DETAILS = 'SELECT employee_id,position,city FROM employee JOIN branch USING (branch_id) WHERE user_id = %s'
 
 SELECT_USERNAME = 'SELECT username FROM user WHERE username = %s'
 SELECT_PASSWORD = 'SELECT password FROM user WHERE username = %s'
@@ -36,4 +40,11 @@ INSERT_USERS = "INSERT INTO user (username, password,user_type, first_name, last
 CREATE_CUSTOMER_ACCOUNT = "INSERT INTO customer (user_id) VALUES (%s)"
 # GET_USER_ACCOUNTS = 'SELECT account_number,account_type,balance FROM account WHERE user_id = %d'
 GET_EMPLOYEE_ROLE = 'SELECT position FROM employee WHERE user_id = %d'
-GET_USER_ACCOUNT_DETAILS = "SELECT user.first_name,user.last_name,account_number,balance FROM account JOIN user USING (user_id) WHERE account_number = '%s'"
+GET_USER_ACCOUNT_DETAILS = "SELECT user.first_name,user.last_name, user.home_town FROM account JOIN user USING (user_id) WHERE account_number = '%s'"
+
+
+########################################### Quaries for account creation ###########################################
+
+CREATE_SAVINGS_ACCOUNT_FOR_NEW_INDIVIDUAL_USER = 'call create_savings_account_for_new_individual_user(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+CREATE_CURRENT_ACCOUNT_FOR_NEW_INDIVIDUAL_USER = 'call create_current_account_for_new_individual_user(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+CREATE_SAVINGS_ACCOUNT_FOR_NEW_ORGANIZATION = 'call create_savings_account_for_new_organization_user(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'

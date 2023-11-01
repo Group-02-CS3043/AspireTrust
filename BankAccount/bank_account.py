@@ -4,10 +4,20 @@ from Configurations.configurations import valid_session,valid_employee
 from Database.connection import Connector
 from Database.database_quaries import *
 from .models import Account,get_account_details,set_new_operation
+from datetime import datetime
 
 
 bank_account_app = Blueprint('bank_account', __name__,template_folder='./templates',static_folder='static')
 
+def get_user_id_from_account_number(account_number):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(GET_USER_ID_FROM_ACCOUNT_NUMBER,(account_number,))
+            return connector.cursor.fetchone()
+    except Exception as e:
+        print("Error in get_user_id_from_account_number",e)
+        return None
 
 def check_firstname_and_last_name_exsists(first_name,last_name):
     connector = Connector()
@@ -124,35 +134,42 @@ def create_savings_account_for_new_user_individual(first_name,last_name,branch_i
     connector = Connector()
     try:
         with connector:
-            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_NEW_USERS,(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,'SAVINGS',))
-            connector.connection.commit()
-            return True
+            connector.cursor.execute(CREATE_SAVINGS_ACCOUNT_FOR_NEW_INDIVIDUAL_USER,(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,))
+            context = connector.cursor.fetchone()
+            flash("Account Created Successfully", 'Account')
+            return render_template('bankAccount/displayCreatedAccount.html',context=context)
+            
     except Exception as e:
-        print("Error in create_savings_account_for_exsisting_user",e)
-        return False
+        error_code, error_message = e.args
+        flash(error_message,"Error")
+        return redirect(url_for('bank_account.create_savings_account_new'))
 
 
 def create_current_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number):
     connector = Connector()
     try:
         with connector:
-            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_NEW_USERS,(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,'CURRENT',))
-            connector.connection.commit()
-            return True
+            connector.cursor.execute(CREATE_CURRENT_ACCOUNT_FOR_NEW_INDIVIDUAL_USER,(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,))
+            context = connector.cursor.fetchone()
+            flash("Account Created Successfully", 'Account')
+            return render_template('bankAccount/displayCreatedAccount.html',context=context)
     except Exception as e:
-        print("Error in create_current_account_for_exsisting_user",e)
-        return False
+        error_code, error_message = e.args
+        flash(error_message,"Error")
+        return redirect(url_for('bank_account.create_current_account_new'))
 
 def create_savings_account_for_new_organization(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,organization_name,organization_role):
     connector = Connector()
     try:
         with connector:
-            connector.cursor.execute(CREATE_BANK_ACCOUNT_FOR_ORGANIZATION,(organization_name,organization_role,first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,'SAVINGS',))
-            connector.connection.commit()
-            return True
+            connector.cursor.execute(CREATE_SAVINGS_ACCOUNT_FOR_NEW_ORGANIZATION,(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,organization_name,organization_role,))
+            context = connector.cursor.fetchone()
+            flash("Account Created Successfully", 'Account')
+            return render_template('bankAccount/displayCreatedAccount.html',context=context)
     except Exception as e:
-        print("Error in create_savings_account_new_organization",e)
-        return False
+        error_code, error_message = e.args
+        flash(error_message,"Error")
+        return redirect(url_for('bank_account.create_savings_account_organization_new'))
 
 def create_current_account_for_new_organization(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,organization_name,organization_role):
     connector = Connector()
@@ -170,6 +187,10 @@ def create_current_account_for_new_organization(first_name,last_name,branch_id,n
 def transaction():
     if request.method == 'POST':
         print(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'])
+        user_id = get_user_id_from_account_number(request.form['to_account_number'])
+        if user_id is None:
+            flash("Given Account Number doesn't exists", 'Error')
+            return redirect(url_for('bank_account.transfer'))
         status = set_new_operation(request.form['from_account_number'],request.form['to_account_number'],request.form['amount'],request.form['remarks'])
         if status:
             flash("Transaction Successfull", 'Transaction')
@@ -303,8 +324,9 @@ def create_current_account_existing_organization():
             flash("Current Account doesn't Exists", 'Error')
             return redirect(url_for('bank_account.create_current_account_organization_new'))
         if creat_current_account_for_for_exsisting_user_organization(session['user_id'],new_account_number,request.form['account_number'],request.form['first_deposit'],organization_name,organization_role):
-            flash("Current Account Created Successfully", 'Account')
-            return redirect('/dashboard')
+            flash("Account Created Successfully","Account Creation")
+            context = {'account_number':new_account_number,'account_type':'SAVINGS','created_at':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'full_name':f'{first_name} {last_name}'}
+            return render_template('bankAccount/displayCreatedAccount.html',context=context)
         else:
             flash("Current Account Creation Failed", 'Error')
             return redirect('/dashboard')
@@ -331,67 +353,30 @@ def create_fixed_account_existing_organization():
     elif request.method == 'GET':
         return render_template('bankAccount/existingFixedOrganization.html')
 
-@bank_account_app.route('/create-new/savings',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_savings_account_new')
+@bank_account_app.route('/individual/savings/new',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_savings_account_new')
 @valid_employee
-@valid_session
 def create_savings_account_new_individual():
     if request.method == 'POST':
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        branch_id = request.form['branch_id']
-        nic = request.form['nic']
-        telephone = request.form['telephone']
-        home_town = request.form['home_town']
-        date_of_birth = request.form['date_of_birth']
-        first_deposit = request.form['first_deposit']
-        ascii_values = [ord(char) for char in (first_name+last_name)]
-        new_account_number = f"{str(branch_id)}-{str(sum(ascii_values)%1000)}-{str(1)}"
-
-        if check_firstname_and_last_name_exsists(first_name,last_name):
-            flash("User Already Exists", 'Error')
-            return redirect(url_for('bank_account.create_savings_account_new'))
-        if create_savings_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number):
-            flash("Account Created Successfully","Account Creation")
-            return redirect('/dashboard')
-        else:
-            flash("Error Occured ", "Error")
-            return redirect('/dashboard')
-
+        first_name, last_name, branch_id, nic, telephone, home_town, date_of_birth, first_deposit = (request.form[key] for key in ['first_name', 'last_name', 'branch_id', 'nic', 'telephone', 'home_town', 'date_of_birth', 'first_deposit'])
+        account_number = get_account_number(first_name,last_name,branch_id)
+        return create_savings_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number)
+    
     elif request.method == 'GET':
         context = get_branch_id(session['user_id'])
-        print("context",context)
         return render_template('bankAccount/newSavingsIndividual.html',context=context)
 
 
-@bank_account_app.route('/create-new/current',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_current_account_new')
+@bank_account_app.route('/individual/current/new',methods = DEFUALT_SUBMISSION_METHODS,endpoint='create_current_account_new')
 @valid_employee
-@valid_session
 def create_current_account_new_individual():
     if request.method == 'POST':
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        branch_id = request.form['branch_id']
-        nic = request.form['nic']
-        telephone = request.form['telephone']
-        home_town = request.form['home_town']
-        date_of_birth = request.form['date_of_birth']
-        first_deposit = request.form['first_deposit']
-        ascii_values = [ord(char) for char in (first_name+last_name)]
-        new_account_number = f"{str(branch_id)}-{str(sum(ascii_values)%1000)}-{str(1)}"
 
-        if check_firstname_and_last_name_exsists(first_name,last_name):
-            flash("User Already Exists", 'Error')
-            return redirect(url_for('bank_account.create_current_account_new'))
-        if create_current_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number):
-            flash("Account Created Successfully","Account Creation")
-            return redirect('/dashboard')
-        else:
-            flash("Error Occured ", "Error")
-            return redirect('/dashboard')
+        first_name, last_name, branch_id, nic, telephone, home_town, date_of_birth, first_deposit = (request.form[key] for key in ['first_name', 'last_name', 'branch_id', 'nic', 'telephone', 'home_town', 'date_of_birth', 'first_deposit'])
+        account_number = get_account_number(first_name,last_name,branch_id)
+        return create_current_account_for_new_user_individual(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number)
 
     elif request.method == 'GET':
         context = get_branch_id(session['user_id'])
-        print("context",context)
         return render_template('bankAccount/newSavingsIndividual.html',context=context)
     
 
@@ -402,29 +387,9 @@ def create_current_account_new_individual():
 @valid_session
 def create_savings_account_new_organization():
     if request.method == 'POST':
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        branch_id = request.form['branch_id']
-        nic = request.form['nic']
-        telephone = request.form['telephone']
-        home_town = request.form['home_town']
-        date_of_birth = request.form['date_of_birth']
-        first_deposit = request.form['first_deposit']
-        organization_name = request.form['organization_name']
-        organization_role = request.form['organization_role']
-        ascii_values = [ord(char) for char in (first_name+last_name)]
-        new_account_number = f"{str(branch_id)}-{str(sum(ascii_values)%1000)}-{str(1)}"
-        print(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number,organization_name,organization_role)
-
-        if check_firstname_and_last_name_exsists(first_name,last_name):
-            flash("User Already Exists", 'Error')
-            return redirect(url_for('bank_account.create_savings_account_organization_new'))
-        if create_savings_account_for_new_organization(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number,organization_name,organization_role):
-            flash("Account Created Successfully","Account Creation")
-            return redirect('/dashboard')
-        else:
-            flash("Error Occured ", "Error")
-            return redirect('/dashboard')
+        first_name, last_name, branch_id, nic, telephone, home_town, date_of_birth, first_deposit, organization_name, organization_role = (request.form[key] for key in ['first_name', 'last_name', 'branch_id', 'nic', 'telephone', 'home_town', 'date_of_birth', 'first_deposit', 'organization_name', 'organization_role'])
+        account_number = get_account_number(first_name,last_name,branch_id)
+        return create_savings_account_for_new_organization(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,account_number,organization_name,organization_role)
 
     elif request.method == 'GET':
         context = get_branch_id(session['user_id'])
@@ -455,7 +420,8 @@ def create_current_account_new_organization():
             return redirect(url_for('bank_account.create_savings_account_organization_new'))
         if create_current_account_for_new_organization(first_name,last_name,branch_id,nic,telephone,home_town,date_of_birth,first_deposit,new_account_number,organization_name,organization_role):
             flash("Account Created Successfully","Account Creation")
-            return redirect('/dashboard')
+            context = {'account_number':new_account_number,'account_type':'SAVINGS','created_at':datetime.now().strftime("%Y-%m-%d %H:%M:%S"),'full_name':f'{first_name} {last_name}'}
+            return render_template('bankAccount/displayCreatedAccount.html',context=context)
         else:
             flash("Error Occured ", "Error")
             return redirect('/dashboard')
@@ -464,3 +430,10 @@ def create_current_account_new_organization():
         context = get_branch_id(session['user_id'])
         print("context",context)
         return render_template('bankAccount/newCurrentOrganization.html',context=context)
+    
+
+
+def get_account_number(first_name,last_name,branch_id):
+        ascii_values = [ord(char) for char in (first_name+last_name)]
+        return f'{branch_id:03}-{sum(ascii_values)%1000:03}-{1:03}'
+

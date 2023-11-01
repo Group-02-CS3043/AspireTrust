@@ -78,37 +78,37 @@
 
 
                 <div class="allAccounts">
-
+                    {% if context %}
                     <ul  class="ull">
                         <li class = "table-head">
-                            Date Time:
-                            <div class="data">2019/12/12 23:30:01</div>
+                            Created At :
+                            <div class="data">{{context.created_at}}</div>
                         </li>
                         <li class = "table-head">
                             Account No:
-                            <div class="data" >123442</div>
+                            <div class="data" >{{context.account_number}}</div>
                         </li>
                         <li class = "table-head">
                             Name:
-                            <div class="data" >Shyamal De Silva</div>
+                            <div class="data" >{{context.full_name}}</div>
                         </li>
                         <li class = "table-head">
                             Type:
-                            <div class="data" >Savings Account</div>
+                            <div class="data">{{context.account_type}}</div>
                         </li>
                     </ul>
-
+                    {% endif %}
 
                 </div>
 
                 
 
             </div>
+            <a href="{{ url_for('dashboard.dashboard') }}">
             <div class="exit-button">
                 <button class="button1"> Go to Home </button>
-
             </div>
-
+            </a>
 
         </div>
         <div id="popup1" class="overlay">

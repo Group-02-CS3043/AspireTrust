@@ -23,6 +23,16 @@
     </head>
 
     <body>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <div class="notification" id="myNotification">
+            {% for category, message in messages %}
+            <div class="notification-header">{{category}}</div>
+            <div class="notification-content">{{message}}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
         <div class="first-row">
             <div class = 'logo-container'>            
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +92,18 @@
                             <div class="field">
                                 <span class="texts">  Branch ID </span>
                                 <div class="ab">
+                                    {% if context %}
+                                    <input class="enq" name="branch_id" type="text" placeholder="" value="{{context.branch_id}}" required></input>
+                                    {% else %}
                                     <input class="enq" name="branch_id" type="text" placeholder="" required></input>
+                                    {% endif %}
+                                </div>
+    
+                            </div>
+                            <div class="field">
+                                <span class="texts">  Role </span>
+                                <div class="ab">
+                                    <input class="enq" name="role" type="text" placeholder="" required></input>
                                 </div>
     
                             </div>
@@ -90,14 +111,14 @@
                             <div class="field"  >
                                 <span class="texts">  Telephone </span>
                                 <div class="ab">
-                                    <input class="enq" name = "telNo" type="text" placeholder="" required></input>
+                                    <input class="enq" name = "telephone" type="text" placeholder="" required></input>
                                 </div>
     
                             </div>
                             <div class="field">
-                                <span class="texts">  HomeTown </span>
+                                <span class="texts">  Home Town </span>
                                 <div class="ab">
-                                    <input class="enq" name = "hometown" type="text" placeholder="" required></input>
+                                    <input class="enq" name = "home_town" type="text" placeholder="" required></input>
                                 </div>
     
                             </div>
@@ -105,7 +126,7 @@
                             <div class="field">
                                 <span class="texts">  Date of Birth </span>
                                 <div class="ab">
-                                    <input class="enq" name = "dateOfBirth" type="date" placeholder="" required></input>
+                                    <input class="enq" name = "date_of_birth" type="date" placeholder="" required></input>
                                 </div>
     
                             </div>
