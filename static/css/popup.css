@@ -1,8 +1,8 @@
-.notification {
+/* .notification {
     font-family: "Poppins";
     position: fixed;
     top: 10px;
-    right: 10px;
+    left: 10px;
     width: 300px;
     color: #fff;
     border-radius: 5px;
@@ -48,5 +48,58 @@
     100% {
         opacity: 0;
         display: none;
+    }
+} */
+
+.notification {
+    opacity: 80%;
+    font-family: Rubik;
+    position: fixed;
+    top: 10px;
+    left: 10px; /* move the notification outside the screen */
+    width: 200px;
+    color: #000000;
+    border-radius: 5px;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.55);
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    opacity: 1; /* set initial opacity to 1 */
+    animation: slideIn 2s, fadeOut 2s 4.5s forwards; /* change animation duration and delay */
+}
+
+.notification-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.notification-content {
+    font-size: 15px;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%); /* change initial position to outside the screen */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-100%); /* move the notification outside the screen */
     }
 }
