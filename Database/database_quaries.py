@@ -45,9 +45,15 @@ GET_EMPLOYEE_ROLE = 'SELECT position FROM employee WHERE user_id = %d'
 GET_USER_ACCOUNT_DETAILS = "SELECT user.first_name,user.last_name, user.home_town FROM account JOIN user USING (user_id) WHERE account_number = '%s'"
 
 
+GET_BRANCH_ID_AND_NUMBER_OF_ACCOUNTS_AND_FULL_NAME = 'call get_branch_id_and_number_of_accounts_and_full_name(%s,%s)'
+
 ########################################### Quaries for account creation ###########################################
 
 CREATE_SAVINGS_ACCOUNT_FOR_NEW_INDIVIDUAL_USER = 'call create_savings_account_for_new_individual_user(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 CREATE_CURRENT_ACCOUNT_FOR_NEW_INDIVIDUAL_USER = 'call create_current_account_for_new_individual_user(%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 CREATE_SAVINGS_ACCOUNT_FOR_NEW_ORGANIZATION = 'call create_savings_account_for_new_organization_user(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
 CREATE_CURRENT_ACCOUNT_FOR_NEW_ORGANIZATION = 'call create_current_account_for_new_organization_user(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+CREATE_SAVINGS_ACCOUNT_FOR_EXISTSING_INDIVIDUAL_USER = 'call create_savings_account_for_existing_individual_user(%s,%s,%s,%s)'
+CREATE_CURRENT_ACCOUNT_FOR_EXISTSING_INDIVIDUAL_USER = 'call create_current_account_for_existing_individual_user(%s,%s,%s,%s)'
+CREATE_FIXED_ACCOUNT_FOR_EXISTSING_INDIVIDUAL_USER = 'call create_fixed_account_for_existing_account_individual_user(%s,%s,%s,%s)'
+CREATE_SAVINGS_ACCOUNT_FOR_EXISTSING_ORAGANIZATION_USER = 'call create_savings_account_for_existing_organization_user(%s,%s,%s,%s,%s)'
