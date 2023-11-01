@@ -51,8 +51,13 @@
             </ul>
         </nav>
 
+        <a href="{{ url_for('dashboard.dashboard') }}"> <img onclick="" onclick="  " class="back-arr" style="width: 50px;   margin-left: 45px;
+            margin-top: -10px;" src= "{{ url_for('static', filename='img/back-arrow.png') }}"  alt=""> </a>
+
 
         <div class="info2">
+            
+
             <form action="" method="post">
             <div class="contentt">
                
@@ -71,6 +76,10 @@
                         <input class="enq" type="Date" placeholder="End Date" name="end_date" value="{{context.end_date}}" required></input>
                     </div>
 
+                </div>
+                <div class="tts">  
+                    <div class="t" style="margin-left: -25px;">Minimum Value</div>
+                    <div class="t">Maximum Value</div>
                 </div>
                 <div class ="amount_range">
 
