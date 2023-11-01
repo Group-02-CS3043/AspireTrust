@@ -173,7 +173,7 @@ CREATE TABLE loan_installment(
     loan_installment_id INT AUTO_INCREMENT PRIMARY KEY ,
     loan_id INT NOT NULL,
     due_date DATETIME ,
-    paid BOOLEAN,
+    paid BOOLEAN DEFAULT FALSE,
     paid_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     paid_count INT DEFAULT 0,
     due_count INT,
