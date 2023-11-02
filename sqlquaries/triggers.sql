@@ -53,7 +53,7 @@ end;
 -- then the trigger will check if the account has enough balance to perform the operation
 -- if it does not then the trigger will throw an error
 CREATE TRIGGER IF NOT EXISTS check_operation_validity
-    -- THIS TRIGGER WORKS
+    -- THIS TRIGGER  NOT WORKS 
 BEFORE INSERT ON operation FOR EACH ROW
 BEGIN
     DECLARE Message VARCHAR(250);
@@ -79,4 +79,29 @@ BEGIN
             END IF;
     END IF;
 END;
+
+
+
+-- Changed Trigger 
+DROP TRIGGER IF EXISTS check_operation_validity;
 DELIMITER //
+CREATE TRIGGER check_operation_validity
+BEFORE INSERT ON operation FOR EACH ROW
+BEGIN
+    DECLARE _account_id INT;
+    DECLARE _account_balance DECIMAL(10,2);
+    DECLARE _plan VARCHAR(20);
+    SET _account_id = NEW.account_id;
+    IF EXISTS(SELECT 1 FROM savings_account WHERE savings_account.account_id = _account_id) THEN
+         SELECT balance INTO _account_balance FROM account WHERE account.account_id = _account_id;
+         SELECT plan INTO _plan FROM savings_account WHERE savings_account.account_id = _account_id;
+         IF (_plan IN ('ADULT','SENIOR') AND (_account_balance - NEW.amount < 1000)) OR ((_plan = 'Teen') AND (_account_balance - NEW.amount < 500) ) THEN
+             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Your account balance is not enough for this transaction';
+         end if;
+
+    end if;
+
+END;
+//
+
+DELIMITER ;
