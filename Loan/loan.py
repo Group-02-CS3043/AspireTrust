@@ -4,8 +4,24 @@ from Settings.settings import *
 from Configurations.configurations import valid_session,valid_manager
 from Database.connection import Connector
 from Database.database_quaries import *
+from BankAccount.bank_account import get_branch_id
 
 loan_app = Blueprint('loan', __name__,template_folder='./templates',static_folder='static')
+
+
+
+def get_not_approved_loans(branch_id):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(GET_LOAN_DETAILS_NOT_APPROVED,(branch_id,))
+            context = connector.cursor.fetchall()
+            return context
+    except Exception as e:
+        error_code, error_message = e.args
+        print(error_code, error_message)
+        flash(error_message,"Error")
+        return False
 
 
 def apply_for_online_loan(user_id,fixed_deposit_id,amount,duration,interest_rate):
@@ -79,8 +95,9 @@ def online_loan():
 @valid_manager
 def loan_requests():
     if request.method == 'GET':
-        context = {}
-        context['loan_requests'] = 0
+        branch_id = get_branch_id(session['user_id'])
+        print(branch_id)
+        context = get_not_approved_loans(branch_id['branch_id'])
         return render_template('loan/loanRequest.html',context=context)
 
     
@@ -88,12 +105,42 @@ def loan_requests():
 @valid_manager
 def approve():
     if request.method == 'POST':
-        print(request.form)
+        loan_id = request.form['status']
+        approve_loan(loan_id)
         return redirect(url_for('loan.loan_requests'))
 
 @loan_app.route('/disapprove',methods = DEFUALT_SUBMISSION_METHODS,endpoint='disapprove')   
 @valid_manager
 def disapprove():
     if request.method == 'POST':
-        print(request.form)
+        loan_id = request.form['status']
+        disapprove_loan(loan_id)
         return redirect(url_for('loan.loan_requests'))
+
+
+def approve_loan(loan_id):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(APPROVE_LOAN,(loan_id,))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        error_code, error_message = e.args
+        print(error_code, error_message)
+        flash(error_message,"Error")
+        return False
+    
+
+def disapprove_loan(loan_id):
+    connector = Connector()
+    try:
+        with connector:
+            connector.cursor.execute(DISAPPROVE_LOAN,(loan_id,))
+            connector.connection.commit()
+            return True
+    except Exception as e:
+        error_code, error_message = e.args
+        print(error_code, error_message)
+        flash(error_message,"Error")
+        return False
