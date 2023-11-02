@@ -63,24 +63,11 @@
                 <li><a href="{{ url_for('user.user_informations') }}" class ='aa'>Settings</a></li>
             </ul>
         </nav>
-        <!-- <div class="banner">
-            <div class="tile"> 
-                <img class="banner-image" src="{{ url_for('static', filename='img/customer_dashboard/boadt.jpg') }}" alt="">
-                <div class="banner-text">
-                    <div class="banner-text1">Banking Made Simple, Savings Made Easy</div>
-                    <div class="banner-text2">Yours Trusted, Aspire trust</div>
-                </div>
-                
-
-            
-            
-            
-            </div>
-        </div> -->
+ 
 
         <div class = 'first'>
             
-            <div class = 'welcome'>Hey Siripala Welcome</div>
+            <div class = 'welcome'>Hey {{context.first_name}} Welcome</div>
             <div class = 'notice-tile'> 
                 <div style="color: white;
                     text-align: center;
@@ -118,7 +105,7 @@
                         Get User Details
                     </div>
                     <form style="display: flex; flex-direction: column; justify-content: center; align-items: center;"
-                        method="post" action="">
+                        method="post" action="{{url_for('user.user_account_details')}}">
                         <div class="inputs">
 
                             <div class="emailCon">
