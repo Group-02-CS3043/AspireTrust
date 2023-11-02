@@ -55,8 +55,7 @@ ON SCHEDULE EVERY 1 DAY
 DO
 BEGIN
     UPDATE account JOIN savings_account using (account_id) JOIN fixed_deposit USING (savings_account_id)
-        SET account.balance=account.balance+fixed_deposit.amount,
-            fixed_deposit.amount = 0
+        SET account.balance=account.balance+fixed_deposit.amount
         WHERE fixed_deposit_id IN
                 (SELECT fixed_deposit_id FROM fixed_deposit WHERE
                     DATE_ADD(created_at, INTERVAL duration MONTH) < NOW());
@@ -86,9 +85,9 @@ BEGIN
         SELECT loan_id
         FROM loan
         WHERE DATE_ADD(created_at, INTERVAL duration MONTH) < NOW()
-    ) AS subquery
+    ) AS expired_loan
     SET loan.amount = 0
-    WHERE loan.loan_id = subquery.loan_id;
+    WHERE loan.loan_id = expired_loan.loan_id;
     DELETE FROM online_loan WHERE online_loan.loan_id IN (SELECT loan_id FROM loan
         WHERE DATE_ADD(created_at, INTERVAL duration MONTH) < NOW());
     DELETE FROM loan_installment WHERE loan_installment.loan_id IN (SELECT loan_id FROM loan

@@ -172,11 +172,10 @@ CREATE TABLE IF NOT EXISTS online_loan(
 CREATE TABLE loan_installment(
     loan_installment_id INT AUTO_INCREMENT PRIMARY KEY ,
     loan_id INT NOT NULL,
-    due_date DATETIME ,
+    last_payment_date DATETIME ,
+    next_payment_date DATETIME 
     paid BOOLEAN DEFAULT FALSE,
-    paid_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     paid_count INT DEFAULT 0,
-    due_count INT,
     FOREIGN KEY (loan_id) REFERENCES loan(loan_id)
 );
 
