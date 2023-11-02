@@ -96,34 +96,35 @@
                         <td>User Name</td>
 
                         <td>Amount</td>
-                        <td>Status</td>
                         <td></td>
                         <td></td>
                     </tr>
 
                     <tr style="height: 20px;"></tr>
+                    {% for loan in context %}
                     <tr>
-                        <td>2019-12-31 12:34:23</td>
-                        <td>11189</td>
-                        <td>Mahinda Rajapassa</td>
+                        
+                        <td>{{loan.created_at}}</td>
+                        <td>{{loan.loan_id}}</td>
+                        <td>{{loan.first_name}}</td>
 
-                        <td>19000</td>
-                        <td>In Review</td>
+                        <td>{{loan.amount}}</td>
                         <td>
                             <form action="{{ url_for('loan.approve') }}" method="post">
-                                <input type="hidden" name="status" value="1">
+                                <input type="hidden" name="status" value="{{loan.loan_id}}">
                                 <button class="SubBut">Approve</button>
                             </form>
                         </td>
                         <td>
                             <form action="{{ url_for('loan.disapprove') }}" method="post">
-                                <input type="hidden" name="status" value="1">
+                                <input type="hidden" name="status" value="{{loan.loan_id}}">
                                 <button class="SubBut">Disapprove</button>
                             </form>
                             
                         </td>
 
                     </tr>
+                    {% endfor %}
                 </table>
             </div>
 

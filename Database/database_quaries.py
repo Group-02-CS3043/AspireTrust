@@ -68,3 +68,10 @@ CREATE_FIXED_ACCOUNT_FOR_EXISTING_ORGANIZATION_USER = 'call create_fixed_account
 GET_REPORT_INTER_BRANCH = " call inter_bank_report(%s , %s , %s,%s,%s,%s); "
 GET_REPORT_INTRA_BRANCH = "call intra_bank_report(%s,%s, %s,%s,%s,%s);"
 GET_WITHDRAWS = 'call withdraw_report_branchwise(%s,%s,%s,%s,%s);'
+
+
+################################################ Loans ################################################
+
+GET_LOAN_DETAILS_NOT_APPROVED = 'SELECT loan_id,amount,first_name,loan.created_at,branch_id FROM loan JOIN user USING (user_id) WHERE approved = 0 AND branch_id = %s'
+APPROVE_LOAN = 'UPDATE loan SET approved = 1 WHERE loan_id = %s'
+DISAPPROVE_LOAN = 'DELETE FROM loan WHERE loan_id = %s'
