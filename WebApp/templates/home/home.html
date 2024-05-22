@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&family=Righteous&display=swap"
+    rel="stylesheet">
+    <style>
+        body
+        {
+            background-image: url("{{ url_for('static',filename='img/home/group-131.png') }}");
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    <div class="notification" id="myNotification">
+        {% for category, message in messages %}
+        <div class="notification-header">{{category}}</div>
+        <div class="notification-content">{{message}}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+        <div class="first-row">
+            <div class = 'logo-container'>            
+                    <img class="logo_img" src="{{ url_for('static', filename='img/home/vector.svg') }}">
+                    <span class = 'logo'>ASPIRE Trust </span>                      
+            </div>
+            <!-- <div class="log-out">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="38" viewBox="0 0 40 38" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66667 7.9165C6.66667 5.29315 8.90524 3.1665 11.6667 3.1665H28.3333C31.0948 3.1665 33.3333 5.29315 33.3333 7.9165V30.0832C33.3333 32.7065 31.0948 34.8332 28.3333 34.8332H11.6667C8.90524 34.8332 6.66667 32.7065 6.66667 30.0832C6.66667 29.2087 7.41286 28.4998 8.33333 28.4998C9.25381 28.4998 10 29.2087 10 30.0832C10 30.9576 10.7462 31.6665 11.6667 31.6665H28.3333C29.2538 31.6665 30 30.9576 30 30.0832V7.9165C30 7.04205 29.2538 6.33317 28.3333 6.33317H11.6667C10.7462 6.33317 10 7.04205 10 7.9165C10 8.79095 9.25381 9.49984 8.33333 9.49984C7.41286 9.49984 6.66667 8.79095 6.66667 7.9165ZM14.5118 11.5469C15.1627 12.1652 15.1627 13.1678 14.5118 13.7861L10.6904 17.4165L25 17.4165C25.9205 17.4165 26.6667 18.1254 26.6667 18.9998C26.6667 19.8743 25.9205 20.5832 25 20.5832L10.6904 20.5832L14.5118 24.2136C15.1627 24.8319 15.1627 25.8344 14.5118 26.4528C13.861 27.0711 12.8057 27.0711 12.1548 26.4528L5.48816 20.1194C4.83728 19.5011 4.83728 18.4986 5.48816 17.8803L12.1548 11.5469C12.8057 10.9286 13.861 10.9286 14.5118 11.5469Z" fill="#C4E6F6"/>
+                </svg>
+            </div> -->
+    
+        </div>
+        <nav class="nav-bar">
+            <ul class="navlist">
+                <li><a  href="#homeid" class ='aa' >Home</a></li>
+                <li><a href="#ourservisesid" class ='aa'>Our Services</a></li>
+                <li><a href="#aboutusid" class ='aa'>About Us</a></li>
+                <li><a href="#contactusid" class ='aa'>Contact Us</a></li>
+
+                <li><a href="{{ url_for('auth.login') }}" class ='aa'>Log In</a></li>
+            </ul>
+        </nav>
+
+    
+    <!--End of header-->
+
+
+    <section class="banner" id="homeid">
+        <div class="slideWrapper">
+            <!-- image slider start -->
+            <div class="slider">
+                <div class="slides">
+    
+                    <!--radio button start-->
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
+                    <!--radio button end-->
+    
+                    <!--slide images start-->
+                    <div class="slide first">
+                        <img src="{{ url_for('static', filename='img/home/1.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ url_for('static', filename='img/home/2.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ url_for('static', filename='img/home/3.jpg') }}" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="{{ url_for('static', filename='img/home/4.jpg') }}" alt="">
+                    </div>
+                    <!--slide images end-->
+    
+                    <!--automatic navigation start-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+                    </div>
+                    <!--automatic navigation end-->
+                </div>
+                <!--manual navigation start-->
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                </div>
+                <!--manual navigation end-->
+            </div>
+        <!--image slider end-->
+        </div>
+        <div class="text_heading">
+           <h3 style="font-weight: 500;">You are Secured !
+           </h3> 
+           <p class="text_bank">Aspire Trust Bank is a paragon of financial excellence, offering an extensive range of personalized banking services to cater to your unique financial needs. From cutting-edge personal banking, including high-yield savings accounts, feature-rich checking accounts, and a variety of debit and credit cards, to expertly tailored business solutions, international transaction support, and a steadfast commitment to digital security, we are your trusted partner for comprehensive financial services. Our dedication to community development and corporate responsibility further exemplifies our commitment to ethical and sustainable banking practices, making Aspire Trust Bank a symbol of stability, trust, and innovation in the financial world.</p>
+        </div>
+      
+
+    </section>
+    <section id="ourservisesid">
+        <p class="service">OUR SERVICES</p>
+
+        <div class="content">
+            <div class="subcontent">
+                <div class="img">
+                    <h4>Account types</h4>
+                    <img src="{{ url_for('static', filename='img/home/savings.jpg') }}" alt="">
+                </div>
+                <div class="text">
+                    
+                    <p>
+                         With just a few simple steps, you can become a valued 
+                        customer and unlock a world of financial opportunities. Take advantage of our exceptional services, including:
+                            <ul>
+                                <li>● Accounts  for Individuals</li>
+                                <li>● Accounts  for Oraganizations</li>
+                                <li>● Fixed Deposit Accounts</li>
+                            </ul>
+                    </p>
+                </div>
+            </div>
+    
+            <div class="subcontent">
+                <div class="img">
+                    <h4>Fixed Deposit</h4>
+                    <img src="{{ url_for('static', filename='img/home/FD Account.jpg') }}" alt="">
+                </div>
+                <div class="text">
+                    
+                    <p>
+                         With competitive interest rates
+                         and flexible terms, our Fixed Deposit options are designed to help you grow your wealth steadily.<br>
+                        <p>FD Plans</p>
+                        <ul>
+                            <li>● 6 months, 13%</li>
+                            <li>● 1 year, 14%</li>
+                            <li>● 3 years, 15% </li>
+                        </ul>
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="content">
+            <div class="subcontent">
+                <div class="img">
+                    <h4>Accounts</h4>
+                    <img src="{{ url_for('static', filename='img/home/account creation.jpg') }}" alt="">
+                </div>
+                <div class="text">
+                    
+                    <p>
+                        Whether you're looking to save for the future or handle day-to-day transactions, our accounts offer the 
+                        flexibility and features you need.
+                
+                        <ul>
+                            <li>● Children - 12%, no minimum</li>
+                            <li>● Teen - 11%, 500 minimum </li>
+                            <li>● Adult (18+) - 10%,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1000 minimum</li>
+                            <li>● Senior (60+) - 13%,<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1000 minimum</li></li>
+                          
+                        </ul>
+                    </p>
+                </div>
+            </div>
+    
+            <div class="subcontent">
+                <div class="img">
+                    <h4>Transactions</h4>
+                    <img src="{{ url_for('static', filename='img/home/transactions.jpg') }}" alt="">
+                </div>
+                <div class="text">
+                    
+                    <p>Experience hassle-free transactions with our comprehensive banking solutions. Our user-friendly platform 
+                        allows you to easily manage your finances and conduct transactions securely.
+                    </p><br>
+                    
+    
+                </div>
+            </div>
+        </div>
+    
+        <div class="content">
+            <div class="subcontent">
+                <div class="img">
+                    <h4>Loan Request</h4>
+                    <img src="{{ url_for('static', filename='img/home/loan.jpg') }}" alt="">
+                </div>
+                <div class="text">
+                    
+                    <p>Looking for financial assistance? 
+                        Whether it's for a new home, business expansion, or personal needs, our loan solutions are tailored to meet 
+                        your requirements.
+                    </p>
+                    <p>Loan Plans</p>
+                    <ul>
+                        <li>● Through via employee</li>
+                        <li>● Use Online Platform</li>
+                    </ul>
+                    
+                </div>
+            </div>
+    
+            <div class="subcontent">
+                <div class="img">
+                    <h4>Security</h4>
+                    <img src="{{ url_for('static', filename='img/home/security.jpg') }}" alt="">
+                </div>
+                <div class="text">
+                    
+                    <p>At our bank, we take your security seriously. We understand the importance of protecting your financial
+                         information and assets. That's why we employ state-of-the-art security measures to ensure your safety.
+                    </p><br>
+                
+                </div>
+            </div>
+        </div>
+    
+    </section>
+
+    
+    <p class="service">About Us</p>
+    <section class="about-section" id="aboutusid">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='img/home/aboutus.jpg') }}" alt="About Us Image" class="img-fluid">
+              </div>
+            <div class="col-md-6">
+              <p class="section-description">We are a leading financial institution committed to providing exceptional banking 
+                services to our customers.</p>
+              <p>Our bank was founded in 1985 with the mission of helping individuals and businesses achieve their financial goals. 
+                Since then, we have grown to become one of the most trusted and respected banks in the country.</p>
+              <p>At our bank, we believe in putting our customers first. That's why we offer a wide range of products and services 
+                to meet your unique needs. Whether you're looking for a checking account, a mortgage, or investment advice, we have 
+                the expertise and resources to help you succeed.</p>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+
+ 
+
+      <section class="contact-section" id="contactusid">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="section-title">Contact Us</h2>
+              <p class="section-description">Have any questions or need assistance? Feel free to get in touch with us.</p>
+              <ul class="contact-info">
+                <li><i class="fa fa-map-marker"></i> 123 Main Street, New York, America</li>
+                <li><i class="fa fa-phone"></i> +1 234 567 890</li>
+                <li><i class="fa fa-envelope"></i> info@aspiretrust.com</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <form class="contact-form" action="#" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+
+
+
+    <footer><div class="footer-container">
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Security Information</a>
+        </div>
+        <p class="footer-text">© 2023 ASPIRE Trust. All rights reserved.</p>
+      </div></footer>
+
+
+    <script type="text/javascript">
+        window.addEventListener('scroll', function(){
+            const header = document.querySelector('header');
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+     <script type="text/javascript">
+        var counter = 1;
+        setInterval(function(){
+            document.getElementById('radio' + counter).checked = true;
+            counter++;
+            if(counter > 4){
+                counter = 1;
+            }
+        }, 5000);
+    </script>
+
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>
